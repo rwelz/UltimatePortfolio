@@ -13,7 +13,7 @@ class DataController: ObservableObject {
     @Published var selectedFilter: Filter? = Filter.all
     
     init(inMemory: Bool = false) {
-        container = NSPersistentCloudKitContainer(name: "Main")
+        container = NSPersistentCloudKitContainer(name: "Model")
         
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(filePath: "/dev/null")

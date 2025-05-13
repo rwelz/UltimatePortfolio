@@ -1,0 +1,36 @@
+Git
+https://www.hsbi.de/elearning/data/FH-Bielefeld/lm_data/lm_1359639/git/git-intro.html
+
+1. Intro durch
+
+
+
+
+
+
+
+
+
+--------
+
+
+https://www.hackingwithswift.com/plus/ultimate-portfolio-app
+
+
+mit Core Data
+
+1. Ultimate Portfolio App: Introduction
+2. Designing a great model
+3. First steps in UI
+4. Storing your code somewhere safe
+5. Cleaning up Core Data -- nochmal lesen
+
+
+
+—————————
+
+
+
+
+
+
