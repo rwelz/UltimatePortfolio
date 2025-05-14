@@ -24,6 +24,8 @@ mit Core Data
 3. First steps in UI
 4. Storing your code somewhere safe
 5. Cleaning up Core Data -- nochmal lesen
+6. Showing, deleting, and synchronizing issues
+
 
 
 
