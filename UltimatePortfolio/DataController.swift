@@ -13,6 +13,8 @@ class DataController: ObservableObject {
     @Published var selectedFilter: Filter? = Filter.all
     @Published var selectedIssue: Issue?
     
+    private var saveTask: Task<Void, Error>?
+    
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "Model")
         
@@ -104,5 +106,14 @@ class DataController: ObservableObject {
         let difference = allTagsSet.symmetricDifference(issue.issueTags)
 
         return difference.sorted()
+    }
+    
+    func queueSave() {
+        saveTask?.cancel()
+
+        saveTask = Task { @MainActor in
+            try await Task.sleep(for: .seconds(3))
+            save()
+        }
     }
 }

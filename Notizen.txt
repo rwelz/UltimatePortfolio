@@ -26,6 +26,8 @@ mit Core Data
 5. Cleaning up Core Data -- nochmal lesen
 6. Showing, deleting, and synchronizing issues
 7. Editing items
+8. Instant sync and save
+-- Exceptions anschauen
 
 
 
