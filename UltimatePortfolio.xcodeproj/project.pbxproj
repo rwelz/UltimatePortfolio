@@ -8,9 +8,7 @@
 
 /* Begin PBXFileReference section */
 		D70508D12DD786AC004E51F8 /* swiftlint lint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swiftlint lint.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D70508D32DD786AC004E51F8 /* UltimatePortfolio copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "UltimatePortfolio copy-Info.plist"; path = "/Volumes/ Samsung schwarz 2TB T7 Shield with USB 3.2/Playgrounds/Hacking with Swift/Ultimate Portfolio App/UltimatePortfolio/UltimatePortfolio copy-Info.plist"; sourceTree = "<absolute>"; };
 		D70508DC2DD786B8004E51F8 /* swiftlint lint --fix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swiftlint lint --fix.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D70508DE2DD786B8004E51F8 /* swiftlint lint copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "swiftlint lint copy-Info.plist"; path = "/Volumes/ Samsung schwarz 2TB T7 Shield with USB 3.2/Playgrounds/Hacking with Swift/Ultimate Portfolio App/UltimatePortfolio/swiftlint lint copy-Info.plist"; sourceTree = "<absolute>"; };
 		D7A3A3172DBBB02400B3ACC3 /* UltimatePortfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UltimatePortfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -97,8 +95,6 @@
 			isa = PBXGroup;
 			children = (
 				D7A3A3192DBBB02400B3ACC3 /* UltimatePortfolio */,
-				D70508D32DD786AC004E51F8 /* UltimatePortfolio copy-Info.plist */,
-				D70508DE2DD786B8004E51F8 /* swiftlint lint copy-Info.plist */,
 				D7A3A3182DBBB02400B3ACC3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -120,6 +116,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D70508CE2DD786AC004E51F8 /* Build configuration list for PBXNativeTarget "swiftlint lint" */;
 			buildPhases = (
+				D7A36E9A2DD791AD00C4CDD5 /* TODO MARKER Script */,
 				D70508CA2DD786AC004E51F8 /* SwiftLint Check */,
 				D70508CB2DD786AC004E51F8 /* Sources */,
 				D70508CC2DD786AC004E51F8 /* Frameworks */,
@@ -143,6 +140,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D70508D92DD786B8004E51F8 /* Build configuration list for PBXNativeTarget "swiftlint lint --fix" */;
 			buildPhases = (
+				D7A36E9B2DD791B900C4CDD5 /* TODO MARKER Script */,
 				D70508D52DD786B8004E51F8 /* SwiftLint Check */,
 				D70508D62DD786B8004E51F8 /* Sources */,
 				D70508D72DD786B8004E51F8 /* Frameworks */,
@@ -166,6 +164,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D7A3A3232DBBB02600B3ACC3 /* Build configuration list for PBXNativeTarget "UltimatePortfolio" */;
 			buildPhases = (
+				D743FB162DD78EC300FE00F0 /* TODO MARKER Script */,
 				D76F0CBB2DD76105007C73BF /* SwiftLint Check */,
 				D7A3A3132DBBB02400B3ACC3 /* Sources */,
 				D7A3A3142DBBB02400B3ACC3 /* Frameworks */,
@@ -283,6 +282,25 @@
 			shellPath = /bin/sh;
 			shellScript = "echo \"🧹 SwiftLint: Starte Linting mit Style ✨\"\n\ncd \"${SRCROOT}\"\n    echo \"SRCROOT = ${SRCROOT}\"\n# Wenn auf ARM64 (M1/M2/M3 Mac), dann Homebrew Pfad setzen\nif [[ \"$(uname -m)\" == \"arm64\" ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nCONFIG_PATH=\"${SRCROOT}/.swiftlint.yml\"\n\n# Prüfe, ob SwiftLint installiert ist\nif ! command -v swiftlint >/dev/null 2>&1; then\n    echo \"⚠️ SwiftLint ist nicht installiert. Siehe: https://github.com/realm/SwiftLint#installation\"\n    exit 0\nfi\n\n# Prüfe, ob Konfiguration vorhanden und lesbar ist\nif [[ ! -f \"$CONFIG_PATH\" || ! -r \"$CONFIG_PATH\" ]]; then\n    echo \"⚠️  .swiftlint.yml fehlt oder ist nicht lesbar – es wird mit der Standardkonfiguration gearbeitet\"\n    swiftlint lint --fix || exit 1\nelse\n    echo \"✅ .swiftlint.yml gefunden – Linting beginnt…\"\n    swiftlint lint --fix --config \"$CONFIG_PATH\" || exit 1\nfi\n\necho \"🎉 SwiftLint abgeschlossen! Gutes Coden, du Zauberwesen 🧚‍♀️\"\n";
 		};
+		D743FB162DD78EC300FE00F0 /* TODO MARKER Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "TODO MARKER Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "KEYWORDS=\"STUB:|WARNING:|TODO:|FIXME:|DevTeam:|\\?\\?\\?:\" \nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -not -path \"${SRCROOT}/Pods/*\" -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/1: warning: \\$1/\"\n\nKEYWORDS=\"ERROR:|XXX:|\\!\\!\\!:\" \nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -not -path \"${SRCROOT}/Pods/*\" -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/1: error: \\$1/\"\nERROR_OUTPUT=`find \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -not -path \"${SRCROOT}/Pods/*\" -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/1: error: \\$1/\"`\n\nexit ${#ERROR_OUTPUT}\n";
+		};
 		D76F0CBB2DD76105007C73BF /* SwiftLint Check */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -301,6 +319,44 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "echo \"🧹 SwiftLint: Starte Linting mit Style ✨\"\n\ncd \"${SRCROOT}\"\n    echo \"SRCROOT = ${SRCROOT}\"\n# Wenn auf ARM64 (M1/M2/M3 Mac), dann Homebrew Pfad setzen\nif [[ \"$(uname -m)\" == \"arm64\" ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nCONFIG_PATH=\"${SRCROOT}/.swiftlint.yml\"\n\n# Prüfe, ob SwiftLint installiert ist\nif ! command -v swiftlint >/dev/null 2>&1; then\n    echo \"⚠️ SwiftLint ist nicht installiert. Siehe: https://github.com/realm/SwiftLint#installation\"\n    exit 0\nfi\n\n# Prüfe, ob Konfiguration vorhanden und lesbar ist\nif [[ ! -f \"$CONFIG_PATH\" || ! -r \"$CONFIG_PATH\" ]]; then\n    echo \"⚠️  .swiftlint.yml fehlt oder ist nicht lesbar – es wird mit der Standardkonfiguration gearbeitet\"\n    swiftlint lint || exit 1\nelse\n    echo \"✅ .swiftlint.yml gefunden – Linting beginnt…\"\n    swiftlint lint --config \"$CONFIG_PATH\" || exit 1\nfi\n\necho \"🎉 SwiftLint abgeschlossen! Gutes Coden, du Zauberwesen 🧚‍♀️\"\n";
+		};
+		D7A36E9A2DD791AD00C4CDD5 /* TODO MARKER Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "TODO MARKER Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "KEYWORDS=\"STUB:|WARNING:|TODO:|FIXME:|DevTeam:|\\?\\?\\?:\" \nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -not -path \"${SRCROOT}/Pods/*\" -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/1: warning: \\$1/\"\n\nKEYWORDS=\"ERROR:|XXX:|\\!\\!\\!:\" \nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -not -path \"${SRCROOT}/Pods/*\" -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/1: error: \\$1/\"\nERROR_OUTPUT=`find \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -not -path \"${SRCROOT}/Pods/*\" -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/1: error: \\$1/\"`\n\nexit ${#ERROR_OUTPUT}\n";
+		};
+		D7A36E9B2DD791B900C4CDD5 /* TODO MARKER Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "TODO MARKER Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "KEYWORDS=\"STUB:|WARNING:|TODO:|FIXME:|DevTeam:|\\?\\?\\?:\" \nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -not -path \"${SRCROOT}/Pods/*\" -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/1: warning: \\$1/\"\n\nKEYWORDS=\"ERROR:|XXX:|\\!\\!\\!:\" \nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -not -path \"${SRCROOT}/Pods/*\" -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/1: error: \\$1/\"\nERROR_OUTPUT=`find \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -not -path \"${SRCROOT}/Pods/*\" -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/1: error: \\$1/\"`\n\nexit ${#ERROR_OUTPUT}\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

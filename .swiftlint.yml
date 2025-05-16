@@ -32,6 +32,7 @@ disabled_rules:
   - identifier_name
   #- file_length
   - empty_count
+  - todo
 
 # MARK: - Individuelle Regelkonfigurationen
 #line_length:
