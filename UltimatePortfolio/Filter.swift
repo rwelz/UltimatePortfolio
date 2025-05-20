@@ -21,7 +21,7 @@ struct Filter: Identifiable, Hashable {
         hasher.combine(id)
     }
     
-    static func ==(lhs: Filter, rhs: Filter) -> Bool {
+    static func == (lhs: Filter, rhs: Filter) -> Bool {
         lhs.id == rhs.id
     }
 }

@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct UltimatePortfolioApp: App {
-    
     @StateObject var dataController = DataController() // @Published und @StateObject gehören zusammen
     
     @Environment(\.scenePhase) var scenePhase

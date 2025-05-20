@@ -7,10 +7,52 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		D70508D12DD786AC004E51F8 /* swiftlint lint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swiftlint lint.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D70508DC2DD786B8004E51F8 /* swiftlint lint --fix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swiftlint lint --fix.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7A3A3172DBBB02400B3ACC3 /* UltimatePortfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UltimatePortfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D70508D22DD786AC004E51F8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Assets.xcassets,
+				DataController.swift,
+				Filter.swift,
+				Info.plist,
+				"Issue-CoreDataHelpers.swift",
+				IssueRow.swift,
+				Model.xcdatamodeld,
+				"Tag-CoreDataHelpers.swift",
+				UltimatePortfolioApp.swift,
+				Views/ContentView.swift,
+				Views/DetailView.swift,
+				Views/IssueView.swift,
+				Views/NoIssueView.swift,
+				Views/SidebarView.swift,
+			);
+			target = D70508C92DD786AC004E51F8 /* swiftlint lint */;
+		};
+		D70508DD2DD786B8004E51F8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Assets.xcassets,
+				DataController.swift,
+				Filter.swift,
+				Info.plist,
+				"Issue-CoreDataHelpers.swift",
+				IssueRow.swift,
+				Model.xcdatamodeld,
+				"Tag-CoreDataHelpers.swift",
+				UltimatePortfolioApp.swift,
+				Views/ContentView.swift,
+				Views/DetailView.swift,
+				Views/IssueView.swift,
+				Views/NoIssueView.swift,
+				Views/SidebarView.swift,
+			);
+			target = D70508D42DD786B8004E51F8 /* swiftlint lint --fix */;
+		};
 		D74A92732DD4ACA200CBCAB9 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -21,10 +63,24 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		D7A3A3192DBBB02400B3ACC3 /* UltimatePortfolio */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D74A92732DD4ACA200CBCAB9 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = UltimatePortfolio; sourceTree = "<group>"; };
+		D7A3A3192DBBB02400B3ACC3 /* UltimatePortfolio */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D74A92732DD4ACA200CBCAB9 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, D70508D22DD786AC004E51F8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, D70508DD2DD786B8004E51F8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = UltimatePortfolio; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D70508CC2DD786AC004E51F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D70508D72DD786B8004E51F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D7A3A3142DBBB02400B3ACC3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -47,6 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				D7A3A3172DBBB02400B3ACC3 /* UltimatePortfolio.app */,
+				D70508D12DD786AC004E51F8 /* swiftlint lint.app */,
+				D70508DC2DD786B8004E51F8 /* swiftlint lint --fix.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -54,10 +112,60 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D70508C92DD786AC004E51F8 /* swiftlint lint */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D70508CE2DD786AC004E51F8 /* Build configuration list for PBXNativeTarget "swiftlint lint" */;
+			buildPhases = (
+				D7A36E9A2DD791AD00C4CDD5 /* TODO MARKER Script */,
+				D70508CA2DD786AC004E51F8 /* SwiftLint Check */,
+				D70508CB2DD786AC004E51F8 /* Sources */,
+				D70508CC2DD786AC004E51F8 /* Frameworks */,
+				D70508CD2DD786AC004E51F8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				D7A3A3192DBBB02400B3ACC3 /* UltimatePortfolio */,
+			);
+			name = "swiftlint lint";
+			packageProductDependencies = (
+			);
+			productName = UltimatePortfolio;
+			productReference = D70508D12DD786AC004E51F8 /* swiftlint lint.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D70508D42DD786B8004E51F8 /* swiftlint lint --fix */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D70508D92DD786B8004E51F8 /* Build configuration list for PBXNativeTarget "swiftlint lint --fix" */;
+			buildPhases = (
+				D7A36E9B2DD791B900C4CDD5 /* TODO MARKER Script */,
+				D70508D52DD786B8004E51F8 /* SwiftLint Check */,
+				D70508D62DD786B8004E51F8 /* Sources */,
+				D70508D72DD786B8004E51F8 /* Frameworks */,
+				D70508D82DD786B8004E51F8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				D7A3A3192DBBB02400B3ACC3 /* UltimatePortfolio */,
+			);
+			name = "swiftlint lint --fix";
+			packageProductDependencies = (
+			);
+			productName = UltimatePortfolio;
+			productReference = D70508DC2DD786B8004E51F8 /* swiftlint lint --fix.app */;
+			productType = "com.apple.product-type.application";
+		};
 		D7A3A3162DBBB02400B3ACC3 /* UltimatePortfolio */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D7A3A3232DBBB02600B3ACC3 /* Build configuration list for PBXNativeTarget "UltimatePortfolio" */;
 			buildPhases = (
+				D743FB162DD78EC300FE00F0 /* TODO MARKER Script */,
+				D76F0CBB2DD76105007C73BF /* SwiftLint Check */,
 				D7A3A3132DBBB02400B3ACC3 /* Sources */,
 				D7A3A3142DBBB02400B3ACC3 /* Frameworks */,
 				D7A3A3152DBBB02400B3ACC3 /* Resources */,
@@ -105,11 +213,27 @@
 			projectRoot = "";
 			targets = (
 				D7A3A3162DBBB02400B3ACC3 /* UltimatePortfolio */,
+				D70508C92DD786AC004E51F8 /* swiftlint lint */,
+				D70508D42DD786B8004E51F8 /* swiftlint lint --fix */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D70508CD2DD786AC004E51F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D70508D82DD786B8004E51F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D7A3A3152DBBB02400B3ACC3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -119,7 +243,138 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D70508CA2DD786AC004E51F8 /* SwiftLint Check */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftLint Check";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"🧹 SwiftLint: Starte Linting mit Style ✨\"\n\ncd \"${SRCROOT}\"\n    echo \"SRCROOT = ${SRCROOT}\"\n# Wenn auf ARM64 (M1/M2/M3 Mac), dann Homebrew Pfad setzen\nif [[ \"$(uname -m)\" == \"arm64\" ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nCONFIG_PATH=\"${SRCROOT}/.swiftlint.yml\"\n\n# Prüfe, ob SwiftLint installiert ist\nif ! command -v swiftlint >/dev/null 2>&1; then\n    echo \"⚠️ SwiftLint ist nicht installiert. Siehe: https://github.com/realm/SwiftLint#installation\"\n    exit 0\nfi\n\n# Prüfe, ob Konfiguration vorhanden und lesbar ist\nif [[ ! -f \"$CONFIG_PATH\" || ! -r \"$CONFIG_PATH\" ]]; then\n    echo \"⚠️  .swiftlint.yml fehlt oder ist nicht lesbar – es wird mit der Standardkonfiguration gearbeitet\"\n    swiftlint lint || exit 1\nelse\n    echo \"✅ .swiftlint.yml gefunden – Linting beginnt…\"\n    swiftlint lint --config \"$CONFIG_PATH\" || exit 1\nfi\n\necho \"🎉 SwiftLint abgeschlossen! Gutes Coden, du Zauberwesen 🧚‍♀️\"\n";
+		};
+		D70508D52DD786B8004E51F8 /* SwiftLint Check */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftLint Check";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"🧹 SwiftLint: Starte Linting mit Style ✨\"\n\ncd \"${SRCROOT}\"\n    echo \"SRCROOT = ${SRCROOT}\"\n# Wenn auf ARM64 (M1/M2/M3 Mac), dann Homebrew Pfad setzen\nif [[ \"$(uname -m)\" == \"arm64\" ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nCONFIG_PATH=\"${SRCROOT}/.swiftlint.yml\"\n\n# Prüfe, ob SwiftLint installiert ist\nif ! command -v swiftlint >/dev/null 2>&1; then\n    echo \"⚠️ SwiftLint ist nicht installiert. Siehe: https://github.com/realm/SwiftLint#installation\"\n    exit 0\nfi\n\n# Prüfe, ob Konfiguration vorhanden und lesbar ist\nif [[ ! -f \"$CONFIG_PATH\" || ! -r \"$CONFIG_PATH\" ]]; then\n    echo \"⚠️  .swiftlint.yml fehlt oder ist nicht lesbar – es wird mit der Standardkonfiguration gearbeitet\"\n    swiftlint lint --fix || exit 1\nelse\n    echo \"✅ .swiftlint.yml gefunden – Linting beginnt…\"\n    swiftlint lint --fix --config \"$CONFIG_PATH\" || exit 1\nfi\n\necho \"🎉 SwiftLint abgeschlossen! Gutes Coden, du Zauberwesen 🧚‍♀️\"\n";
+		};
+		D743FB162DD78EC300FE00F0 /* TODO MARKER Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "TODO MARKER Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "KEYWORDS=\"STUB:|WARNING:|TODO:|FIXME:|DevTeam:|\\?\\?\\?:\" \nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -not -path \"${SRCROOT}/Pods/*\" -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/1: warning: \\$1/\"\n\nKEYWORDS=\"ERROR:|XXX:|\\!\\!\\!:\" \nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -not -path \"${SRCROOT}/Pods/*\" -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/1: error: \\$1/\"\nERROR_OUTPUT=`find \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -not -path \"${SRCROOT}/Pods/*\" -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/1: error: \\$1/\"`\n\nexit ${#ERROR_OUTPUT}\n";
+		};
+		D76F0CBB2DD76105007C73BF /* SwiftLint Check */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftLint Check";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"🧹 SwiftLint: Starte Linting mit Style ✨\"\n\ncd \"${SRCROOT}\"\n    echo \"SRCROOT = ${SRCROOT}\"\n# Wenn auf ARM64 (M1/M2/M3 Mac), dann Homebrew Pfad setzen\nif [[ \"$(uname -m)\" == \"arm64\" ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nCONFIG_PATH=\"${SRCROOT}/.swiftlint.yml\"\n\n# Prüfe, ob SwiftLint installiert ist\nif ! command -v swiftlint >/dev/null 2>&1; then\n    echo \"⚠️ SwiftLint ist nicht installiert. Siehe: https://github.com/realm/SwiftLint#installation\"\n    exit 0\nfi\n\n# Prüfe, ob Konfiguration vorhanden und lesbar ist\nif [[ ! -f \"$CONFIG_PATH\" || ! -r \"$CONFIG_PATH\" ]]; then\n    echo \"⚠️  .swiftlint.yml fehlt oder ist nicht lesbar – es wird mit der Standardkonfiguration gearbeitet\"\n    swiftlint lint || exit 1\nelse\n    echo \"✅ .swiftlint.yml gefunden – Linting beginnt…\"\n    swiftlint lint --config \"$CONFIG_PATH\" || exit 1\nfi\n\necho \"🎉 SwiftLint abgeschlossen! Gutes Coden, du Zauberwesen 🧚‍♀️\"\n";
+		};
+		D7A36E9A2DD791AD00C4CDD5 /* TODO MARKER Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "TODO MARKER Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "KEYWORDS=\"STUB:|WARNING:|TODO:|FIXME:|DevTeam:|\\?\\?\\?:\" \nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -not -path \"${SRCROOT}/Pods/*\" -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/1: warning: \\$1/\"\n\nKEYWORDS=\"ERROR:|XXX:|\\!\\!\\!:\" \nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -not -path \"${SRCROOT}/Pods/*\" -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/1: error: \\$1/\"\nERROR_OUTPUT=`find \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -not -path \"${SRCROOT}/Pods/*\" -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/1: error: \\$1/\"`\n\nexit ${#ERROR_OUTPUT}\n";
+		};
+		D7A36E9B2DD791B900C4CDD5 /* TODO MARKER Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "TODO MARKER Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "KEYWORDS=\"STUB:|WARNING:|TODO:|FIXME:|DevTeam:|\\?\\?\\?:\" \nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -not -path \"${SRCROOT}/Pods/*\" -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/1: warning: \\$1/\"\n\nKEYWORDS=\"ERROR:|XXX:|\\!\\!\\!:\" \nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -not -path \"${SRCROOT}/Pods/*\" -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/1: error: \\$1/\"\nERROR_OUTPUT=`find \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -not -path \"${SRCROOT}/Pods/*\" -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/1: error: \\$1/\"`\n\nexit ${#ERROR_OUTPUT}\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		D70508CB2DD786AC004E51F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D70508D62DD786B8004E51F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D7A3A3132DBBB02400B3ACC3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -130,6 +385,170 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		D70508CF2DD786AC004E51F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = UltimatePortfolio/UltimatePortfolio.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4AZCM9652H;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "UltimatePortfolio copy-Info.plist";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.robert.welz.UltimatePortfolio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.4;
+			};
+			name = Debug;
+		};
+		D70508D02DD786AC004E51F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = UltimatePortfolio/UltimatePortfolio.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4AZCM9652H;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "UltimatePortfolio copy-Info.plist";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.robert.welz.UltimatePortfolio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.4;
+			};
+			name = Release;
+		};
+		D70508DA2DD786B8004E51F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = UltimatePortfolio/UltimatePortfolio.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4AZCM9652H;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "swiftlint lint copy-Info.plist";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.robert.welz.UltimatePortfolio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.4;
+			};
+			name = Debug;
+		};
+		D70508DB2DD786B8004E51F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = UltimatePortfolio/UltimatePortfolio.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4AZCM9652H;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "swiftlint lint copy-Info.plist";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 15.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.robert.welz.UltimatePortfolio;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.4;
+			};
+			name = Release;
+		};
 		D7A3A3212DBBB02600B3ACC3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -257,6 +676,7 @@
 				DEVELOPMENT_TEAM = 4AZCM9652H;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UltimatePortfolio/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -297,6 +717,7 @@
 				DEVELOPMENT_TEAM = 4AZCM9652H;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UltimatePortfolio/Info.plist;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -329,6 +750,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D70508CE2DD786AC004E51F8 /* Build configuration list for PBXNativeTarget "swiftlint lint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D70508CF2DD786AC004E51F8 /* Debug */,
+				D70508D02DD786AC004E51F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D70508D92DD786B8004E51F8 /* Build configuration list for PBXNativeTarget "swiftlint lint --fix" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D70508DA2DD786B8004E51F8 /* Debug */,
+				D70508DB2DD786B8004E51F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D7A3A3122DBBB02400B3ACC3 /* Build configuration list for PBXProject "UltimatePortfolio" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

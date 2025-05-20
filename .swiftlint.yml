@@ -1,0 +1,74 @@
+included:
+  - UltimatePortfolio
+# MARK: - Pfade ausschließen (z. B. externe Abhängigkeiten)
+excluded:
+  - Carthage
+  - Pods
+  - fastlane
+  - .git
+  - Generated
+  - "**/Generated/**"
+  - "**/*.generated.swift"
+
+# MARK: - Analyzer Regeln
+analyzer_rules:
+  - unused_import
+
+# MARK: - Aktivierte Regeln
+opt_in_rules:
+  - empty_count
+  - contains_over_first_not_nil
+  - explicit_init
+  - fatal_error_message
+  - unneeded_parentheses_in_closure_argument
+
+
+# MARK: - Deaktivierte Regeln
+disabled_rules:
+  - line_length
+  - trailing_whitespace
+  - force_cast
+  - force_try
+  - identifier_name
+  #- file_length
+  - empty_count
+  - todo
+
+# MARK: - Individuelle Regelkonfigurationen
+#line_length:
+#  warning: 120
+#  error: 160
+#  ignores_comments: true
+#  ignores_urls: true
+#  ignores_function_declarations: true
+#  ignores_interpolated_strings: true
+
+#identifier_name:
+#  min_length:
+#    warning: 3
+#    error: 2
+#  excluded:
+#    - id
+#    - x
+#    - y
+
+type_body_length:
+  warning: 300
+  error: 500
+
+file_length:
+  warning: 400
+  error: 800
+  ignore_comment_only_lines: true
+
+function_body_length:
+  warning: 40
+  error: 80
+
+cyclomatic_complexity:
+  ignores_case_statements: true
+  warning: 10
+  error: 20
+
+# MARK: - Allgemeines Verhalten
+reporter: xcode  # andere Optionen: json, csv, emoji, checkstyle, junit

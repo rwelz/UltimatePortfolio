@@ -28,6 +28,8 @@ mit Core Data
 7. Editing items
 8. Instant sync and save
 -- Exceptions anschauen
+9. Filtering issues
+
 
 
 
