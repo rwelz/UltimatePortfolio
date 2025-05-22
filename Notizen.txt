@@ -29,7 +29,7 @@ mit Core Data
 8. Instant sync and save
 -- Exceptions anschauen
 9. Filtering issues
-
+10. Advanced filtering and sorting
 
 
 
