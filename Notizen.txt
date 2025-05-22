@@ -1,6 +1,8 @@
 Git
 https://www.hsbi.de/elearning/data/FH-Bielefeld/lm_data/lm_1359639/git/git-intro.html
 
+https://danielkummer.github.io/git-flow-cheatsheet/
+
 1. Intro
 2. BASICS DER VERSIONSVERWALTUNG MIT GIT (LOKALE REPOS)
 3. GIT BRANCHES: FEATURES UNABHÄNGIG ENTWICKELN UND MIT GIT VERWALTEN
@@ -29,7 +31,7 @@ mit Core Data
 8. Instant sync and save
 -- Exceptions anschauen
 9. Filtering issues
-
+10. Advanced filtering and sorting
 
 
 
