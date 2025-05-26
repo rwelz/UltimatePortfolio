@@ -206,4 +206,22 @@ class DataController: ObservableObject {
     @Published var sortType = SortType.dateCreated
     @Published var sortNewestFirst = true
 
+    func newIssue() {
+        let issue = Issue(context: container.viewContext)
+        issue.title = "New issue"
+        issue.creationDate = .now
+        issue.priority = 1
+        if let tag = selectedFilter?.tag {
+            issue.addToTags(tag)
+        }
+        save()
+        selectedIssue = issue
+    }
+
+    func newTag() {
+        let tag = Tag(context: container.viewContext)
+        tag.id = UUID()
+        tag.name = "New tag"
+        save()
+    }
 }

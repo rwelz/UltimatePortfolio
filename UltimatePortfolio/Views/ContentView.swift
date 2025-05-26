@@ -42,7 +42,7 @@ struct ContentView: View {
                         Text("Oldest to Newest").tag(false)
                     }
                 }
-
+                
                 Picker("Status", selection: $dataController.filterStatus) {
                     Text("All").tag(Status.all)
                     Text("Open").tag(Status.open)
@@ -60,6 +60,10 @@ struct ContentView: View {
             } label: {
                 Label("Filter", systemImage: "line.3.horizontal.decrease.circle")
                     .symbolVariant(dataController.filterEnabled ? .fill : .none)
+            }
+
+            Button(action: dataController.newIssue) {
+                Label("New issue", systemImage: "square.and.pencil")
             }
         }
     }
