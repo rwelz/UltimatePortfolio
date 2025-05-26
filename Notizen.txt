@@ -7,7 +7,9 @@ https://danielkummer.github.io/git-flow-cheatsheet/
 2. BASICS DER VERSIONSVERWALTUNG MIT GIT (LOKALE REPOS)
 3. GIT BRANCHES: FEATURES UNABHÄNGIG ENTWICKELN UND MIT GIT VERWALTEN
 4. BRANCHING-STRATEGIEN MIT GIT durch
-
+5. Remotes (Videos dazu anschauen!)
+6. Workflows (Videos dazu anschauen!)
+7. Worktree (Videos dazu anschauen!)
 
 
 
