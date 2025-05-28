@@ -26,12 +26,12 @@ opt_in_rules:
 # MARK: - Deaktivierte Regeln
 disabled_rules:
   - line_length
-  - trailing_whitespace
-  - force_cast
-  - force_try
-  - identifier_name
+  #- trailing_whitespace
+  #- force_cast
+  #- force_try
+  #- identifier_name
   #- file_length
-  - empty_count
+  # - empty_count
   - todo
 
 # MARK: - Individuelle Regelkonfigurationen
@@ -69,6 +69,12 @@ cyclomatic_complexity:
   ignores_case_statements: true
   warning: 10
   error: 20
+
+identifier_name:
+  excluded:
+    - i
+    - j
+    - id
 
 # MARK: - Allgemeines Verhalten
 reporter: xcode  # andere Optionen: json, csv, emoji, checkstyle, junit
