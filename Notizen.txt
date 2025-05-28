@@ -1,20 +1,3 @@
-Git
-https://www.hsbi.de/elearning/data/FH-Bielefeld/lm_data/lm_1359639/git/git-intro.html
-
-https://danielkummer.github.io/git-flow-cheatsheet/
-
-1. Intro
-2. BASICS DER VERSIONSVERWALTUNG MIT GIT (LOKALE REPOS)
-3. GIT BRANCHES: FEATURES UNABHÄNGIG ENTWICKELN UND MIT GIT VERWALTEN
-4. BRANCHING-STRATEGIEN MIT GIT durch
-
-
-
-
-
-
---------
-
 
 https://www.hackingwithswift.com/plus/ultimate-portfolio-app
 
