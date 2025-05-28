@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SidebarView: View {
 
+    @State private var showingAwards = false
+
     @EnvironmentObject var dataController: DataController
     let smartFilters: [Filter] = [.all, .recent]
 
@@ -52,12 +54,19 @@ struct SidebarView: View {
             Button(action: dataController.newTag) {
                 Label("Add tag", systemImage: "plus")
             }
+
+            Button {
+                showingAwards.toggle()
+            } label: {
+                Label("Show awards", systemImage: "rosette")
+            }
         }
         .alert("Rename tag", isPresented: $renamingTag) {
             Button("OK", action: completeRename)
             Button("Cancel", role: .cancel) { }
             TextField("New name", text: $tagName)
         }
+        .sheet(isPresented: $showingAwards, content: AwardsView.init)
     }
 
     var tagFilters: [Filter] {

@@ -16,15 +16,17 @@
 		D70508D22DD786AC004E51F8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Assets.xcassets,
+				Award.swift,
 				DataController.swift,
+				"Extensions/Bundle-Decodable.swift",
+				"Extensions/Issue-CoreDataHelpers.swift",
+				"Extensions/Tag-CoreDataHelpers.swift",
 				Filter.swift,
 				Info.plist,
-				"Issue-CoreDataHelpers.swift",
 				IssueRow.swift,
 				Model.xcdatamodeld,
-				"Tag-CoreDataHelpers.swift",
 				UltimatePortfolioApp.swift,
+				Views/AwardsView.swift,
 				Views/ContentView.swift,
 				Views/DetailView.swift,
 				Views/IssueView.swift,
@@ -36,15 +38,17 @@
 		D70508DD2DD786B8004E51F8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Assets.xcassets,
+				Award.swift,
 				DataController.swift,
+				"Extensions/Bundle-Decodable.swift",
+				"Extensions/Issue-CoreDataHelpers.swift",
+				"Extensions/Tag-CoreDataHelpers.swift",
 				Filter.swift,
 				Info.plist,
-				"Issue-CoreDataHelpers.swift",
 				IssueRow.swift,
 				Model.xcdatamodeld,
-				"Tag-CoreDataHelpers.swift",
 				UltimatePortfolioApp.swift,
+				Views/AwardsView.swift,
 				Views/ContentView.swift,
 				Views/DetailView.swift,
 				Views/IssueView.swift,
@@ -669,6 +673,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = NO;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = UltimatePortfolio/UltimatePortfolio.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -710,6 +715,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = NO;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = UltimatePortfolio/UltimatePortfolio.entitlements;
 				CODE_SIGN_STYLE = Automatic;

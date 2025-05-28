@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+
     @EnvironmentObject var dataController: DataController
-    
+
     var body: some View {
         List(selection: $dataController.selectedIssue) {
             ForEach(dataController.issuesForSelectedFilter()) { issue in
@@ -42,7 +43,7 @@ struct ContentView: View {
                         Text("Oldest to Newest").tag(false)
                     }
                 }
-                
+
                 Picker("Status", selection: $dataController.filterStatus) {
                     Text("All").tag(Status.all)
                     Text("Open").tag(Status.open)

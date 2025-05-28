@@ -10,7 +10,7 @@ import SwiftUI
 struct IssueView: View {
     @ObservedObject var issue: Issue
     @EnvironmentObject var dataController: DataController
-    
+
     var body: some View {
         Form {
             Section {
@@ -20,7 +20,7 @@ struct IssueView: View {
 
                     Text("**Modified:** \(issue.issueModificationDate.formatted(date: .long, time: .shortened))")
                         .foregroundStyle(.secondary)
-                    
+
                     Text("**Status:** \(issue.issueStatus)")
                         .foregroundStyle(.secondary)
 

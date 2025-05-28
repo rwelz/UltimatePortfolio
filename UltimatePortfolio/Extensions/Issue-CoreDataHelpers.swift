@@ -42,7 +42,7 @@ extension Issue {
         issue.creationDate = .now
         return issue
     }
-    
+
     var issueStatus: String {
         if completed {
             return "Closed"
@@ -50,11 +50,13 @@ extension Issue {
             return "Open"
         }
     }
-    
+
     var issueTagsList: String {
         guard let tags else { return "No tags" }
-
+// TODO:
+// swiftlint:disable empty_count
         if tags.count == 0 {
+// swiftlint:enable empty_count
             return "No tags"
         } else {
             return issueTags.map(\.tagName).formatted()
