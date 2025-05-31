@@ -19,6 +19,7 @@ mit Core Data
 12. Adding issues and tags
 13. Reading awards JSON
 14. Earning awards
+15. Finishing our initial version
 
 —————————
 
