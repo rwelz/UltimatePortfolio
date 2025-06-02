@@ -20,6 +20,9 @@ mit Core Data
 13. Reading awards JSON
 14. Earning awards
 15. Finishing our initial version
+16. Now for the real work…
+
+
 
 —————————
 
