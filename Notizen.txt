@@ -21,6 +21,7 @@ mit Core Data
 14. Earning awards
 15. Finishing our initial version
 16. Now for the real work…
+17. Making your app accessible
 
 
 
