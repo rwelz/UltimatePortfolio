@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 74;
 	objects = {
 
 /* Begin PBXFileReference section */
@@ -16,6 +16,8 @@
 		D70508D22DD786AC004E51F8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				/Localized/Localizable.strings,
+				/Localized/Localizable.stringsdict,
 				Award.swift,
 				DataController.swift,
 				"Extensions/Bundle-Decodable.swift",
@@ -38,6 +40,8 @@
 		D70508DD2DD786B8004E51F8 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				/Localized/Localizable.strings,
+				/Localized/Localizable.stringsdict,
 				Award.swift,
 				DataController.swift,
 				"Extensions/Bundle-Decodable.swift",
@@ -204,14 +208,15 @@
 				};
 			};
 			buildConfigurationList = D7A3A3122DBBB02400B3ACC3 /* Build configuration list for PBXProject "UltimatePortfolio" */;
-			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				hu,
 			);
 			mainGroup = D7A3A30E2DBBB02400B3ACC3;
+			preferredProjectObjectVersion = 56;
 			productRefGroup = D7A3A3182DBBB02400B3ACC3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -558,6 +563,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -620,6 +626,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
