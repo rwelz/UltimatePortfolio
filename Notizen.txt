@@ -22,6 +22,8 @@ mit Core Data
 15. Finishing our initial version
 16. Now for the real work…
 17. Making your app accessible
+18. Internationalization and localization
+19. Cleaning up view code
 
 
 

@@ -73,7 +73,7 @@ class DataController: ObservableObject {
 
     func save() {
         saveTask?.cancel()
-        
+
         if container.viewContext.hasChanges {
             try? container.viewContext.save()
         }
