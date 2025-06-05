@@ -30,10 +30,16 @@
 				UltimatePortfolioApp.swift,
 				Views/AwardsView.swift,
 				Views/ContentView.swift,
+				Views/ContentViewToolbar.swift,
 				Views/DetailView.swift,
 				Views/IssueView.swift,
+				Views/IssueViewToolbar.swift,
 				Views/NoIssueView.swift,
 				Views/SidebarView.swift,
+				Views/SidebarViewToolbar.swift,
+				Views/SmartFilterRow.swift,
+				Views/TagsMenuView.swift,
+				Views/UserFilterRow.swift,
 			);
 			target = D70508C92DD786AC004E51F8 /* swiftlint lint */;
 		};
@@ -54,10 +60,16 @@
 				UltimatePortfolioApp.swift,
 				Views/AwardsView.swift,
 				Views/ContentView.swift,
+				Views/ContentViewToolbar.swift,
 				Views/DetailView.swift,
 				Views/IssueView.swift,
+				Views/IssueViewToolbar.swift,
 				Views/NoIssueView.swift,
 				Views/SidebarView.swift,
+				Views/SidebarViewToolbar.swift,
+				Views/SmartFilterRow.swift,
+				Views/TagsMenuView.swift,
+				Views/UserFilterRow.swift,
 			);
 			target = D70508D42DD786B8004E51F8 /* swiftlint lint --fix */;
 		};
