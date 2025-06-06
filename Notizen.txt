@@ -24,7 +24,7 @@ mit Core Data
 17. Making your app accessible
 18. Internationalization and localization
 19. Cleaning up view code
-
+20. Linting our code
 
 
 —————————
