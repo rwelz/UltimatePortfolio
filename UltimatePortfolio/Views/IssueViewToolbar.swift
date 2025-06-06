@@ -11,6 +11,10 @@ struct IssueViewToolbar: View {
     @ObservedObject var issue: Issue
     @EnvironmentObject var dataController: DataController
 
+    var openCloseButtonText: LocalizedStringKey {
+        issue.completed ? "Re-open Issue" : "Close Issue"
+    }
+
     var body: some View {
         Menu {
             Button {
@@ -23,7 +27,7 @@ struct IssueViewToolbar: View {
                 issue.completed.toggle()
                 dataController.save()
             } label: {
-                Label(issue.completed ? "Re-open Issue" : "Close Issue", systemImage: "bubble.left.and.exclamationmark.bubble.right")
+                Label(openCloseButtonText, systemImage: "bubble.left.and.exclamationmark.bubble.right")
             }
 
             Divider()

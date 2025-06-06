@@ -24,7 +24,10 @@ struct UltimatePortfolioApp: App {
             }
             .environment(\.managedObjectContext, dataController.container.viewContext)
             .environmentObject(dataController) // dataController wird als ein Environment Object bereitgestellt.
-            // Ein @EnvironmentObject ist ein ObservableObject, das von beliebigen Unter-Views genutzt werden kann, ohne dass man es explizit als Parameter weitergeben muss. Das ist besonders nützlich, wenn viele Views dieselben Daten brauchen.
+            // Ein @EnvironmentObject ist ein ObservableObject,
+            // das von beliebigen Unter-Views genutzt werden kann,
+            // ohne dass man es explizit als Parameter weitergeben muss. Das ist besonders nützlich,
+            // wenn viele Views dieselben Daten brauchen.
             // Wenn sich dataController ändert, wird WindowGroup { ContentView() }
             // neu geladen
 

@@ -25,7 +25,7 @@ opt_in_rules:
 
 # MARK: - Deaktivierte Regeln
 disabled_rules:
-  - line_length
+  #- line_length
   #- trailing_whitespace
   #- force_cast
   #- force_try
@@ -72,8 +72,8 @@ cyclomatic_complexity:
 
 identifier_name:
   excluded:
-    - i
-    - j
+    #- i
+    #- j
     - id
 
 # MARK: - Allgemeines Verhalten
