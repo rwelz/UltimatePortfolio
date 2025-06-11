@@ -16,7 +16,6 @@ enum Status {
     case all, open, closed
 }
 
-
 /// An environment singleton responsible for managing our Core Data stack, including handling saving,
 /// counting fetch requests, tracking awards, and dealing with sample data.
 class DataController: ObservableObject {
@@ -96,7 +95,8 @@ class DataController: ObservableObject {
 
     /// Saves our Core Data context iff there are changes. This silently ignores
     /// any errors caused by saving, but this should be fine because all our attributes are optional.
-    /// the “iff” part (yes, with a double F) means “if and only if”. You see, “save if we have changes” doesn’t mean “don’t save if we don’t have changes,” so it’s good to be clear.
+    /// the “iff” part (yes, with a double F) means “if and only if”.
+    /// You see, “save if we have changes” doesn’t mean “don’t save if we don’t have changes,” so it’s good to be clear.
     func save() {
         saveTask?.cancel()
 
@@ -156,7 +156,6 @@ class DataController: ObservableObject {
             save()
         }
     }
-
 
     /// Runs a fetch request with various predicates that filter the user's issues based
     /// on tag, title and content text, search tokens, priority, and completion status.
