@@ -26,6 +26,7 @@ mit Core Data
 19. Cleaning up view code
 20. Linting our code
 21. Documenting our code
+22. Organizing the project itself
 
 
 —————————
