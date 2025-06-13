@@ -28,7 +28,7 @@ mit Core Data
 21. Documenting our code
 22. Organizing the project itself
 23. Testing the basics
-
+24. Testing Core Data
 
 
 —————————
