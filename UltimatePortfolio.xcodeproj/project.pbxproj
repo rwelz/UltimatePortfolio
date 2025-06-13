@@ -3,10 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D70DCE972DFC5C4D009183A8 /* UltimatePortfolio.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = D70DCE942DFC5C4D009183A8 /* UltimatePortfolio.xctestplan */; };
+		D70DCE982DFC5C4D009183A8 /* AssetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70DCE912DFC5C4D009183A8 /* AssetTests.swift */; };
+		D70DCE992DFC5C4D009183A8 /* AwardsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70DCE922DFC5C4D009183A8 /* AwardsTest.swift */; };
+		D70DCE9A2DFC5C4D009183A8 /* TagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70DCE932DFC5C4D009183A8 /* TagTests.swift */; };
+		D70DCE9B2DFC5C4D009183A8 /* UltimatePortfolioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70DCE952DFC5C4D009183A8 /* UltimatePortfolioTests.swift */; };
 		D73A5C192DF99D0E007BE703 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D73A5C182DF99D0E007BE703 /* README.md */; };
 		D7E1A3D72DF98B95001EEA27 /* Awards.json in Resources */ = {isa = PBXBuildFile; fileRef = D7E1A3B12DF98B95001EEA27 /* Awards.json */; };
 		D7E1A3D82DF98B95001EEA27 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E1A3B22DF98B95001EEA27 /* Colors.xcassets */; };
@@ -55,6 +60,11 @@
 /* Begin PBXFileReference section */
 		D70508D12DD786AC004E51F8 /* swiftlint lint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swiftlint lint.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70508DC2DD786B8004E51F8 /* swiftlint lint --fix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swiftlint lint --fix.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D70DCE912DFC5C4D009183A8 /* AssetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTests.swift; sourceTree = "<group>"; };
+		D70DCE922DFC5C4D009183A8 /* AwardsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsTest.swift; sourceTree = "<group>"; };
+		D70DCE932DFC5C4D009183A8 /* TagTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTests.swift; sourceTree = "<group>"; };
+		D70DCE942DFC5C4D009183A8 /* UltimatePortfolio.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = UltimatePortfolio.xctestplan; sourceTree = "<group>"; };
+		D70DCE952DFC5C4D009183A8 /* UltimatePortfolioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UltimatePortfolioTests.swift; sourceTree = "<group>"; };
 		D73A5C182DF99D0E007BE703 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		D792285A2DFAD9F500BCD623 /* UltimatePortfolioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UltimatePortfolioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7A3A3172DBBB02400B3ACC3 /* UltimatePortfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UltimatePortfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,10 +101,6 @@
 		D7E1A3D62DF98B95001EEA27 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		D792285B2DFAD9F500BCD623 /* UltimatePortfolioTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = UltimatePortfolioTests; sourceTree = "<group>"; };
-/* End PBXFileSystemSynchronizedRootGroup section */
-
 /* Begin PBXFrameworksBuildPhase section */
 		D70508CC2DD786AC004E51F8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
@@ -127,6 +133,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D70DCE962DFC5C4D009183A8 /* UltimatePortfolioTests */ = {
+			isa = PBXGroup;
+			children = (
+				D70DCE942DFC5C4D009183A8 /* UltimatePortfolio.xctestplan */,
+				D70DCE952DFC5C4D009183A8 /* UltimatePortfolioTests.swift */,
+				D70DCE912DFC5C4D009183A8 /* AssetTests.swift */,
+				D70DCE922DFC5C4D009183A8 /* AwardsTest.swift */,
+				D70DCE932DFC5C4D009183A8 /* TagTests.swift */,
+			);
+			path = UltimatePortfolioTests;
+			sourceTree = "<group>";
+		};
 		D73A5C132DF98DA4007BE703 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,7 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				D7E1A3D52DF98B95001EEA27 /* UltimatePortfolio */,
-				D792285B2DFAD9F500BCD623 /* UltimatePortfolioTests */,
+				D70DCE962DFC5C4D009183A8 /* UltimatePortfolioTests */,
 				D7A3A3182DBBB02400B3ACC3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -297,9 +315,6 @@
 			dependencies = (
 				D792285F2DFAD9F500BCD623 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				D792285B2DFAD9F500BCD623 /* UltimatePortfolioTests */,
-			);
 			name = UltimatePortfolioTests;
 			packageProductDependencies = (
 			);
@@ -394,6 +409,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D70DCE972DFC5C4D009183A8 /* UltimatePortfolio.xctestplan in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,6 +564,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D70DCE982DFC5C4D009183A8 /* AssetTests.swift in Sources */,
+				D70DCE992DFC5C4D009183A8 /* AwardsTest.swift in Sources */,
+				D70DCE9A2DFC5C4D009183A8 /* TagTests.swift in Sources */,
+				D70DCE9B2DFC5C4D009183A8 /* UltimatePortfolioTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
