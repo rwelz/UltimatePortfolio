@@ -13,6 +13,7 @@
 		D70DCE9A2DFC5C4D009183A8 /* TagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70DCE932DFC5C4D009183A8 /* TagTests.swift */; };
 		D70DCE9B2DFC5C4D009183A8 /* UltimatePortfolioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70DCE952DFC5C4D009183A8 /* UltimatePortfolioTests.swift */; };
 		D73A5C192DF99D0E007BE703 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D73A5C182DF99D0E007BE703 /* README.md */; };
+		D79563FD2DFD8248005FE487 /* DevelopmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79563FC2DFD8248005FE487 /* DevelopmentTests.swift */; };
 		D7E1A3D72DF98B95001EEA27 /* Awards.json in Resources */ = {isa = PBXBuildFile; fileRef = D7E1A3B12DF98B95001EEA27 /* Awards.json */; };
 		D7E1A3D82DF98B95001EEA27 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E1A3B22DF98B95001EEA27 /* Colors.xcassets */; };
 		D7E1A3D92DF98B95001EEA27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E1A3C52DF98B95001EEA27 /* Assets.xcassets */; };
@@ -67,6 +68,7 @@
 		D70DCE952DFC5C4D009183A8 /* UltimatePortfolioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UltimatePortfolioTests.swift; sourceTree = "<group>"; };
 		D73A5C182DF99D0E007BE703 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		D792285A2DFAD9F500BCD623 /* UltimatePortfolioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UltimatePortfolioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D79563FC2DFD8248005FE487 /* DevelopmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentTests.swift; sourceTree = "<group>"; };
 		D7A3A3172DBBB02400B3ACC3 /* UltimatePortfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UltimatePortfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E1A3AF2DF98B95001EEA27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = en; path = en.lproj/Awards.json; sourceTree = "<group>"; };
 		D7E1A3B02DF98B95001EEA27 /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = hu; path = hu.lproj/Awards.json; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				D70DCE912DFC5C4D009183A8 /* AssetTests.swift */,
 				D70DCE922DFC5C4D009183A8 /* AwardsTest.swift */,
 				D70DCE932DFC5C4D009183A8 /* TagTests.swift */,
+				D79563FC2DFD8248005FE487 /* DevelopmentTests.swift */,
 			);
 			path = UltimatePortfolioTests;
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 				D70DCE992DFC5C4D009183A8 /* AwardsTest.swift in Sources */,
 				D70DCE9A2DFC5C4D009183A8 /* TagTests.swift in Sources */,
 				D70DCE9B2DFC5C4D009183A8 /* UltimatePortfolioTests.swift in Sources */,
+				D79563FD2DFD8248005FE487 /* DevelopmentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
