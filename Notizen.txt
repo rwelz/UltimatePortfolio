@@ -30,6 +30,9 @@ mit Core Data
 23. Testing the basics
 24. Testing Core Data
 25. Testing development data
+26. Testing extensions
+
+
 
 —————————
 
