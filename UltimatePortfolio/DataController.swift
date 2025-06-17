@@ -49,7 +49,7 @@ class DataController: ObservableObject {
     init(inMemory: Bool = false) {
         // using the singleton
         container = NSPersistentCloudKitContainer(name: "Model", managedObjectModel: Self.model)
-        
+
         // For testing and previewing purposes, we create a
         // temporary, in-memory database by writing to /dev/null
         // so our data is destroyed after the app finishes running.

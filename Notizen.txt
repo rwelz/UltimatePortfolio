@@ -31,6 +31,7 @@ mit Core Data
 24. Testing Core Data
 25. Testing development data
 26. Testing extensions
+27. Measuring performance
 
 
 
