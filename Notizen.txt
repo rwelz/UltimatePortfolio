@@ -33,6 +33,7 @@ mit Core Data
 26. Testing extensions
 27. Measuring performance
 28. UI Testing with SwiftUI
+29. Bringing MVVM into our SwiftUI project, part 1
 
 
 —————————
