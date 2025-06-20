@@ -62,10 +62,6 @@ extension Issue {
             return issueTags.map(\.tagName).formatted()
         }
     }
-
-    var issueFormattedCreationDate: String {
-        issueCreationDate.formatted(date: .numeric, time: .omitted)
-    }
 }
 
 extension Issue: Comparable {

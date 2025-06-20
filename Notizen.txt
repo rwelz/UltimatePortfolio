@@ -34,6 +34,8 @@ mit Core Data
 27. Measuring performance
 28. UI Testing with SwiftUI
 29. Bringing MVVM into our SwiftUI project, part 1
+30. Bringing MVVM into our SwiftUI project, part 2
+
 
 
 —————————
