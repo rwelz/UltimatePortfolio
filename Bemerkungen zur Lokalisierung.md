@@ -1,14 +1,10 @@
-//
-
 //  Bemerkungen zur Lokalisierung.md
 
 //  UltimatePortfolio
 
-//
-
 //  Created by Robert Welz on 23.06.25.
 
-//
+
 
 Wann benutze ich LocalizedStringKey oder NSLocalizedString 
 
