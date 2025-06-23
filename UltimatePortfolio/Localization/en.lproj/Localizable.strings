@@ -88,3 +88,9 @@
 
 /* DEBUG ONLY */
 "ADD SAMPLES" = "ADD SAMPLES";
+
+
+
+"No tags" = "No tags";
+"Locked" = "Locked";
+"Unlocked: %@" = "Unlocked: %@";

@@ -88,3 +88,9 @@
 
 /* DEBUG ONLY */
 "ADD SAMPLES" = "ADD SAMPLES";
+
+
+
+"No tags" = "Címkétlen";
+"Locked" = "Zárolt";
+"Unlocked: %@" = "Feloldott: %@";

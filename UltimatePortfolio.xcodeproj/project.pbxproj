@@ -75,6 +75,7 @@
 /* Begin PBXFileReference section */
 		D70508D12DD786AC004E51F8 /* swiftlint lint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swiftlint lint.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D70508DC2DD786B8004E51F8 /* swiftlint lint --fix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swiftlint lint --fix.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D70712612E09616C0082602E /* Bemerkungen zur Lokalisierung.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Bemerkungen zur Lokalisierung.md"; sourceTree = "<group>"; };
 		D70DCE912DFC5C4D009183A8 /* AssetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetTests.swift; sourceTree = "<group>"; };
 		D70DCE922DFC5C4D009183A8 /* AwardsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsTest.swift; sourceTree = "<group>"; };
 		D70DCE932DFC5C4D009183A8 /* TagTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTests.swift; sourceTree = "<group>"; };
@@ -304,6 +305,7 @@
 		D7E1A42D2DF98CA7001EEA27 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
+				D70712612E09616C0082602E /* Bemerkungen zur Lokalisierung.md */,
 				D7E1A3CD2DF98B95001EEA27 /* Localizable.strings */,
 				D7E1A3D02DF98B95001EEA27 /* Localizable.stringsdict */,
 			);

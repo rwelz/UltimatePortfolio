@@ -36,10 +36,10 @@ extension IssueRow {
             self.issue = issue
         }
 
-
         subscript<Value>(dynamicMember keyPath: KeyPath<Issue, Value>) -> Value {
             issue[keyPath: keyPath]
         }
-        // now with this subscript and @dynamicMemberLookup we can write in IssueRow.swift: viewModel.issueTitle instead of viewModel.issue.issueTitle
+        // now with this subscript and @dynamicMemberLookup we can write in IssueRow.swift:
+        // viewModel.issueTitle instead of viewModel.issue.issueTitle
     }
 }
