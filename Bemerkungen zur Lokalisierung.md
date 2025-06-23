@@ -1,8 +1,13 @@
 //
+
 //  Bemerkungen zur Lokalisierung.md
+
 //  UltimatePortfolio
+
 //
+
 //  Created by Robert Welz on 23.06.25.
+
 //
 
 Wann benutze ich LocalizedStringKey oder NSLocalizedString 
@@ -10,6 +15,7 @@ Wann benutze ich LocalizedStringKey oder NSLocalizedString
 **LocalizedStringKey:**
 
 "welcome_message" = "Willkommen!";
+
 "personal_greeting %@" = "Hallo, %@!";
 
 
