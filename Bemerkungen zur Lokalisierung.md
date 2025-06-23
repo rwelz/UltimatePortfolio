@@ -1,1 +1,0 @@
-UltimatePortfolio/Localization/Bemerkungen zur Lokalisierung.md
