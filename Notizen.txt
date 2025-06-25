@@ -43,6 +43,7 @@ Pragmatic MVVM
 30. Bringing MVVM into our SwiftUI project, part 2
 Final tweaks:
 31. Wrap up, part one
+32. Adding haptics
 
 
 —————————
