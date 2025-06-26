@@ -44,6 +44,7 @@ Pragmatic MVVM
 Final tweaks:
 31. Wrap up, part one
 32. Adding haptics
+33. Integrating with Spotlight
 
 
 —————————
