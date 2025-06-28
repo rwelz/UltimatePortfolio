@@ -64,6 +64,11 @@ extension Issue {
             return issueTags.map(\.tagName).formatted()
         }
     }
+
+    var issueReminderTime: Date {
+        get { reminderTime ?? .now }
+        set { reminderTime = newValue }
+    }
 }
 
 extension Issue: Comparable {
