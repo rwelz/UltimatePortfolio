@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SidebarView: View {
-    @State private var showingAwards = false
     @StateObject private var viewModel: ViewModel
     let smartFilters: [Filter] = [.all, .recent]
 
@@ -35,14 +34,13 @@ struct SidebarView: View {
             }
         }
         .toolbar {
-            SidebarViewToolbar(showingAwards: $showingAwards)
+            SidebarViewToolbar()
         }
         .alert("Rename tag", isPresented: $viewModel.renamingTag) {
             Button("OK", action: viewModel.completeRename)
             Button("Cancel", role: .cancel) { }
             TextField("New name", text: $viewModel.tagName)
         }
-        .sheet(isPresented: $showingAwards, content: AwardsView.init)
         .navigationTitle("Filters")
     }
 }

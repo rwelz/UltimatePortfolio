@@ -2,7 +2,7 @@
 //  DataController-Notifications.swift
 //  UltimatePortfolio
 //
-//  Created by Robert Welz on 27.06.25.
+//  Created by Paul Hudson on 16/10/2023.
 //
 
 import Foundation
@@ -50,21 +50,17 @@ extension DataController {
 
     private func placeReminders(for issue: Issue) async throws {
         let content = UNMutableNotificationContent()
-        content.sound = .default
         content.title = issue.issueTitle
+        content.sound = .default
 
         if let issueContent = issue.content {
             content.subtitle = issueContent
         }
 
-        let components = Calendar.current.dateComponents([.hour, .minute], from: issue.issueReminderTime)
+//        let components = Calendar.current.dateComponents([.hour, .minute], from: issue.issueReminderTime)
+//        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
 
-
-#if DEBUG
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: false)
-#else
-        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
-#endif
         let id = issue.objectID.uriRepresentation().absoluteString
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
 
