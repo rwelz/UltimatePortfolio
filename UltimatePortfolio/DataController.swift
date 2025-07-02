@@ -6,7 +6,7 @@
 //
 
 import CoreData
-import SwiftUI
+import StoreKit
 
 enum SortType: String {
     case dateCreated = "creationDate"
@@ -20,6 +20,12 @@ enum Status {
 /// An environment singleton responsible for managing our Core Data stack, including handling saving,
 /// counting fetch requests, tracking awards, and dealing with sample data.
 class DataController: ObservableObject {
+
+    private var storeTask: Task<Void, Never>?
+
+    /// The UserDefaults suite where we're saving user data.
+    let defaults: UserDefaults
+
     /// The lone CloudKit container used to store all our data.
     let container: NSPersistentCloudKitContainer
 
@@ -48,9 +54,15 @@ class DataController: ObservableObject {
     ///
     /// Defaults to permanent storage.
     /// - Parameter inMemory: Whether to store this data in temporary memory or not.
-    init(inMemory: Bool = false) {
+    init(inMemory: Bool = false, defaults: UserDefaults = .standard) {
+        self.defaults = defaults
+
         // using the singleton
         container = NSPersistentCloudKitContainer(name: "Model", managedObjectModel: Self.model)
+
+        storeTask = Task {
+            await monitorTransactions()
+        }
 
         // For testing and previewing purposes, we create a
         // temporary, in-memory database by writing to /dev/null
@@ -293,11 +305,24 @@ class DataController: ObservableObject {
         selectedIssue = issue
     }
 
-    func newTag() {
+    func newTag() -> Bool{
+        var shouldCreate = fullVersionUnlocked
+
+        if shouldCreate == false {
+            // check how many tags we currently have
+            shouldCreate = count(for: Tag.fetchRequest()) < 3
+        }
+
+        guard shouldCreate else {
+            return false
+        }
+
         let tag = Tag(context: container.viewContext)
         tag.id = UUID()
         tag.name = NSLocalizedString("New tag", comment: "Create a new tag")
         save()
+
+        return true
     }
 
     func count<T>(for fetchRequest: NSFetchRequest<T>) -> Int {

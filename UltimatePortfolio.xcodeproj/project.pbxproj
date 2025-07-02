@@ -18,8 +18,11 @@
 		D73A5C192DF99D0E007BE703 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D73A5C182DF99D0E007BE703 /* README.md */; };
 		D73E62862E054AD200AF4383 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E62852E054AD200AF4383 /* ContentViewModel.swift */; };
 		D73E62882E054F7E00AF4383 /* IssueRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E62872E054F7E00AF4383 /* IssueRowViewModel.swift */; };
+		D7560C6B2E12BB4D00770FCF /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = D7560C6A2E12BB4D00770FCF /* Configuration.storekit */; };
 		D779DC6A2E01844E0073DFA4 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D779DC692E01844E0073DFA4 /* PerformanceTests.swift */; };
-		D78D0AF42E0EB66E0056F02E /* DataController-Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78D0AF32E0EB66E0056F02E /* DataController-Notifications.swift */; };
+		D77DEFA32E1401FD00007EFE /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DEFA12E1401FD00007EFE /* StoreView.swift */; };
+		D77DEFA62E1429A600007EFE /* DataController-Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DEFA52E1429A600007EFE /* DataController-Notifications.swift */; };
+		D77DEFA82E142A0100007EFE /* DataController-StoreKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77DEFA72E142A0100007EFE /* DataController-StoreKit.swift */; };
 		D79563FD2DFD8248005FE487 /* DevelopmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79563FC2DFD8248005FE487 /* DevelopmentTests.swift */; };
 		D7BCAF7F2E0431F80054D6B3 /* SidebarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BCAF7E2E0431F80054D6B3 /* SidebarViewModel.swift */; };
 		D7E1A3D72DF98B95001EEA27 /* Awards.json in Resources */ = {isa = PBXBuildFile; fileRef = D7E1A3B12DF98B95001EEA27 /* Awards.json */; };
@@ -88,8 +91,11 @@
 		D73A5C182DF99D0E007BE703 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		D73E62852E054AD200AF4383 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		D73E62872E054F7E00AF4383 /* IssueRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueRowViewModel.swift; sourceTree = "<group>"; };
+		D7560C6A2E12BB4D00770FCF /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = SOURCE_ROOT; };
 		D779DC692E01844E0073DFA4 /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
-		D78D0AF32E0EB66E0056F02E /* DataController-Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataController-Notifications.swift"; sourceTree = "<group>"; };
+		D77DEFA12E1401FD00007EFE /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
+		D77DEFA52E1429A600007EFE /* DataController-Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataController-Notifications.swift"; sourceTree = "<group>"; };
+		D77DEFA72E142A0100007EFE /* DataController-StoreKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataController-StoreKit.swift"; sourceTree = "<group>"; };
 		D792285A2DFAD9F500BCD623 /* UltimatePortfolioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UltimatePortfolioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D79563FC2DFD8248005FE487 /* DevelopmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentTests.swift; sourceTree = "<group>"; };
 		D7A3A3172DBBB02400B3ACC3 /* UltimatePortfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UltimatePortfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,6 +205,7 @@
 		D73A5C132DF98DA4007BE703 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				D7560C6A2E12BB4D00770FCF /* Configuration.storekit */,
 				D7E1A3C92DF98B95001EEA27 /* Info.plist */,
 				D7E1A3D12DF98B95001EEA27 /* Model.xcdatamodeld */,
 				D7E1A3D32DF98B95001EEA27 /* UltimatePortfolio.entitlements */,
@@ -253,6 +260,14 @@
 			path = Awards;
 			sourceTree = "<group>";
 		};
+		D77DEFA42E14045A00007EFE /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				D77DEFA12E1401FD00007EFE /* StoreView.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
 		D7A3A30E2DBBB02400B3ACC3 = {
 			isa = PBXGroup;
 			children = (
@@ -281,7 +296,6 @@
 				D7E1A3B42DF98B95001EEA27 /* Bundle-Decodable.swift */,
 				D7E1A3B52DF98B95001EEA27 /* Issue-CoreDataHelpers.swift */,
 				D7E1A3B62DF98B95001EEA27 /* Tag-CoreDataHelpers.swift */,
-				D78D0AF32E0EB66E0056F02E /* DataController-Notifications.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -289,6 +303,7 @@
 		D7E1A3D52DF98B95001EEA27 /* UltimatePortfolio */ = {
 			isa = PBXGroup;
 			children = (
+				D77DEFA42E14045A00007EFE /* Store */,
 				D73A5C142DF99318007BE703 /* Filters */,
 				D73A5C152DF99321007BE703 /* Issues */,
 				D73A5C162DF9932F007BE703 /* Editing */,
@@ -298,6 +313,8 @@
 				D73A5C132DF98DA4007BE703 /* Configuration */,
 				D7E1A3D42DF98B95001EEA27 /* UltimatePortfolioApp.swift */,
 				D7E1A3C72DF98B95001EEA27 /* DataController.swift */,
+				D77DEFA52E1429A600007EFE /* DataController-Notifications.swift */,
+				D77DEFA72E142A0100007EFE /* DataController-StoreKit.swift */,
 				D7E1A3B22DF98B95001EEA27 /* Colors.xcassets */,
 				D7E1A3C52DF98B95001EEA27 /* Assets.xcassets */,
 				D73A5C182DF99D0E007BE703 /* README.md */,
@@ -505,6 +522,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7560C6B2E12BB4D00770FCF /* Configuration.storekit in Resources */,
 				D73A5C192DF99D0E007BE703 /* README.md in Resources */,
 				D7E1A3D72DF98B95001EEA27 /* Awards.json in Resources */,
 				D7E1A3D82DF98B95001EEA27 /* Colors.xcassets in Resources */,
@@ -675,14 +693,15 @@
 			files = (
 				D7E1A3DE2DF98B95001EEA27 /* Bundle-Decodable.swift in Sources */,
 				D7E1A3DF2DF98B95001EEA27 /* Issue-CoreDataHelpers.swift in Sources */,
+				D77DEFA82E142A0100007EFE /* DataController-StoreKit.swift in Sources */,
 				D7E1A3E02DF98B95001EEA27 /* Tag-CoreDataHelpers.swift in Sources */,
 				D7E1A3E12DF98B95001EEA27 /* AwardsView.swift in Sources */,
 				D7E1A3E22DF98B95001EEA27 /* ContentView.swift in Sources */,
 				D7E1A3E32DF98B95001EEA27 /* ContentViewToolbar.swift in Sources */,
-				D78D0AF42E0EB66E0056F02E /* DataController-Notifications.swift in Sources */,
 				D7E1A3E42DF98B95001EEA27 /* DetailView.swift in Sources */,
 				D7E1A3E52DF98B95001EEA27 /* IssueView.swift in Sources */,
 				D7E1A3E62DF98B95001EEA27 /* IssueViewToolbar.swift in Sources */,
+				D77DEFA32E1401FD00007EFE /* StoreView.swift in Sources */,
 				D7E1A3E72DF98B95001EEA27 /* NoIssueView.swift in Sources */,
 				D7E1A3E82DF98B95001EEA27 /* SidebarView.swift in Sources */,
 				D7BCAF7F2E0431F80054D6B3 /* SidebarViewModel.swift in Sources */,
@@ -693,6 +712,7 @@
 				D7E1A3EC2DF98B95001EEA27 /* UserFilterRow.swift in Sources */,
 				D7E1A3ED2DF98B95001EEA27 /* Award.swift in Sources */,
 				D7E1A3EE2DF98B95001EEA27 /* DataController.swift in Sources */,
+				D77DEFA62E1429A600007EFE /* DataController-Notifications.swift in Sources */,
 				D7E1A3EF2DF98B95001EEA27 /* Filter.swift in Sources */,
 				D7E1A3F02DF98B95001EEA27 /* IssueRow.swift in Sources */,
 				D7E1A3F12DF98B95001EEA27 /* Model.xcdatamodeld in Sources */,
