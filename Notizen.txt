@@ -47,6 +47,8 @@ Final tweaks:
 33. Integrating with Spotlight
 34. Adding local notifications
 35. Offering in-app purchases, part 1
+36. Offering in-app purchases, part 2
+37. Questions and answers, part 2
 
 
 

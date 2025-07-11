@@ -33,5 +33,8 @@ extension ContentView {
                 dataController.delete(item)
             }
         }
+        var shouldRequestReview: Bool {
+            dataController.count(for: Tag.fetchRequest()) >= 5
+        }
     }
 }
