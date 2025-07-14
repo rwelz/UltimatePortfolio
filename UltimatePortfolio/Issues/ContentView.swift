@@ -30,16 +30,34 @@ struct ContentView: View {
         }
         .toolbar(content: ContentViewToolbar.init)
         .onAppear(perform: askForReview)
+        .onOpenURL(perform: openURL)
+
     }
+
 
     init(dataController: DataController) {
         let viewModel = ViewModel(dataController: dataController)
         _viewModel = StateObject(wrappedValue: viewModel)
     }
-
     func askForReview() {
         if viewModel.shouldRequestReview {
             requestReview()
+
+    func openURL(_ url: URL) {
+            if url.absoluteString.contains("newIssue") {
+                viewModel.dataController.newIssue()
+            }
+        }
+
+    func scene(
+        _ scene: UIScene,
+        willConnectTo session: UISceneSession,
+        options connectionOptions: UIScene.ConnectionOptions
+    ) {
+        if let shortcutItem = connectionOptions.shortcutItem {
+            if let url = URL(string: shortcutItem.type) {
+                scene.open(url, options: nil)
+            }
         }
     }
 }
