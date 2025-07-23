@@ -50,7 +50,7 @@ Final tweaks:
 36. Offering in-app purchases, part 2
 37. Questions and answers, part 2
 38. Adding a Quick Action to our icon
-39. Integrating with Shortcuts
+39. Integrating with Shortcuts (mit AppIntent statt onContinueUserActivity)
 
 —————————
 

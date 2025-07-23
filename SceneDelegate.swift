@@ -31,9 +31,7 @@ class SceneDelegate: NSObject, UIWindowSceneDelegate {
             if let url = URL(string: shortcutItem.type) {
                 scene.open(url, options: nil)
             }
-        
+        }
+    }
 }
-
-
-
 

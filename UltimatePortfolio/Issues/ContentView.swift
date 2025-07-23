@@ -35,11 +35,11 @@ struct ContentView: View {
         .onOpenURL(perform: openURL)
     }
 
-
     init(dataController: DataController) {
         let viewModel = ViewModel(dataController: dataController)
         _viewModel = StateObject(wrappedValue: viewModel)
     }
+
     func askForReview() {
         if viewModel.shouldRequestReview {
             requestReview()
@@ -60,6 +60,10 @@ struct ContentView: View {
                 scene.open(url, options: nil)
             }
         }
+    }
+
+    func resumeActivity(_ userActivity: NSUserActivity) {
+        viewModel.dataController.newIssue()
     }
 }
 

@@ -76,10 +76,10 @@ struct IssueView: View {
         } message: {
             Text("There was a problem setting your notification. Please check you have notifications enabled.")
         }
-        .onChange(of: issue.reminderEnabled) { _ in
+        .onChange(of: issue.reminderEnabled) {
             updateReminder()
         }
-        .onChange(of: issue.reminderTime) { _ in
+        .onChange(of: issue.reminderTime) {
             updateReminder()
         }
     }
@@ -106,7 +106,6 @@ struct IssueView: View {
             }
         }
     }
-    
 }
 
 #Preview {

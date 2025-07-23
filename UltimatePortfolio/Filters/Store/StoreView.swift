@@ -101,7 +101,7 @@ struct StoreView: View {
                 .padding(.top, 20)
         }
         }
-        .onChange(of: dataController.fullVersionUnlocked) { _ in
+        .onChange(of: dataController.fullVersionUnlocked) {
             checkForPurchase()
         }
         .task {
@@ -153,8 +153,6 @@ struct StoreView: View {
         }
     }
 }
-
-
 
 #Preview {
     StoreView()

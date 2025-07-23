@@ -11,5 +11,3 @@ import SwiftUI
 @EnvironmentObject var dataController: DataController
 @Environment(\.dismiss) var dismiss
 @State private var products = [Product]()
-
-

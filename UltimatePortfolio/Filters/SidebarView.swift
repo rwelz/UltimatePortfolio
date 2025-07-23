@@ -9,6 +9,9 @@ import SwiftUI
 
 struct SidebarView: View {
     @StateObject private var viewModel: ViewModel
+    //@ObservedObject var manager = Manager.shared
+
+    
     let smartFilters: [Filter] = [.all, .recent]
 
     init(dataController: DataController) {
