@@ -11,21 +11,7 @@
   },
   "identifier" : "51796C51",
   "nonRenewingSubscriptions" : [
-    {
-      "displayPrice" : "0.99",
-      "familyShareable" : false,
-      "internalID" : "F1165EDD",
-      "localizations" : [
-        {
-          "description" : "",
-          "displayName" : "",
-          "locale" : "en_US"
-        }
-      ],
-      "productID" : "111",
-      "referenceName" : "non renewing sbscription",
-      "type" : "NonRenewingSubscription"
-    }
+
   ],
   "products" : [
     {
@@ -34,8 +20,8 @@
       "internalID" : "3A3666AC",
       "localizations" : [
         {
-          "description" : "Get access to the full app. blabb",
-          "displayName" : "Premium Unlock blub",
+          "description" : "get the premium license :)",
+          "displayName" : "Premium Unlock",
           "locale" : "en_US"
         },
         {
@@ -50,6 +36,7 @@
     }
   ],
   "settings" : {
+    "_askToBuyEnabled" : true,
     "_failTransactionsEnabled" : false,
     "_locale" : "en_US",
     "_storefront" : "USA",
@@ -105,43 +92,7 @@
     ]
   },
   "subscriptionGroups" : [
-    {
-      "id" : "B57006F9",
-      "localizations" : [
 
-      ],
-      "name" : "subscription group ",
-      "subscriptions" : [
-        {
-          "adHocOffers" : [
-
-          ],
-          "codeOffers" : [
-
-          ],
-          "displayPrice" : "0.99",
-          "familyShareable" : false,
-          "groupNumber" : 1,
-          "internalID" : "F25134FF",
-          "introductoryOffer" : null,
-          "localizations" : [
-            {
-              "description" : "",
-              "displayName" : "",
-              "locale" : "en_US"
-            }
-          ],
-          "productID" : "2222",
-          "recurringSubscriptionPeriod" : "P1M",
-          "referenceName" : "rnewable subscription",
-          "subscriptionGroupID" : "B57006F9",
-          "type" : "RecurringSubscription",
-          "winbackOffers" : [
-
-          ]
-        }
-      ]
-    }
   ],
   "version" : {
     "major" : 4,

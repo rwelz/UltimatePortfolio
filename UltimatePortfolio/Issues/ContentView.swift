@@ -62,8 +62,10 @@ struct ContentView: View {
         }
     }
 
-    func resumeActivity(_ userActivity: NSUserActivity) {
-        viewModel.dataController.newIssue()
+    func askForReview() {
+        if viewModel.shouldRequestReview {
+            requestReview()
+        }
     }
 }
 

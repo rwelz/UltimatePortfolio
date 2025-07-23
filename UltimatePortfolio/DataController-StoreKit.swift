@@ -55,6 +55,7 @@ extension DataController {
             await transaction.finish()
         }
     }
+
     @MainActor
     func loadProducts() async throws {
         // don't load products more than once
