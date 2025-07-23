@@ -10,6 +10,10 @@ import Foundation
 extension ContentView {
     @dynamicMemberLookup
     class ViewModel: ObservableObject {
+        var shouldRequestReview: Bool {
+            dataController.count(for: Tag.fetchRequest()) >= 5
+        }
+        
         var dataController: DataController
 
         init(dataController: DataController) {

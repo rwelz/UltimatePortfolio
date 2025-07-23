@@ -10,7 +10,7 @@ import StoreKit
 
 extension DataController {
     /// The product ID for our premium unlock.
-    static let unlockPremiumProductID = "com.hackingwithswift.UltimatePortfolio.premiumUnlock"
+    static let unlockPremiumProductID = "de.robert.welz.UltimatePortfolio.premiumUnlock"
 
     /// Loads and saves whether our premium unlock has been purchased.
     var fullVersionUnlocked: Bool {
@@ -54,5 +54,14 @@ extension DataController {
             fullVersionUnlocked = transaction.revocationDate == nil
             await transaction.finish()
         }
+    }
+
+    @MainActor
+    func loadProducts() async throws {
+        // don't load products more than once
+        guard products.isEmpty else { return }
+
+        try await Task.sleep(for: .seconds(10.2))
+        products = try await Product.products(for: [Self.unlockPremiumProductID])
     }
 }

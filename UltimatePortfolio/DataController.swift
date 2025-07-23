@@ -20,6 +20,8 @@ enum Status {
 /// An environment singleton responsible for managing our Core Data stack, including handling saving,
 /// counting fetch requests, tracking awards, and dealing with sample data.
 class DataController: ObservableObject {
+    /// The StoreKit products we've loaded for the store.
+    @Published var products = [Product]()
 
     private var storeTask: Task<Void, Never>?
 
@@ -350,6 +352,9 @@ class DataController: ObservableObject {
             let fetchRequest = Tag.fetchRequest()
             let awardCount = count(for: fetchRequest)
             return awardCount >= award.value
+
+        case "unlock":
+            return fullVersionUnlocked
 
         default:
             // an unknown award criterion; this should never be allowed

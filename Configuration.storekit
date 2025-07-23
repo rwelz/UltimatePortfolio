@@ -20,9 +20,14 @@
       "internalID" : "3A3666AC",
       "localizations" : [
         {
-          "description" : "",
-          "displayName" : "",
+          "description" : "get the premium license :)",
+          "displayName" : "Premium Unlock",
           "locale" : "en_US"
+        },
+        {
+          "description" : "Hozzáférés a teljes alkalmazáshoz",
+          "displayName" : "Prémium feloldás",
+          "locale" : "hu"
         }
       ],
       "productID" : "de.robert.welz.UltimatePortfolio.premiumUnlock",
@@ -31,12 +36,16 @@
     }
   ],
   "settings" : {
+    "_askToBuyEnabled" : true,
     "_failTransactionsEnabled" : false,
     "_locale" : "en_US",
     "_storefront" : "USA",
     "_storeKitErrors" : [
       {
-        "current" : null,
+        "current" : {
+          "index" : 2,
+          "type" : "generic"
+        },
         "enabled" : false,
         "name" : "Load Products"
       },

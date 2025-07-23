@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
 
     @StateObject var viewModel: ViewModel
+    @Environment(\.requestReview) var requestReview
 
     private let newIssueActivity = "de.robert.welz.UltimatePortfolio.newIssue"
 
@@ -30,6 +31,7 @@ struct ContentView: View {
             Text(tag.tagName)
         }
         .toolbar(content: ContentViewToolbar.init)
+        .onAppear(perform: askForReview)
         .onOpenURL(perform: openURL)
     }
 
@@ -56,8 +58,10 @@ struct ContentView: View {
         }
     }
 
-    func resumeActivity(_ userActivity: NSUserActivity) {
-        viewModel.dataController.newIssue()
+    func askForReview() {
+        if viewModel.shouldRequestReview {
+            requestReview()
+        }
     }
 }
 
