@@ -303,9 +303,10 @@ class DataController: ObservableObject {
         }
         save()
         selectedIssue = issue
+        "New Issue Created".debugLog()
     }
 
-    func newTag() -> Bool{
+    func newTag() -> Bool {
         var shouldCreate = fullVersionUnlocked
 
         if shouldCreate == false {

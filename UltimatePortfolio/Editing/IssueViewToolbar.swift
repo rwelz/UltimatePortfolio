@@ -43,7 +43,7 @@ struct IssueViewToolbar: View {
             }
 
             // habe .sensoryFeedback nicht zum laufen gebracht, vielleicht ein Bug in SwiftUI?
-            //.sensoryFeedback(trigger: issue.completed) { oldValue, newValue in
+            // .sensoryFeedback(trigger: issue.completed) { oldValue, newValue in
             //    if newValue {
             //        .selection
             //        //.impact()
@@ -51,9 +51,9 @@ struct IssueViewToolbar: View {
             //    } else {
             //        nil
             //    }
-            //}
+            // }
 
-            //.sensoryFeedback(trigger: issue.completed){ old,new in
+            // .sensoryFeedback(trigger: issue.completed){ old,new in
             //            if old == false {
             //                return .selection
             //            }

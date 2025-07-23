@@ -1,5 +1,5 @@
 //
-//  helpers.swift
+//  CustomStringConvertible-debugLog.swift
 //  UltimatePortfolio
 //
 //  Created by Robert Welz on 22.07.25.

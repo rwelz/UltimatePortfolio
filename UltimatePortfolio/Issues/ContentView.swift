@@ -31,17 +31,13 @@ struct ContentView: View {
         }
         .toolbar(content: ContentViewToolbar.init)
         .onOpenURL(perform: openURL)
-        .userActivity(newIssueActivity) { activity in
-                        activity.isEligibleForPrediction = true
-                        activity.title = "New Issue"
-                    }
     }
-
 
     init(dataController: DataController) {
         let viewModel = ViewModel(dataController: dataController)
         _viewModel = StateObject(wrappedValue: viewModel)
     }
+
     func openURL(_ url: URL) {
             if url.absoluteString.contains("newIssue") {
                 viewModel.dataController.newIssue()
@@ -58,6 +54,10 @@ struct ContentView: View {
                 scene.open(url, options: nil)
             }
         }
+    }
+
+    func resumeActivity(_ userActivity: NSUserActivity) {
+        viewModel.dataController.newIssue()
     }
 }
 

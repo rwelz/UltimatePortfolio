@@ -15,10 +15,15 @@ struct UltimatePortfolioApp: App {
     @Environment(\.scenePhase) var scenePhase
 
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    
+
+    @ObservedObject var manager = Manager.shared
+    @State private var preferredColumn = NavigationSplitViewColumn.sidebar
+
     var body: some Scene {
         WindowGroup {
-            NavigationSplitView {
+            NavigationSplitView(
+                preferredCompactColumn: $preferredColumn
+            ) {
                 SidebarView(dataController: dataController)
             } content: {
                 ContentView(dataController: dataController)
@@ -34,12 +39,19 @@ struct UltimatePortfolioApp: App {
             // Wenn sich dataController ändert, wird WindowGroup { ContentView() }
             // neu geladen
 
-            .onChange(of: scenePhase) { phase in
-                if phase != .active {
+            .onChange(of: scenePhase, initial: true) { _, newPhase in
+                if newPhase != .active {
                     dataController.save()
                 }
             }
             .onContinueUserActivity(CSSearchableItemActionType, perform: loadSpotlightItem)
+            .onReceive(manager.$showView) { newValue in
+                print("manager.showView View geändert: \(newValue)")
+                if newValue {
+                    preferredColumn = .content
+                    resetShowView()
+                }
+            }
         }
     }
 
@@ -47,6 +59,12 @@ struct UltimatePortfolioApp: App {
         if let uniqueIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
             dataController.selectedIssue = dataController.issue(with: uniqueIdentifier)
             dataController.selectedFilter = .all
+        }
+    }
+
+    func resetShowView() {
+        if Manager.shared.showView == true {
+            Manager.shared.showView = false
         }
     }
 }

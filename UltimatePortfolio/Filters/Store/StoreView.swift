@@ -29,7 +29,7 @@ struct StoreView: View {
                 }
             }
         }
-        .onChange(of: dataController.fullVersionUnlocked) { _ in
+        .onChange(of: dataController.fullVersionUnlocked) {
             checkForPurchase()
         }
         .task {
@@ -55,10 +55,7 @@ struct StoreView: View {
             print("Error loading products: \(error.localizedDescription)")
         }
     }
-    
 }
-
-
 
 #Preview {
     StoreView()
