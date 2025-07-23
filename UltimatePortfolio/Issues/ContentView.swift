@@ -12,6 +12,8 @@ struct ContentView: View {
     @StateObject var viewModel: ViewModel
     @Environment(\.requestReview) var requestReview
 
+    private let newIssueActivity = "de.robert.welz.UltimatePortfolio.newIssue"
+
     var body: some View {
         List(selection: $viewModel.selectedIssue) {
             ForEach(viewModel.dataController.issuesForSelectedFilter()) { issue in
@@ -31,7 +33,6 @@ struct ContentView: View {
         .toolbar(content: ContentViewToolbar.init)
         .onAppear(perform: askForReview)
         .onOpenURL(perform: openURL)
-
     }
 
 
