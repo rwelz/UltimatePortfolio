@@ -11,6 +11,8 @@ struct ContentView: View {
 
     @StateObject var viewModel: ViewModel
 
+    private let newIssueActivity = "de.robert.welz.UltimatePortfolio.newIssue"
+
     var body: some View {
         List(selection: $viewModel.selectedIssue) {
             ForEach(viewModel.dataController.issuesForSelectedFilter()) { issue in
@@ -29,6 +31,10 @@ struct ContentView: View {
         }
         .toolbar(content: ContentViewToolbar.init)
         .onOpenURL(perform: openURL)
+        .userActivity(newIssueActivity) { activity in
+                        activity.isEligibleForPrediction = true
+                        activity.title = "New Issue"
+                    }
     }
 
 
