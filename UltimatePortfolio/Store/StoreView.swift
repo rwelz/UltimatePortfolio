@@ -108,7 +108,7 @@ struct StoreView: View {
         } message: {
             Text("""
             You can't purchase the premium unlock because in-app purchases are disabled on this device.
-            
+
             Please ask whomever manages your device for assistance.
             """)
         }
