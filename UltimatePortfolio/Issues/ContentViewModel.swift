@@ -13,7 +13,6 @@ extension ContentView {
         var shouldRequestReview: Bool {
             dataController.count(for: Tag.fetchRequest()) >= 5
         }
-        
         var dataController: DataController
 
         init(dataController: DataController) {
