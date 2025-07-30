@@ -1,6 +1,6 @@
 //
 //  PortfolioWidgetBundle.swift
-//  PortfolioWidget
+//  PortfolioWidgetBundle
 //
 //  Created by Robert Welz on 24.07.25.
 //
@@ -11,7 +11,7 @@ import SwiftUI
 @main
 struct PortfolioWidgetBundle: WidgetBundle {
     var body: some Widget {
-        PortfolioWidget()
+        SimplePortfolioWidget()
         PortfolioWidgetControl()
     }
 }
