@@ -1,6 +1,6 @@
 //
 //  PortfolioWidgetControl.swift
-//  PortfolioWidget
+//  PortfolioWidgetControl
 //
 //  Created by Robert Welz on 24.07.25.
 //

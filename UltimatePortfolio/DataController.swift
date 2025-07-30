@@ -99,7 +99,6 @@ class DataController: ObservableObject {
             queue: .main,
             using: remoteStoreChanged)
 
-
         if let description = container.persistentStoreDescriptions.first {
             description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
             description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
@@ -315,6 +314,8 @@ class DataController: ObservableObject {
         issue.creationDate = .now
         issue.priority = 1
 
+        issue.completed = false
+
         // If we're currently browsing a user-created tag, immediately
         // add this new issue to the tag otherwise it won't appear in
         // the list of issues they see.
@@ -364,8 +365,8 @@ class DataController: ObservableObject {
 
     func fetchRequestForTopIssues(count: Int) -> NSFetchRequest<Issue> {
         let request = Issue.fetchRequest()
+
         request.predicate = NSPredicate(format: "completed = false")
-        //request.predicate = NSPredicate(format: "completed = %@", NSNumber(value: false))
 
         request.sortDescriptors = [
             NSSortDescriptor(keyPath: \Issue.priority, ascending: false)
