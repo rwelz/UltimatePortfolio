@@ -52,7 +52,7 @@ Final tweaks:
 38. Adding a Quick Action to our icon
 39. Integrating with Shortcuts (mit AppIntent statt onContinueUserActivity)
 40. Creating a simple widget
-
+41. Creating a second widget
 
 —————————
 

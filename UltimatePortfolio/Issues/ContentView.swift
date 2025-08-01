@@ -32,19 +32,13 @@ struct ContentView: View {
         }
         .toolbar(content: ContentViewToolbar.init)
         .onAppear(perform: askForReview)
-        .onOpenURL(perform: openURL)
+        .onOpenURL(perform: viewModel.openURL)
     }
 
     init(dataController: DataController) {
         let viewModel = ViewModel(dataController: dataController)
         _viewModel = StateObject(wrappedValue: viewModel)
     }
-
-    func openURL(_ url: URL) {
-            if url.absoluteString.contains("newIssue") {
-                viewModel.dataController.newIssue()
-            }
-        }
 
     func scene(
         _ scene: UIScene,
