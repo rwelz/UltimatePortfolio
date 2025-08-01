@@ -9,12 +9,11 @@ import WidgetKit
 import SwiftUI
 
 struct ComplexProvider: TimelineProvider {
-    // Apple’s widget template includes quite a lot of code for us already, but actually it’s the bare minimum required to get a meaningful widget:
-
-    // There is one struct called Provider, which conforms to the TimelineProvider protocol. This determines how data for our widget is fetched.
-    // There is another struct called SimpleEntry, which conforms to the TimelineEntry protocol. This determines how data for our widget is stored.
-    // There is a third struct called SimplePortfolioWidgetEntryView, which conforms to SwiftUI’s View protocol. This determines how data for our widget is presented.
-    // There is a fourth struct called SimplePortfolioWidget, which conforms to the Widget protocol. This determines how our widget should be configured.
+    // for more information about widgets structs see explanation at the top of SimplePortfolioWidget.swift and replace
+    // SimpleProvider with ComplexProvider
+    // SimpleEntry with ComplexEntry
+    // SimplePortfolioWidgetEntryView with ComplexPortfolioWidgetEntryView
+    // SimplePortfolioWidget with ComplexPortfolioWidget
 
     func placeholder(in context: Context) -> ComplexEntry {
         ComplexEntry(date: .now, issues: [.example])
@@ -45,8 +44,6 @@ struct ComplexProvider: TimelineProvider {
     func loadIssues() -> [Issue] {
         let dataController = DataController()
         let request = dataController.fetchRequestForTopIssues(count: 7) // This new widget needs to show multiple issues, we need to change its loadIssues() method so that it returns more than just one issue, like this:
-        //request.predicate = NSPredicate(format: "completed == true")
-        request.predicate = NSPredicate(format: "completed == nil")
         let allIssues = dataController.results(for: request)
         //for issue in allIssues {
         //    print("Issue completed: \(String(describing: issue.completed))")
@@ -61,18 +58,53 @@ struct ComplexEntry: TimelineEntry {
     let issues: [Issue]
 }
 
-struct ComplexPortfolioWidgetEntryView : View {
-    var entry: ComplexProvider.Entry
+struct ComplexPortfolioWidgetEntryView: View {
+    @Environment(\.widgetFamily) var widgetFamily
+    @Environment(\.dynamicTypeSize) var dynamicTypeSize
+
+    let entry: ComplexProvider.Entry
+
+    var issues: ArraySlice<Issue> {
+        let issueCount: Int
+
+        switch widgetFamily {
+        case .systemSmall:
+            issueCount = 1
+        case .systemLarge, .systemExtraLarge:
+            if dynamicTypeSize < .xxLarge {
+                issueCount = 6
+            } else {
+                issueCount = 5
+            }
+        default:
+            if dynamicTypeSize < .xLarge {
+                issueCount = 3
+            } else {
+                issueCount = 2
+            }
+        }
+
+        return entry.issues.prefix(issueCount)
+    }
+
+
 
     var body: some View {
-        VStack {
-            Text("Up next…")
-                .font(.title)
-
-            if let issue = entry.issues.first {
-                Text(issue.issueTitle)
-            } else {
-                Text("Nothing!")
+        VStack(spacing: 10) {
+            ForEach(issues) { issue in
+                Link(destination: issue.objectID.uriRepresentation()) {
+                    VStack(alignment: .leading) {
+                        Text(issue.issueTitle)
+                            .font(.headline)
+                            .layoutPriority(1)
+                        
+                        if issue.issueTags.isEmpty == false {
+                            Text(issue.issueTagsList)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                }
             }
         }
     }
@@ -93,8 +125,8 @@ struct ComplexPortfolioWidget: Widget {
             }
         }
         .configurationDisplayName("Up next…")
-        .description("Your #1 top-priority issue.")
-        .supportedFamilies([.systemSmall])
+        .description("Your most important issues.")
+        .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .systemExtraLarge])
     }
 }
 

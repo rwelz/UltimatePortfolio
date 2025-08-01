@@ -36,8 +36,14 @@ extension ContentView {
                 dataController.delete(item)
             }
         }
-        var shouldRequestReview: Bool {
-            dataController.count(for: Tag.fetchRequest()) >= 5
+
+        func openURL(_ url: URL) {
+            if url.absoluteString.contains("newIssue") {
+                dataController.newIssue()
+            } else if let issue = dataController.issue(with: url.absoluteString) {
+                dataController.selectedIssue = issue
+                dataController.selectedFilter = .all
+            }
         }
     }
 }
