@@ -31,12 +31,16 @@
 "Sort By" = "Rendezés"; /* Adjust the order issues are shown */
 "Date Created" = "Létrehozás dátuma"; /* Sort issues by the date they were created */
 "Date Modified" = "Módosítás dátuma"; /* Sort issues by the date they were last changed */
+"Sort Order" = "Rendezési sorrend";
 "Newest to Oldest" = "Legújabbtól a legrégebbig"; /* Place newer issues before older issues */
 "Oldest to Newest" = "Legrégebbitől a legújabbig"; /* Place older issues before newer issues */
 
+"Status" = "Állapot";
 "All" = "Összes";
 "Open" = "Nyitott";
 "Closed" = "Lezárt";
+
+"No tags" = "Címkétlen";
 
 "Low" = "Alacsony";
 "Medium" = "Közepes";
@@ -64,19 +68,33 @@
 "Close Issue" = "Probléma lezárása";
 "Re-open Issue" = "Probléma újranyitása";
 
+/* REMINDERS */
+"Reminders" = "Emlékeztetők";
+"Show reminders" = "Emlékeztetők megjelenítése";
+"Oops!" = "Hoppá!";
+"There was a problem setting your notification. Please check you have notifications enabled." = "Probléma merült fel az értesítés beállításakor. Kérjük, ellenőrizze, hogy az értesítések engedélyezve vannak-e.";
+"Check Settings" = "Ellenőrizze a Beállításokat";
+"Reminder time" = "Emlékeztető ideje";
+
 /* Fields that let the users enter details about a specific issue */
+"Title" = "Cím";
 "Enter the issue title here" = "Írja be a probléma címét ide";
 "**Modified:** %@" = "**Módosítva:** %@";
 "**Status:** %@" = "**Állapot:** %@";
 "Priority" = "Prioritás";
 "Add Tags" = "Címkék hozzáadása";
 "Basic Information" = "Alapinformáció";
+"Description" = "Leírás";
 "Enter the issue description here" = "Írja be a probléma leírását ide";
 
 
 
 /* AWARDS VIEW */
 "Awards" = "Díjak";
+"Close" = "Bezár";
+
+"Locked" = "Zárolt";
+"Unlocked: %@" = "Feloldott: %@";
 
 
 
@@ -85,15 +103,6 @@
 "New issue" = "Új szám";
 
 
-
-/* DEBUG ONLY */
-"ADD SAMPLES" = "ADD SAMPLES";
-
-
-
-"No tags" = "Címkétlen";
-"Locked" = "Zárolt";
-"Unlocked: %@" = "Feloldott: %@";
 
 /* STORE */
 "Upgrade Today!" = "Javítson fel ma!";
@@ -105,8 +114,15 @@
 "In-app purchases are disabled" = "Az alkalmazáson belüli vásárlások tiltva vannak";
 "You can't purchase the premium unlock because in-app purchases are disabled on this device.\n\nPlease ask whomever manages your device for assistance." = "Nem vásárolhatja meg a prémium feloldást, mert az alkalmazáson belüli vásárlások letiltva vannak ezen az eszközön.\n\nKérjük, keresse az eszközét kezelő személy segítségét.";
 
+
+
 /* WIDGETS */
 "Up next…" = "Következő…";
 "Nothing!" = "Semmi!";
 "Your #1 top-priority issue." = "Az #1 elsőbbségi probléma.";
 "Your most important issues." = "A legfontosabb problémáid.";
+
+
+
+/* DEBUG ONLY */
+"ADD SAMPLES" = "ADD SAMPLES";

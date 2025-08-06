@@ -21,6 +21,7 @@ struct ContentView: View {
             }
             .onDelete(perform: viewModel.delete)
         }
+        .macFrame(minWidth: 220)
         .navigationTitle("Issues")
         .searchable(
             text: $viewModel.filterText,
@@ -40,6 +41,8 @@ struct ContentView: View {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
 
+// TODO: gibt es einen Ersatz für diese Funktion in macOS, oder kann ich die auf macOS ersatzlos streichen?
+    #if os(iOS)
     func scene(
         _ scene: UIScene,
         willConnectTo session: UISceneSession,
@@ -51,6 +54,7 @@ struct ContentView: View {
             }
         }
     }
+    #endif
 
     func askForReview() {
         if viewModel.shouldRequestReview {

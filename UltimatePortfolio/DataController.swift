@@ -61,6 +61,7 @@ class DataController: ObservableObject {
     ///
     /// Defaults to permanent storage.
     /// - Parameter inMemory: Whether to store this data in temporary memory or not.
+    /// - Parameter defaults: The UserDefaults suite where user data should be stored.
     init(inMemory: Bool = false, defaults: UserDefaults = .standard) {
         self.defaults = defaults
 
@@ -127,7 +128,9 @@ class DataController: ObservableObject {
             #if DEBUG
             if CommandLine.arguments.contains("enable-testing") {
                 self?.deleteAll()
+                #if os(iOS)
                 UIView.setAnimationsEnabled(false)
+                #endif
             }
             #endif
         }
