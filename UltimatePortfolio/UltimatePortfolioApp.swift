@@ -13,9 +13,9 @@ struct UltimatePortfolioApp: App {
     @StateObject var dataController = DataController() // @Published und @StateObject gehören zusammen
 
     @Environment(\.scenePhase) var scenePhase
-
+#if os(iOS)
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-
+    #endif
     @ObservedObject var manager = Manager.shared
     @State private var preferredColumn = NavigationSplitViewColumn.sidebar
 

@@ -25,7 +25,13 @@ extension ContentView {
 
         subscript<Value>(dynamicMember keyPath: ReferenceWritableKeyPath<DataController, Value>) -> Value {
             get { dataController[keyPath: keyPath] }
-            set { dataController[keyPath: keyPath] = newValue }
+            // set { dataController[keyPath: keyPath] = newValue }
+            set {
+                    // 🔐 Sicherer Setzen mit Delay (nur bei @Published empfohlen!)
+                    DispatchQueue.main.async {
+                        self.dataController[keyPath: keyPath] = newValue
+                    }
+                }
         }
 
         func delete(_ offsets: IndexSet) {

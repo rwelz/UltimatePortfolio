@@ -31,12 +31,16 @@
 "Sort By" = "Sort By"; /* Adjust the order issues are shown */
 "Date Created" = "Date Created"; /* Sort issues by the date they were created */
 "Date Modified" = "Date Modified"; /* Sort issues by the date they were last changed */
+"Sort Order" = "Sort Order";
 "Newest to Oldest" = "Newest to Oldest"; /* Place newer issues before older issues */
 "Oldest to Newest" = "Oldest to Newest"; /* Place older issues before newer issues */
 
+"Status" = "Status";
 "All" = "All";
 "Open" = "Open";
 "Closed" = "Closed";
+
+"No tags" = "No tags";
 
 "Low" = "Low";
 "Medium" = "Medium";
@@ -64,19 +68,32 @@
 "Close Issue" = "Close Issue";
 "Re-open Issue" = "Re-open Issue";
 
+/* REMINDERS */
+"Reminders" = "Reminders";
+"Show reminders" = "Show reminders";
+"Oops!" = "Oops!";
+"There was a problem setting your notification. Please check you have notifications enabled." = "There was a problem setting your notification. Please check you have notifications enabled.";
+"Check Settings" = "Check Settings";
+"Reminder time" = "Reminder time";
+
 /* Fields that let the users enter details about a specific issue */
+"Title" = "Title";
 "Enter the issue title here" = "Enter the issue title here";
 "**Modified:** %@" = "**Modified:** %@";
 "**Status:** %@" = "**Status:** %@";
 "Priority" = "Priority";
 "Add Tags" = "Add Tags";
 "Basic Information" = "Basic Information";
+"Description" = "Description";
 "Enter the issue description here" = "Enter the issue description here";
-
 
 
 /* AWARDS VIEW */
 "Awards" = "Awards";
+"Close" = "Close";
+
+"Locked" = "Locked";
+"Unlocked: %@" = "Unlocked: %@";
 
 
 
@@ -85,15 +102,6 @@
 "New issue" = "New issue";
 
 
-
-/* DEBUG ONLY */
-"ADD SAMPLES" = "ADD SAMPLES";
-
-
-
-"No tags" = "No tags";
-"Locked" = "Locked";
-"Unlocked: %@" = "Unlocked: %@";
 
 /* STORE */
 "Upgrade Today!" = "Upgrade Today!";
@@ -105,8 +113,15 @@
 "In-app purchases are disabled" = "In-app purchases are disabled";
 "You can't purchase the premium unlock because in-app purchases are disabled on this device.\n\nPlease ask whomever manages your device for assistance." = "You can't purchase the premium unlock because in-app purchases are disabled on this device.\n\nPlease ask whomever manages your device for assistance.";
 
+
+
 /* WIDGETS */
 "Up next…" = "Up next…";
 "Nothing!" = "Nothing!";
 "Your #1 top-priority issue." = "Your #1 top-priority issue.";
 "Your most important issues." = "Your most important issues.";
+
+
+
+/* DEBUG ONLY */
+"ADD SAMPLES" = "ADD SAMPLES";

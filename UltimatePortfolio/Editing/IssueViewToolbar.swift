@@ -20,11 +20,14 @@ struct IssueViewToolbar: View {
 
     var body: some View {
         Menu {
-            Button {
-                UIPasteboard.general.string = issue.title
-            } label: {
-                Label("Copy Issue Title", systemImage: "doc.on.doc")
-            }
+            // Button {
+            //    UIPasteboard.general.string = issue.title
+            // } label: {
+            //    Label("Copy Issue Title", systemImage: "doc.on.doc")
+            // }
+            // diffrent button initializer
+            Button("Copy Issue Title", systemImage: "doc.on.doc", action: copyToClipboard)
+
             // einfache variante, nachdem .sensoryFeedback nicht läuft
 //            Button {
 //                issue.completed.toggle()
@@ -80,6 +83,15 @@ struct IssueViewToolbar: View {
 //            UINotificationFeedbackGenerator().notificationOccurred(.success)
 //        }
 //    }
+
+    func copyToClipboard() {
+        #if os(iOS)
+        UIPasteboard.general.string = issue.title
+        #else
+        NSPasteboard.general.prepareForNewContents()
+        NSPasteboard.general.setString(issue.issueTitle, forType: .string)
+        #endif
+    }
 
     // advanced haptics: import CoreHaptics
     func toggleCompleted() {
