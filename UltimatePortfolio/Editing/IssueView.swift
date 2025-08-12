@@ -83,9 +83,9 @@ struct IssueView: View {
             SettingsLink {
                     Text("Check Settings")
                 }
-            #else
+        #elseif os(iOS)
             Button("Check Settings", action: showAppSettings)
-            #endif
+        #endif
             Button("Cancel", role: .cancel) { }
         } message: {
             Text("There was a problem setting your notification. Please check you have notifications enabled.")
