@@ -53,6 +53,8 @@ Final tweaks:
 39. Integrating with Shortcuts (mit AppIntent statt onContinueUserActivity)
 40. Creating a simple widget
 41. Creating a second widget
+42. Optimizing for macOS
+43. Optimizing for watchOS
 
 —————————
 
