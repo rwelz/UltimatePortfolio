@@ -5,20 +5,24 @@
 //  Created by Robert Welz on 05.06.25.
 //
 
+#if canImport(CoreHaptics)
 import CoreHaptics
+#endif
 import SwiftUI
 
 struct IssueViewToolbar: View {
     @ObservedObject var issue: Issue
     @EnvironmentObject var dataController: DataController
 
+#if canImport(CoreHaptics)
     @State private var engine = try? CHHapticEngine()
-
+#endif
     var openCloseButtonText: LocalizedStringKey {
         issue.completed ? "Re-open Issue" : "Close Issue"
     }
 
     var body: some View {
+#if !os(watchOS)
         Menu {
             // Button {
             //    UIPasteboard.general.string = issue.title
@@ -72,7 +76,7 @@ struct IssueViewToolbar: View {
         } label: {
             Label("Actions", systemImage: "ellipsis.circle")
         }
-
+        #endif
     }
 
 //    func toggleCompleted() {
@@ -87,7 +91,7 @@ struct IssueViewToolbar: View {
     func copyToClipboard() {
         #if os(iOS)
         UIPasteboard.general.string = issue.title
-        #else
+        #elseif os(macOS)
         NSPasteboard.general.prepareForNewContents()
         NSPasteboard.general.setString(issue.issueTitle, forType: .string)
         #endif
@@ -97,7 +101,7 @@ struct IssueViewToolbar: View {
     func toggleCompleted() {
         issue.completed.toggle()
         dataController.save()
-
+#if canImport(CoreHaptics)
         if issue.completed {
             do {
                 try engine?.start()
@@ -134,6 +138,7 @@ struct IssueViewToolbar: View {
                 // playing haptics didn't work, but that's okay
             }
         }
+#endif
     }
 }
 

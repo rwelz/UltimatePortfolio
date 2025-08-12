@@ -10,19 +10,29 @@ import SwiftUI
 struct ContentView: View {
 
     @StateObject var viewModel: ViewModel
+
+    @EnvironmentObject var dataController: DataController
+
+#if !os(watchOS)
     @Environment(\.requestReview) var requestReview
+#endif
 
     private let newIssueActivity = "de.robert.welz.UltimatePortfolio.newIssue"
 
     var body: some View {
         List(selection: $viewModel.selectedIssue) {
             ForEach(viewModel.dataController.issuesForSelectedFilter()) { issue in
+                #if os(watchOS)
+                IssueRowWatch(issue: issue)
+                #else
                 IssueRow(issue: issue)
+                #endif
             }
             .onDelete(perform: viewModel.delete)
         }
         .macFrame(minWidth: 220)
         .navigationTitle("Issues")
+#if !os(watchOS)
         .searchable(
             text: $viewModel.filterText,
             tokens: $viewModel.filterTokens,
@@ -31,8 +41,14 @@ struct ContentView: View {
         ) { tag in
             Text(tag.tagName)
         }
+        #endif
         .toolbar(content: ContentViewToolbar.init)
-        .onAppear(perform: askForReview)
+        // .onAppear(perform: askForReview)
+        .onAppear {
+            askForReview()
+            dataController.debugPrintIssueCount()
+            dataController.debugPrintAllIssuesWithCloudKitInfo()
+        }
         .onOpenURL(perform: viewModel.openURL)
     }
 
@@ -57,9 +73,11 @@ struct ContentView: View {
     #endif
 
     func askForReview() {
+#if !os(watchOS)
         if viewModel.shouldRequestReview {
             requestReview()
         }
+#endif
     }
 }
 

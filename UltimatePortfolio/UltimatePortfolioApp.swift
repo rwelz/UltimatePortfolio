@@ -5,7 +5,9 @@
 //  Created by Robert Welz on 25.04.25.
 //
 
+#if canImport(CoreSpotlight)
 import CoreSpotlight
+#endif
 import SwiftUI
 
 @main
@@ -44,7 +46,9 @@ struct UltimatePortfolioApp: App {
                     dataController.save()
                 }
             }
+#if canImport(CoreSpotlight)
             .onContinueUserActivity(CSSearchableItemActionType, perform: loadSpotlightItem)
+#endif
             .onReceive(manager.$showView) { newValue in
                 print("manager.showView View geändert: \(newValue)")
                 if newValue {
@@ -55,12 +59,14 @@ struct UltimatePortfolioApp: App {
         }
     }
 
+#if canImport(CoreSpotlight)
     func loadSpotlightItem(_ userActivity: NSUserActivity) {
         if let uniqueIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
             dataController.selectedIssue = dataController.issue(with: uniqueIdentifier)
             dataController.selectedFilter = .all
         }
     }
+#endif
 
     func resetShowView() {
         if Manager.shared.showView == true {
