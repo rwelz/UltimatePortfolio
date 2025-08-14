@@ -46,8 +46,8 @@ struct ContentView: View {
         // .onAppear(perform: askForReview)
         .onAppear {
             askForReview()
-            dataController.debugPrintIssueCount()
-            dataController.debugPrintAllIssuesWithCloudKitInfo()
+            // dataController.debugPrintIssueCount()
+            // dataController.debugPrintAllIssuesWithCloudKitInfo()
         }
         .onOpenURL(perform: viewModel.openURL)
     }

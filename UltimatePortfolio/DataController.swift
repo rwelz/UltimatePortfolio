@@ -10,7 +10,10 @@
 
 import CoreData
 import StoreKit
+#if canImport(WidgetKit)
 import WidgetKit
+#endif
+import Combine
 
 enum SortType: String {
     case dateCreated = "creationDate"
@@ -97,6 +100,21 @@ class DataController: ObservableObject {
             true as NSNumber,
             forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
 
+        // Im visionOS Simulator gibt es diese Notification nicht:
+        // CloudKit mldet keine Änderung und somit wird diese benachrichtigung nicht gesendet
+        // nur bei einem Neustart ( Restart ) der App werden neue Daten aus der Cloud geladen. 
+//        Warum deine visionOS-Simulator-App keine frischen CloudKit-Daten bekommt
+//            1.    Simulator ≠ echter CloudKit-Zugriff
+//                  •    Der visionOS-Simulator hat (Stand 2025) keinen echten CloudKit-Zugang.
+//                  •    Er kann weder in iCloud einloggen noch Live-Push-Notifications empfangen.
+//                  •    Alles, was er sieht, kommt nur aus der lokalen SQLite-Datenbank,
+//                         die Core Data für ihn im Simulator-Dateisystem anlegt.
+//            2.    Push-Mechanismus fehlt
+//                  •    Unter iOS-Simulator kannst du Debug → Simulate CloudKit Push nutzen,
+//                       um eine NSPersistentStoreRemoteChange auszulösen.
+//                  •    Unter visionOS-Simulator gibt es diesen Menüpunkt nicht →
+//                       keine automatischen Updates aus der Cloud.
+
         NotificationCenter.default.addObserver(
             forName: .NSPersistentStoreRemoteChange,
             object: container.persistentStoreCoordinator,
@@ -175,7 +193,9 @@ class DataController: ObservableObject {
 
         if container.viewContext.hasChanges {
             try? container.viewContext.save()
+            #if canImport(WidgetKit)
             WidgetCenter.shared.reloadAllTimelines()
+        #endif
         }
     }
 
@@ -209,6 +229,19 @@ class DataController: ObservableObject {
     }
 
     func remoteStoreChanged(_ notification: Notification) {
+        do {
+            try container.viewContext.setQueryGenerationFrom(.current)
+            container.viewContext.refreshAllObjects()
+
+            debugPrintIssueCount()
+            debugPrintAllIssuesWithCloudKitInfo()
+
+            print("🔥 Remote Change Notification erhalten!")
+
+        } catch {
+            print("❌ Fehler beim Refresh des Core Data Context: \(error.localizedDescription)")
+        }
+
         objectWillChange.send()
     }
 
