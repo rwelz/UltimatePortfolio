@@ -62,7 +62,7 @@ extension DataController {
                 }
 
                 // 3️⃣ Ausgabe formatiert
-                print("Titel                         Scope      recordName")
+                print(String(format: "%-30s %-10s %@", title, scope, recordName))
             }
 
         } catch {

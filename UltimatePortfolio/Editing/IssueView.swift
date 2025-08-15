@@ -126,4 +126,5 @@ struct IssueView: View {
 
 #Preview {
     IssueView(issue: .example)
+        .environmentObject(DataController(inMemory: true))
 }
