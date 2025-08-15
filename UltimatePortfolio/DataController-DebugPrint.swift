@@ -23,7 +23,7 @@ extension DataController {
 
     /// Gibt alle Issues mit CloudKit-Datenbank-Scope und recordName aus
     func debugPrintAllIssuesWithCloudKitInfo() {
-#if DEBUG
+    #if DEBUG
         let context = container.viewContext
 
         let request: NSFetchRequest<Issue> = Issue.fetchRequest()
@@ -32,9 +32,23 @@ extension DataController {
         do {
             let issues = try context.fetch(request)
             print("🔍 Core Data: \(issues.count) Issues gefunden")
-            print("Titel                         Scope      recordName")
-            print(String(repeating: "-", count: 70))
 
+            // Spaltenbreiten definieren
+            let titleWidth = 30
+            let scopeWidth = 10
+            let spacer = "  " // Zwei Leerzeichen zwischen Scope und Record Name
+
+            // Überschrift
+            let headerTitle = "Titel".padding(toLength: titleWidth, withPad: " ", startingAt: 0)
+            let headerScope = "Scope".padding(toLength: scopeWidth, withPad: " ", startingAt: 0)
+            let headerRecord = "Record Name"
+            print("\(headerTitle)\(headerScope)\(spacer)\(headerRecord)")
+
+            // Linie
+            let lineLength = titleWidth + scopeWidth + spacer.count + headerRecord.count
+            print(String(repeating: "-", count: lineLength))
+
+            // Datenzeilen
             for issue in issues {
                 let title = issue.issueTitle
 
@@ -46,15 +60,15 @@ extension DataController {
                    let options = storeDescription.cloudKitContainerOptions {
 
                     switch options.databaseScope {
-                    case .public: scope = "🌍 Public"
+                    case .public:  scope = "🌍 Public"
                     case .private: scope = "🔒 Private"
-                    case .shared: scope = "🤝 Shared"
+                    case .shared:  scope = "🤝 Shared"
                     @unknown default: scope = "❓"
                     }
                 }
 
-                // 2️⃣ recordName ermitteln → optional entpacken
-                var recordName = "(nicht verfügbar)"
+                // 2️⃣ recordName ermitteln
+                let recordName: String
                 if let recordID = container.recordID(for: issue.objectID) {
                     recordName = recordID.recordName
                 } else {
@@ -62,12 +76,14 @@ extension DataController {
                 }
 
                 // 3️⃣ Ausgabe formatiert
-                print(String(format: "%-30s %-10s %@", title, scope, recordName))
+                let titleCol = title.padding(toLength: titleWidth, withPad: " ", startingAt: 0)
+                let scopeCol = scope.padding(toLength: scopeWidth, withPad: " ", startingAt: 0)
+                print("\(titleCol)\(scopeCol)\(spacer)\(recordName)")
             }
 
         } catch {
             print("❌ Fehler beim Abrufen der Issues: \(error.localizedDescription)")
         }
-#endif
+    #endif
     }
 }

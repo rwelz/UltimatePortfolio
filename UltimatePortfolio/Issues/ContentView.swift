@@ -83,4 +83,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView(dataController: .preview)
+        .environmentObject(DataController(inMemory: true))
 }
