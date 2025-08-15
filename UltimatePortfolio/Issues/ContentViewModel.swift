@@ -10,13 +10,27 @@ import Foundation
 extension ContentView {
     @dynamicMemberLookup
     class ViewModel: ObservableObject {
+        // fixed the App Store review message being shown time and time again once our initial check for eligibility passes.
+        // This only happens in development mode,
+        //mind you – in release mode Apple should be regulating this for us
+        // so that users aren't shown the request more than three times a year.
+        // Still, there's no harm being sure: we can update our code
+        // so that we show the request every 10 launches,
+        // to avoid nagging them too much.
+
         var shouldRequestReview: Bool {
-            #if DEBUG
-            dataController.count(for: Tag.fetchRequest()) >= 0
-            #else
-            dataController.count(for: Tag.fetchRequest()) >= 5
-            #endif
+            if dataController.count(for: Tag.fetchRequest()) >= 5 {
+                let reviewRequestCount = UserDefaults.standard.integer(forKey: "reviewRequestCount")
+                UserDefaults.standard.set(reviewRequestCount + 1, forKey: "reviewRequestCount")
+
+                if reviewRequestCount.isMultiple(of: 10) {
+                    return true
+                }
+            }
+
+            return false
         }
+
         var dataController: DataController
 
         init(dataController: DataController) {
