@@ -80,7 +80,6 @@ extension DataController {
                 let scopeCol = scope.padding(toLength: scopeWidth, withPad: " ", startingAt: 0)
                 print("\(titleCol)\(scopeCol)\(spacer)\(recordName)")
             }
-
         } catch {
             print("❌ Fehler beim Abrufen der Issues: \(error.localizedDescription)")
         }

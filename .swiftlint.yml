@@ -62,7 +62,7 @@ file_length:
   ignore_comment_only_lines: true
 
 function_body_length:
-  warning: 40
+  warning: 45
   error: 80
 
 cyclomatic_complexity:

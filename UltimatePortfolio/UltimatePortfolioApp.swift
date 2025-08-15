@@ -41,11 +41,24 @@ struct UltimatePortfolioApp: App {
             // Wenn sich dataController ändert, wird WindowGroup { ContentView() }
             // neu geladen
 
-            .onChange(of: scenePhase, initial: true) { _, newPhase in
-                if newPhase != .active {
+
+            // One nice side effect of this change here is that we can remove
+            // one special case for visionOS, where we have one path for
+            // purchasing StoreKit products on visionOS, and another for the other platforms
+            // in DataController-StoreKit.swift
+
+//            .onChange(of: scenePhase, initial: true) { _, newPhase in
+//                if newPhase != .active {
+//                    dataController.save()
+//                }
+//            }
+
+            .onChange(of: scenePhase) {
+                if scenePhase != .active {
                     dataController.save()
                 }
             }
+
 #if canImport(CoreSpotlight)
             .onContinueUserActivity(CSSearchableItemActionType, perform: loadSpotlightItem)
 #endif
