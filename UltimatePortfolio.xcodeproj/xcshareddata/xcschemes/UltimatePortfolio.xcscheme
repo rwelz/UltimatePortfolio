@@ -80,6 +80,13 @@
             ReferencedContainer = "container:UltimatePortfolio.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "SCHEME"
+            value = "UltimatePortfolio"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <StoreKitConfigurationFileReference
          identifier = "../../Configuration.storekit">
       </StoreKitConfigurationFileReference>

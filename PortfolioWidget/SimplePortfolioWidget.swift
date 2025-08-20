@@ -40,6 +40,9 @@ struct SimpleProvider: TimelineProvider {
         let request = dataController.fetchRequestForTopIssues(count: 1)
         let result:[Issue]  = dataController.results(for: request)
 
+        MyUnifiedLogger.logTopIssues(resultSet: result, category: "Widget")
+        MyUnifiedLogger.logIssuesCount(resultSet: result, category: "Widget")
+
         return result
     }
 }
@@ -49,7 +52,7 @@ struct SimpleEntry: TimelineEntry {
     let issues: [Issue]
 }
 
-struct SimplePortfolioWidgetEntryView : View {
+struct SimplePortfolioWidgetEntryView: View {
     var entry: SimpleProvider.Entry
 
     var body: some View {

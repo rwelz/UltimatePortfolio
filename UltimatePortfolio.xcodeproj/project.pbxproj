@@ -18,6 +18,10 @@
 		D71FD4992E2E3ED5000E43A5 /* NewIssueIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FD4982E2E3ED5000E43A5 /* NewIssueIntent.swift */; };
 		D71FD49B2E2E53AB000E43A5 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FD49A2E2E53A8000E43A5 /* Manager.swift */; };
 		D71FD49E2E2FA5F6000E43A5 /* CustomStringConvertible-debugLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FD49D2E2FA5F0000E43A5 /* CustomStringConvertible-debugLog.swift */; };
+		D72C5D002E55D9DE00360BE5 /* MyUnifiedLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72C5CFF2E55D9DE00360BE5 /* MyUnifiedLogger.swift */; };
+		D72C5D012E55D9DE00360BE5 /* MyUnifiedLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72C5CFF2E55D9DE00360BE5 /* MyUnifiedLogger.swift */; };
+		D72C5D022E55D9DE00360BE5 /* MyUnifiedLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72C5CFF2E55D9DE00360BE5 /* MyUnifiedLogger.swift */; };
+		D72C5D032E55D9DE00360BE5 /* MyUnifiedLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72C5CFF2E55D9DE00360BE5 /* MyUnifiedLogger.swift */; };
 		D731DC592E323C0B0059D776 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E1A3B42DF98B95001EEA27 /* Bundle-Decodable.swift */; };
 		D73A5C192DF99D0E007BE703 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D73A5C182DF99D0E007BE703 /* README.md */; };
 		D73C94D12E460BC10082B3E9 /* UPAWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = D73C94C72E460BC10082B3E9 /* UPAWatch Watch App.app */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -61,6 +65,10 @@
 		D73C94FD2E460D4B0082B3E9 /* Awards.json in Resources */ = {isa = PBXBuildFile; fileRef = D7E1A3B12DF98B95001EEA27 /* Awards.json */; };
 		D73E62862E054AD200AF4383 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E62852E054AD200AF4383 /* ContentViewModel.swift */; };
 		D73E62882E054F7E00AF4383 /* IssueRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E62872E054F7E00AF4383 /* IssueRowViewModel.swift */; };
+		D7478FB02E4F79E8007ACD51 /* TriggerSmartBreakpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7478FAF2E4F79E8007ACD51 /* TriggerSmartBreakpoint.swift */; };
+		D7478FB12E4F79E8007ACD51 /* TriggerSmartBreakpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7478FAF2E4F79E8007ACD51 /* TriggerSmartBreakpoint.swift */; };
+		D7478FB22E4F79E8007ACD51 /* TriggerSmartBreakpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7478FAF2E4F79E8007ACD51 /* TriggerSmartBreakpoint.swift */; };
+		D7478FB32E4F79E8007ACD51 /* TriggerSmartBreakpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7478FAF2E4F79E8007ACD51 /* TriggerSmartBreakpoint.swift */; };
 		D7552E962E460D7300A30875 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E1A3C52DF98B95001EEA27 /* Assets.xcassets */; };
 		D7552E972E460D7300A30875 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E1A3B22DF98B95001EEA27 /* Colors.xcassets */; };
 		D7552E992E46165800A30875 /* NumberBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7552E982E46165800A30875 /* NumberBadge.swift */; };
@@ -226,10 +234,12 @@
 		D71FD4982E2E3ED5000E43A5 /* NewIssueIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueIntent.swift; sourceTree = "<group>"; };
 		D71FD49A2E2E53A8000E43A5 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		D71FD49D2E2FA5F0000E43A5 /* CustomStringConvertible-debugLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomStringConvertible-debugLog.swift"; sourceTree = "<group>"; };
+		D72C5CFF2E55D9DE00360BE5 /* MyUnifiedLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUnifiedLogger.swift; sourceTree = "<group>"; };
 		D73A5C182DF99D0E007BE703 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		D73C94C72E460BC10082B3E9 /* UPAWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UPAWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D73E62852E054AD200AF4383 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		D73E62872E054F7E00AF4383 /* IssueRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueRowViewModel.swift; sourceTree = "<group>"; };
+		D7478FAF2E4F79E8007ACD51 /* TriggerSmartBreakpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggerSmartBreakpoint.swift; sourceTree = "<group>"; };
 		D7552E982E46165800A30875 /* NumberBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberBadge.swift; sourceTree = "<group>"; };
 		D7552E9B2E4627C500A30875 /* NewIssueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueButton.swift; sourceTree = "<group>"; };
 		D7552E9E2E462AC200A30875 /* IssueRowWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueRowWatch.swift; sourceTree = "<group>"; };
@@ -410,12 +420,15 @@
 			path = Fixtures;
 			sourceTree = "<group>";
 		};
-		D71FD49C2E2FA5DE000E43A5 /* Helpers */ = {
+		D72C5CFE2E55D8A100360BE5 /* Debugging */ = {
 			isa = PBXGroup;
 			children = (
+				D7478FAF2E4F79E8007ACD51 /* TriggerSmartBreakpoint.swift */,
 				D71FD49D2E2FA5F0000E43A5 /* CustomStringConvertible-debugLog.swift */,
+				D7552EA42E49EC4000A30875 /* DataController-DebugPrint.swift */,
+				D72C5CFF2E55D9DE00360BE5 /* MyUnifiedLogger.swift */,
 			);
-			path = Helpers;
+			path = Debugging;
 			sourceTree = "<group>";
 		};
 		D73A5C132DF98DA4007BE703 /* Configuration */ = {
@@ -554,7 +567,6 @@
 			isa = PBXGroup;
 			children = (
 				D7659B452E40CAE100B47CAE /* PlatformAdjustments */,
-				D71FD49C2E2FA5DE000E43A5 /* Helpers */,
 				D77DEFA42E14045A00007EFE /* Store */,
 				D73A5C142DF99318007BE703 /* Filters */,
 				D73A5C152DF99321007BE703 /* Issues */,
@@ -565,7 +577,7 @@
 				D73A5C132DF98DA4007BE703 /* Configuration */,
 				D7E1A3D42DF98B95001EEA27 /* UltimatePortfolioApp.swift */,
 				D7E1A3C72DF98B95001EEA27 /* DataController.swift */,
-				D7552EA42E49EC4000A30875 /* DataController-DebugPrint.swift */,
+				D72C5CFE2E55D8A100360BE5 /* Debugging */,
 				D7686C652E3237F6006EF993 /* DataController-Awards.swift */,
 				D77DEFA52E1429A600007EFE /* DataController-Notifications.swift */,
 				D77DEFA72E142A0100007EFE /* DataController-StoreKit.swift */,
@@ -1047,12 +1059,14 @@
 				D73C94D82E460CE50082B3E9 /* DataController.swift in Sources */,
 				D73C94D92E460CE50082B3E9 /* NoIssueView.swift in Sources */,
 				D73C94DA2E460CE50082B3E9 /* SidebarViewToolbar.swift in Sources */,
+				D72C5D022E55D9DE00360BE5 /* MyUnifiedLogger.swift in Sources */,
 				D73C94DB2E460CE50082B3E9 /* ContentView.swift in Sources */,
 				D73C94DC2E460CE50082B3E9 /* NewIssueIntent.swift in Sources */,
 				D7552EA32E462DEF00A30875 /* ToolbarItemPlacement.swift in Sources */,
 				D73C94DD2E460CE50082B3E9 /* IssueRow.swift in Sources */,
 				D73C94DE2E460CE50082B3E9 /* TagsMenuView.swift in Sources */,
 				D73C94DF2E460CE50082B3E9 /* DataController-Awards.swift in Sources */,
+				D7478FB02E4F79E8007ACD51 /* TriggerSmartBreakpoint.swift in Sources */,
 				D7552E9D2E4627C500A30875 /* NewIssueButton.swift in Sources */,
 				D73C94E02E460CE50082B3E9 /* Tag-CoreDataHelpers.swift in Sources */,
 				D73C94E12E460CE50082B3E9 /* DataController-Notifications.swift in Sources */,
@@ -1090,11 +1104,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D72C5D002E55D9DE00360BE5 /* MyUnifiedLogger.swift in Sources */,
 				D7552EA72E49EC4000A30875 /* DataController-DebugPrint.swift in Sources */,
 				D7686C612E323656006EF993 /* DataController.swift in Sources */,
 				D731DC592E323C0B0059D776 /* Bundle-Decodable.swift in Sources */,
 				D7686C682E323AC4006EF993 /* Award.swift in Sources */,
 				D7686C672E3237F6006EF993 /* DataController-Awards.swift in Sources */,
+				D7478FB12E4F79E8007ACD51 /* TriggerSmartBreakpoint.swift in Sources */,
 				D7686C632E323710006EF993 /* DataController-StoreKit.swift in Sources */,
 				D7686C5F2E32362A006EF993 /* Issue-CoreDataHelpers.swift in Sources */,
 				D7686C642E323772006EF993 /* CustomStringConvertible-debugLog.swift in Sources */,
@@ -1123,9 +1139,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7959D502E4358DE001F944B /* DataController-StoreKit.swift in Sources */,
+				D7478FB32E4F79E8007ACD51 /* TriggerSmartBreakpoint.swift in Sources */,
 				D7959D4F2E4358D2001F944B /* DataController.swift in Sources */,
 				D7959D4C2E435899001F944B /* Issue-CoreDataHelpers.swift in Sources */,
 				D7959D552E4359C2001F944B /* CustomStringConvertible-debugLog.swift in Sources */,
+				D72C5D012E55D9DE00360BE5 /* MyUnifiedLogger.swift in Sources */,
 				D7959D4D2E435899001F944B /* Tag-CoreDataHelpers.swift in Sources */,
 				D7552EA82E49EC4000A30875 /* DataController-DebugPrint.swift in Sources */,
 				D7959D4B2E435884001F944B /* Filter.swift in Sources */,
@@ -1142,8 +1160,10 @@
 				D77DEFA82E142A0100007EFE /* DataController-StoreKit.swift in Sources */,
 				D7686C662E3237F6006EF993 /* DataController-Awards.swift in Sources */,
 				D7E1A3E02DF98B95001EEA27 /* Tag-CoreDataHelpers.swift in Sources */,
+				D7478FB22E4F79E8007ACD51 /* TriggerSmartBreakpoint.swift in Sources */,
 				D799920F2E251FC0004B4675 /* AppDelegate.swift in Sources */,
 				D79992112E251FF5004B4675 /* SceneDelegate.swift in Sources */,
+				D72C5D032E55D9DE00360BE5 /* MyUnifiedLogger.swift in Sources */,
 				D7E1A3E12DF98B95001EEA27 /* AwardsView.swift in Sources */,
 				D7E1A3E22DF98B95001EEA27 /* ContentView.swift in Sources */,
 				D7552E9C2E4627C500A30875 /* NewIssueButton.swift in Sources */,

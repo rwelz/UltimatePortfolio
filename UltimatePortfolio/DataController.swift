@@ -228,11 +228,13 @@ class DataController: ObservableObject {
 
     func remoteStoreChanged(_ notification: Notification) {
         do {
+            triggerSchemeDeviceBreakpoint()
+
             try container.viewContext.setQueryGenerationFrom(.current)
             container.viewContext.refreshAllObjects()
 
-            debugPrintIssueCount()
-            debugPrintAllIssuesWithCloudKitInfo()
+            //debugPrintIssueCount()
+            //debugPrintAllIssuesWithCloudKitInfo()
 
             print("🔥 Remote Change Notification erhalten!")
 
@@ -319,6 +321,10 @@ class DataController: ObservableObject {
         request.sortDescriptors = [NSSortDescriptor(key: sortType.rawValue, ascending: sortNewestFirst)]
 
         let allIssues = (try? container.viewContext.fetch(request)) ?? []
+
+        MyUnifiedLogger.logTopIssues(resultSet: allIssues, category: "App")
+        MyUnifiedLogger.logIssuesCount(resultSet: allIssues, category: "App")
+
         return allIssues
     }
 
