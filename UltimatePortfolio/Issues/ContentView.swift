@@ -58,9 +58,11 @@ struct ContentView: View {
         IssueRow(issue: issue)
             .contextMenu {
                 Button("Delete") {
-                    if let index = viewModel.dataController.issuesForSelectedFilter().firstIndex(where: { $0.id == issue.id }) {
-                        viewModel.delete(IndexSet(integer: index))
-                    }
+                    if let index = viewModel.dataController
+                        .issuesForSelectedFilter()
+                        .firstIndex(where: { $0.id == issue.id }) {
+                            viewModel.delete(IndexSet(integer: index))
+                        }
                 }
             }
     #endif

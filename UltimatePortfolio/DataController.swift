@@ -233,7 +233,7 @@ class DataController: ObservableObject {
             try container.viewContext.setQueryGenerationFrom(.current)
             container.viewContext.refreshAllObjects()
 
-            //debugPrintIssueCount()
+            // debugPrintIssueCount()
             //debugPrintAllIssuesWithCloudKitInfo()
 
             print("🔥 Remote Change Notification erhalten!")

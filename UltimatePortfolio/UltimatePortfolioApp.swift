@@ -41,7 +41,6 @@ struct UltimatePortfolioApp: App {
             // Wenn sich dataController ändert, wird WindowGroup { ContentView() }
             // neu geladen
 
-
             // One nice side effect of this change here is that we can remove
             // one special case for visionOS, where we have one path for
             // purchasing StoreKit products on visionOS, and another for the other platforms

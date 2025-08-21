@@ -10,11 +10,11 @@ import SwiftUI
 // MARK: - Flexibler Debugger Breakpoint
 func triggerSchemeDeviceBreakpoint() {
     // 1️⃣ Schemes, für die der Breakpoint gelten soll
-    //let targetSchemes = ["UltimatePortfolio", "AnotherScheme"]
+    // let targetSchemes = ["UltimatePortfolio", "AnotherScheme"]
     let targetSchemes = ["UltimatePortfolio"]
 
     // 2️⃣ Run Destinations / Devices
-    //let targetDevices = ["iPhone 16 Pro Max iOS 18.5", "macOS", "iPhone 15 Pro"]
+    // let targetDevices = ["iPhone 16 Pro Max iOS 18.5", "macOS", "iPhone 15 Pro"]
     let targetDevices = ["iPhone 16 Pro Max iOS 18.5"]
 
     // 3️⃣ Aktuelle Scheme prüfen

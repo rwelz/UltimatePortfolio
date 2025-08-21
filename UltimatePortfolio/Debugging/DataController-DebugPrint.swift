@@ -10,6 +10,7 @@ import CloudKit
 
 extension DataController {
 
+    /// einfacher Fetch Request mit Ausgabe der Größe der Ergebnissmenge
     func debugPrintIssueCount() {
         let context = container.viewContext
         let request: NSFetchRequest<Issue> = Issue.fetchRequest()
@@ -21,6 +22,8 @@ extension DataController {
         }
     }
 
+    /// Fetch Request mit Sortierung der Ergebnissmenge
+    /// und anschliessender Ausgabe der Metadaten.
     /// Gibt alle Issues mit CloudKit-Datenbank-Scope und recordName aus
     func debugPrintAllIssuesWithCloudKitInfo() {
     #if DEBUG
