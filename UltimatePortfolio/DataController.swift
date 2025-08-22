@@ -4,7 +4,6 @@
 //
 //  Created by Robert Welz on 26.04.25.
 //
-
 import CoreData
 import StoreKit
 #if canImport(WidgetKit)
@@ -228,13 +227,18 @@ class DataController: ObservableObject {
 
     func remoteStoreChanged(_ notification: Notification) {
         do {
-            triggerSchemeDeviceBreakpoint()
+            //triggerSchemeDeviceBreakpoint()
+
+            // let name = UIDevice.current.name
+            // print("📱 Device name is: \(name)")
+
+
 
             try container.viewContext.setQueryGenerationFrom(.current)
             container.viewContext.refreshAllObjects()
 
             // debugPrintIssueCount()
-            //debugPrintAllIssuesWithCloudKitInfo()
+            // debugPrintAllIssuesWithCloudKitInfo()
 
             print("🔥 Remote Change Notification erhalten!")
 

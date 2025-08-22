@@ -299,6 +299,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D7438CDA2E573863001FC195 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"UPAWatch-Watch-App-Info.plist",
+			);
+			target = D73C94C62E460BC10082B3E9 /* UPAWatch Watch App */;
+		};
 		D7686C5C2E3233A7006EF993 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -325,7 +332,7 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		D73C94C82E460BC10082B3E9 /* UPAWatch Watch App */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "UPAWatch Watch App"; sourceTree = "<group>"; };
+		D73C94C82E460BC10082B3E9 /* UPAWatch Watch App */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D7438CDA2E573863001FC195 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "UPAWatch Watch App"; sourceTree = "<group>"; };
 		D7686C4C2E3233A7006EF993 /* PortfolioWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D7686C5C2E3233A7006EF993 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, D7959D522E4358EC001F944B /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = PortfolioWidget; sourceTree = "<group>"; };
 		D7959D3B2E43581C001F944B /* PortfolioWidgetMac */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D7959D472E43581D001F944B /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = PortfolioWidgetMac; sourceTree = "<group>"; };
 		D7CCD2262E02CDD7004B081E /* UltimatePortfolioUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = UltimatePortfolioUITests; sourceTree = "<group>"; };
@@ -1455,6 +1462,7 @@
 				DEVELOPMENT_TEAM = 4AZCM9652H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "UPAWatch-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = UPAWatch;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = de.robert.welz.UltimatePortfolio;
@@ -1487,6 +1495,7 @@
 				DEVELOPMENT_TEAM = 4AZCM9652H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "UPAWatch-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = UPAWatch;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = de.robert.welz.UltimatePortfolio;

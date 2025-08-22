@@ -86,6 +86,11 @@
             value = "UltimatePortfolio"
             isEnabled = "YES">
          </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "RUN_DESTINATION"
+            value = "Mac"
+            isEnabled = "YES">
+         </EnvironmentVariable>
       </EnvironmentVariables>
       <StoreKitConfigurationFileReference
          identifier = "../../Configuration.storekit">
