@@ -39,16 +39,6 @@ extension DataController {
         }
     }
 
-#if !os(visionOS)
-    func purchase(_ product: Product) async throws {
-        let result = try await product.purchase()
-
-        if case let .success(validation) = result {
-            try await finalize(validation.payloadValue)
-        }
-    }
-#endif
-
     @MainActor
     func finalize(_ transaction: Transaction) async {
         if transaction.productID == Self.unlockPremiumProductID {
@@ -65,5 +55,7 @@ extension DataController {
 
         try await Task.sleep(for: .seconds(10.2))
         products = try await Product.products(for: [Self.unlockPremiumProductID])
+
+        MyUnifiedLogger.logData(data: products)
     }
 }

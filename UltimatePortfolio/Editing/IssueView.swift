@@ -90,12 +90,8 @@ struct IssueView: View {
         } message: {
             Text("There was a problem setting your notification. Please check you have notifications enabled.")
         }
-        .onChange(of: issue.reminderEnabled) {
-            updateReminder()
-        }
-        .onChange(of: issue.reminderTime) {
-            updateReminder()
-        }
+        .onChange(of: issue.reminderEnabled, updateReminder)
+        .onChange(of: issue.reminderTime, updateReminder)
     }
 
 #if os(iOS)
@@ -126,4 +122,5 @@ struct IssueView: View {
 
 #Preview {
     IssueView(issue: .example)
+        .environmentObject(DataController(inMemory: true))
 }

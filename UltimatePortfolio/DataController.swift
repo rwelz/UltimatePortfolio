@@ -4,9 +4,9 @@
 //
 //  Created by Robert Welz on 26.04.25.
 //
+
 // Die Daten eines Users löscht man im Dashboard mittels "Reset Environment"
 // You delete a user’s data in the dashboard by using ‘Reset Environment’.”
-
 
 import CoreData
 import StoreKit
@@ -89,41 +89,42 @@ class DataController: ObservableObject {
                 container.persistentStoreDescriptions.first?.url = url.appending(path: "Main.sqlite")
             }
         }
+        if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] != "1" {
+            container.viewContext.automaticallyMergesChangesFromParent = true
+            container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
 
-        container.viewContext.automaticallyMergesChangesFromParent = true
-        container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+            // Make sure that we watch iCloud for all changes to make
+            // absolutely sure we keep our local UI in sync when a
+            // remote change happens.
+            container.persistentStoreDescriptions.first?.setOption(
+                true as NSNumber,
+                forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
 
-        // Make sure that we watch iCloud for all changes to make
-        // absolutely sure we keep our local UI in sync when a
-        // remote change happens.
-        container.persistentStoreDescriptions.first?.setOption(
-            true as NSNumber,
-            forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+            // Im visionOS Simulator gibt es diese Notification nicht:
+            // CloudKit mldet keine Änderung und somit wird diese benachrichtigung nicht gesendet
+            // nur bei einem Neustart ( Restart ) der App werden neue Daten aus der Cloud geladen.
+            //        Warum deine visionOS-Simulator-App keine frischen CloudKit-Daten bekommt
+            //            1.    Simulator ≠ echter CloudKit-Zugriff
+            //                  •    Der visionOS-Simulator hat (Stand 2025) keinen echten CloudKit-Zugang.
+            //                  •    Er kann weder in iCloud einloggen noch Live-Push-Notifications empfangen.
+            //                  •    Alles, was er sieht, kommt nur aus der lokalen SQLite-Datenbank,
+            //                         die Core Data für ihn im Simulator-Dateisystem anlegt.
+            //            2.    Push-Mechanismus fehlt
+            //                  •    Unter iOS-Simulator kannst du Debug → Simulate CloudKit Push nutzen,
+            //                       um eine NSPersistentStoreRemoteChange auszulösen.
+            //                  •    Unter visionOS-Simulator gibt es diesen Menüpunkt nicht →
+            //                       keine automatischen Updates aus der Cloud.
 
-        // Im visionOS Simulator gibt es diese Notification nicht:
-        // CloudKit mldet keine Änderung und somit wird diese benachrichtigung nicht gesendet
-        // nur bei einem Neustart ( Restart ) der App werden neue Daten aus der Cloud geladen. 
-//        Warum deine visionOS-Simulator-App keine frischen CloudKit-Daten bekommt
-//            1.    Simulator ≠ echter CloudKit-Zugriff
-//                  •    Der visionOS-Simulator hat (Stand 2025) keinen echten CloudKit-Zugang.
-//                  •    Er kann weder in iCloud einloggen noch Live-Push-Notifications empfangen.
-//                  •    Alles, was er sieht, kommt nur aus der lokalen SQLite-Datenbank,
-//                         die Core Data für ihn im Simulator-Dateisystem anlegt.
-//            2.    Push-Mechanismus fehlt
-//                  •    Unter iOS-Simulator kannst du Debug → Simulate CloudKit Push nutzen,
-//                       um eine NSPersistentStoreRemoteChange auszulösen.
-//                  •    Unter visionOS-Simulator gibt es diesen Menüpunkt nicht →
-//                       keine automatischen Updates aus der Cloud.
+            NotificationCenter.default.addObserver(
+                forName: .NSPersistentStoreRemoteChange,
+                object: container.persistentStoreCoordinator,
+                queue: .main,
+                using: remoteStoreChanged)
 
-        NotificationCenter.default.addObserver(
-            forName: .NSPersistentStoreRemoteChange,
-            object: container.persistentStoreCoordinator,
-            queue: .main,
-            using: remoteStoreChanged)
-
-        if let description = container.persistentStoreDescriptions.first {
-            description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
-            description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+            if let description = container.persistentStoreDescriptions.first {
+                description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+                description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+            }
         }
 
         container.loadPersistentStores { [weak self] _, error in
@@ -230,11 +231,11 @@ class DataController: ObservableObject {
 
     func remoteStoreChanged(_ notification: Notification) {
         do {
+            // let name = UIDevice.current.name
+            // print("📱 Device name is: \(name)")
+
             try container.viewContext.setQueryGenerationFrom(.current)
             container.viewContext.refreshAllObjects()
-
-            debugPrintIssueCount()
-            debugPrintAllIssuesWithCloudKitInfo()
 
             print("🔥 Remote Change Notification erhalten!")
 
@@ -321,6 +322,10 @@ class DataController: ObservableObject {
         request.sortDescriptors = [NSSortDescriptor(key: sortType.rawValue, ascending: sortNewestFirst)]
 
         let allIssues = (try? container.viewContext.fetch(request)) ?? []
+
+        MyUnifiedLogger.logTopIssues(resultSet: allIssues, loglevel: .notice)
+        MyUnifiedLogger.logIssuesCount(resultSet: allIssues, loglevel: .notice)
+
         return allIssues
     }
 

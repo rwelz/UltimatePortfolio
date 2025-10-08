@@ -20,19 +20,17 @@ struct ContentView: View {
     private let newIssueActivity = "de.robert.welz.UltimatePortfolio.newIssue"
 
     var body: some View {
+        let issues = viewModel.dataController.issuesForSelectedFilter()
+
         List(selection: $viewModel.selectedIssue) {
-            ForEach(viewModel.dataController.issuesForSelectedFilter()) { issue in
-                #if os(watchOS)
-                IssueRowWatch(issue: issue)
-                #else
-                IssueRow(issue: issue)
-                #endif
+            ForEach(issues) { issue in
+                issueRow(for: issue)
             }
             .onDelete(perform: viewModel.delete)
         }
         .macFrame(minWidth: 220)
         .navigationTitle("Issues")
-#if !os(watchOS)
+    #if !os(watchOS)
         .searchable(
             text: $viewModel.filterText,
             tokens: $viewModel.filterTokens,
@@ -41,15 +39,31 @@ struct ContentView: View {
         ) { tag in
             Text(tag.tagName)
         }
-        #endif
+    #endif
         .toolbar(content: ContentViewToolbar.init)
-        // .onAppear(perform: askForReview)
         .onAppear {
             askForReview()
-            // dataController.debugPrintIssueCount()
-            // dataController.debugPrintAllIssuesWithCloudKitInfo()
         }
         .onOpenURL(perform: viewModel.openURL)
+    }
+
+    // MARK: - Zeilenansicht als eigene Funktion
+    @ViewBuilder
+    private func issueRow(for issue: Issue) -> some View {
+    #if os(watchOS)
+        IssueRowWatch(issue: issue)
+    #else
+        IssueRow(issue: issue)
+            .contextMenu {
+                Button("Delete") {
+                    if let index = viewModel.dataController
+                        .issuesForSelectedFilter()
+                        .firstIndex(where: { $0.id == issue.id }) {
+                            viewModel.delete(IndexSet(integer: index))
+                        }
+                }
+            }
+    #endif
     }
 
     init(dataController: DataController) {
@@ -57,8 +71,8 @@ struct ContentView: View {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
 
-// TODO: gibt es einen Ersatz für diese Funktion in macOS, oder kann ich die auf macOS ersatzlos streichen?
-    #if os(iOS)
+    // TODO: gibt es einen Ersatz für diese Funktion in macOS, oder kann ich die auf macOS ersatzlos streichen?
+#if os(iOS)
     func scene(
         _ scene: UIScene,
         willConnectTo session: UISceneSession,
@@ -70,7 +84,7 @@ struct ContentView: View {
             }
         }
     }
-    #endif
+#endif
 
     func askForReview() {
 #if !os(watchOS)
@@ -83,4 +97,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView(dataController: .preview)
+        .environmentObject(DataController(inMemory: true))
 }

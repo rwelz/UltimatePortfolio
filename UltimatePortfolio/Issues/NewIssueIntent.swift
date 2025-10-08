@@ -8,7 +8,7 @@
 import Foundation
 
 import AppIntents
-import SwiftUICore
+import SwiftUI
 
 struct NewIssueIntent: AppIntent {
 
