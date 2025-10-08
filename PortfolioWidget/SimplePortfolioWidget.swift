@@ -40,8 +40,8 @@ struct SimpleProvider: TimelineProvider {
         let request = dataController.fetchRequestForTopIssues(count: 1)
         let result:[Issue]  = dataController.results(for: request)
 
-        MyUnifiedLogger.logTopIssues(resultSet: result, category: "Widget")
-        MyUnifiedLogger.logIssuesCount(resultSet: result, category: "Widget")
+        MyUnifiedLogger.logTopIssues(resultSet: result, loglevel: .notice)
+        MyUnifiedLogger.logIssuesCount(resultSet: result, loglevel: .notice)
 
         return result
     }

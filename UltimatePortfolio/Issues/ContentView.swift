@@ -43,8 +43,6 @@ struct ContentView: View {
         .toolbar(content: ContentViewToolbar.init)
         .onAppear {
             askForReview()
-            // dataController.debugPrintIssueCount()
-            // dataController.debugPrintAllIssuesWithCloudKitInfo()
         }
         .onOpenURL(perform: viewModel.openURL)
     }

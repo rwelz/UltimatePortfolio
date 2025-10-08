@@ -227,18 +227,11 @@ class DataController: ObservableObject {
 
     func remoteStoreChanged(_ notification: Notification) {
         do {
-            //triggerSchemeDeviceBreakpoint()
-
             // let name = UIDevice.current.name
             // print("📱 Device name is: \(name)")
 
-
-
             try container.viewContext.setQueryGenerationFrom(.current)
             container.viewContext.refreshAllObjects()
-
-            // debugPrintIssueCount()
-            // debugPrintAllIssuesWithCloudKitInfo()
 
             print("🔥 Remote Change Notification erhalten!")
 
@@ -326,8 +319,8 @@ class DataController: ObservableObject {
 
         let allIssues = (try? container.viewContext.fetch(request)) ?? []
 
-        MyUnifiedLogger.logTopIssues(resultSet: allIssues, category: "App")
-        MyUnifiedLogger.logIssuesCount(resultSet: allIssues, category: "App")
+        MyUnifiedLogger.logTopIssues(resultSet: allIssues, loglevel: .notice)
+        MyUnifiedLogger.logIssuesCount(resultSet: allIssues, loglevel: .notice)
 
         return allIssues
     }

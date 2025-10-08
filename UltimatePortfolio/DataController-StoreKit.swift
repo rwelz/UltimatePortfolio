@@ -55,5 +55,7 @@ extension DataController {
 
         try await Task.sleep(for: .seconds(10.2))
         products = try await Product.products(for: [Self.unlockPremiumProductID])
+
+        MyUnifiedLogger.logData(data: products)
     }
 }
