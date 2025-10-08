@@ -55,7 +55,8 @@ Final tweaks:
 41. Creating a second widget
 42. Optimizing for macOS
 43. Optimizing for watchOS
-
+44. Chap 44 finished. Optimizing for visionOS - dropped since I don't own such a device.
+44b. Added logging class for all platforms.
 —————————
 
 
