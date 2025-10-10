@@ -132,7 +132,9 @@ struct ComplexPortfolioWidget: Widget {
 
 #Preview(as: .systemSmall) {
     ComplexPortfolioWidget()
+
 } timeline: {
     ComplexEntry(date: .now, issues: [.example])
     ComplexEntry(date: .now, issues: [.example])
 }
+

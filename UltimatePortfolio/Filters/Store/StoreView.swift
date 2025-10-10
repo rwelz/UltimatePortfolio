@@ -77,7 +77,6 @@ struct StoreView: View {
                             .buttonStyle(.plain)
                         }
 
-
                     case .error:
                         Text("Sorry, there was an error loading our store.")
                             .padding(.top, 50)
@@ -111,7 +110,7 @@ struct StoreView: View {
         } message: {
             Text("""
             You can't purchase the premium unlock because in-app purchases are disabled on this device.
-            
+
             Please ask whomever manages your device for assistance.
             """)
         }

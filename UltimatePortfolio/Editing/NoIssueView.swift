@@ -18,7 +18,15 @@ struct NoIssueView: View {
         Button("New Issue", action: dataController.newIssue)
     }
 }
-#Preview {
-    NoIssueView()
-        .environmentObject(DataController(inMemory: true))
+
+// #Preview {
+//    NoIssueView()
+//        .environmentObject(DataController(inMemory: true))
+// }
+
+struct NoIssueView_Previews: PreviewProvider {
+   static var previews: some View {
+       NoIssueView()
+           .environmentObject(DataController(inMemory: true))
+   }
 }

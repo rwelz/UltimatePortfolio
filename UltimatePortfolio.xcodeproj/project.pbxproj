@@ -30,6 +30,9 @@
 		D7552E9C2E4627C500A30875 /* NewIssueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7552E9B2E4627C500A30875 /* NewIssueButton.swift */; };
 		D7552EA22E462DEF00A30875 /* ToolbarItemPlacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7552EA12E462DEF00A30875 /* ToolbarItemPlacement.swift */; };
 		D7560C6B2E12BB4D00770FCF /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = D7560C6A2E12BB4D00770FCF /* Configuration.storekit */; };
+		D75D22FC2E97CECD005A1169 /* DataController-Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75D22FB2E97CEC2005A1169 /* DataController-Testing.swift */; };
+		D75D22FD2E97D04A005A1169 /* DataController-Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75D22FB2E97CEC2005A1169 /* DataController-Testing.swift */; };
+		D75D22FE2E97D04A005A1169 /* DataController-Testing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75D22FB2E97CEC2005A1169 /* DataController-Testing.swift */; };
 		D7659B472E40CB0D00B47CAE /* InlineNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7659B462E40CB0D00B47CAE /* InlineNavigationBar.swift */; };
 		D7686C492E3233A7006EF993 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7686C482E3233A7006EF993 /* WidgetKit.framework */; };
 		D7686C4B2E3233A7006EF993 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7686C4A2E3233A7006EF993 /* SwiftUI.framework */; };
@@ -220,6 +223,7 @@
 		D7552E9E2E462AC200A30875 /* IssueRowWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueRowWatch.swift; sourceTree = "<group>"; };
 		D7552EA12E462DEF00A30875 /* ToolbarItemPlacement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarItemPlacement.swift; sourceTree = "<group>"; };
 		D7560C6A2E12BB4D00770FCF /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = SOURCE_ROOT; };
+		D75D22FB2E97CEC2005A1169 /* DataController-Testing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataController-Testing.swift"; sourceTree = "<group>"; };
 		D7659B462E40CB0D00B47CAE /* InlineNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InlineNavigationBar.swift; sourceTree = "<group>"; };
 		D7686C462E3233A7006EF993 /* PortfolioWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PortfolioWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7686C482E3233A7006EF993 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -278,6 +282,7 @@
 		D7E1A3D32DF98B95001EEA27 /* UltimatePortfolio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UltimatePortfolio.entitlements; sourceTree = "<group>"; };
 		D7E1A3D42DF98B95001EEA27 /* UltimatePortfolioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UltimatePortfolioApp.swift; sourceTree = "<group>"; };
 		D7E1A3D62DF98B95001EEA27 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		D7F5DFD82E97AA220040E1E3 /* Notizen.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Notizen.txt; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -588,12 +593,14 @@
 				D72C5CFE2E55D8A100360BE5 /* Debugging */,
 				D7E1A3D42DF98B95001EEA27 /* UltimatePortfolioApp.swift */,
 				D7E1A3C72DF98B95001EEA27 /* DataController.swift */,
+				D75D22FB2E97CEC2005A1169 /* DataController-Testing.swift */,
 				D7686C652E3237F6006EF993 /* DataController-Awards.swift */,
 				D77DEFA52E1429A600007EFE /* DataController-Notifications.swift */,
 				D77DEFA72E142A0100007EFE /* DataController-StoreKit.swift */,
 				D7E1A3B22DF98B95001EEA27 /* Colors.xcassets */,
 				D7E1A3C52DF98B95001EEA27 /* Assets.xcassets */,
 				D73A5C182DF99D0E007BE703 /* README.md */,
+				D7F5DFD82E97AA220040E1E3 /* Notizen.txt */,
 			);
 			path = UltimatePortfolio;
 			sourceTree = "<group>";
@@ -1321,6 +1328,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D75D22FD2E97D04A005A1169 /* DataController-Testing.swift in Sources */,
 				D72C5D002E55D9DE00360BE5 /* MyUnifiedLogger.swift in Sources */,
 				D7686C612E323656006EF993 /* DataController.swift in Sources */,
 				D731DC592E323C0B0059D776 /* Bundle-Decodable.swift in Sources */,
@@ -1380,6 +1388,7 @@
 				D7959D4C2E435899001F944B /* Issue-CoreDataHelpers.swift in Sources */,
 				D7959D552E4359C2001F944B /* CustomStringConvertible-debugLog.swift in Sources */,
 				D72C5D012E55D9DE00360BE5 /* MyUnifiedLogger.swift in Sources */,
+				D75D22FE2E97D04A005A1169 /* DataController-Testing.swift in Sources */,
 				D7959D4D2E435899001F944B /* Tag-CoreDataHelpers.swift in Sources */,
 				D7959D4B2E435884001F944B /* Filter.swift in Sources */,
 				D7959D4E2E4358B9001F944B /* Model.xcdatamodeld in Sources */,
@@ -1421,6 +1430,7 @@
 				D7E1A3EC2DF98B95001EEA27 /* UserFilterRow.swift in Sources */,
 				D7E1A3ED2DF98B95001EEA27 /* Award.swift in Sources */,
 				D7E1A3EE2DF98B95001EEA27 /* DataController.swift in Sources */,
+				D75D22FC2E97CECD005A1169 /* DataController-Testing.swift in Sources */,
 				D77DEFA62E1429A600007EFE /* DataController-Notifications.swift in Sources */,
 				D7959D572E436AB7001F944B /* MacFrame.swift in Sources */,
 				D71FD4992E2E3ED5000E43A5 /* NewIssueIntent.swift in Sources */,
@@ -1532,7 +1542,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.4;
@@ -1574,7 +1584,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.4;
@@ -1616,7 +1626,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.4;
@@ -1658,7 +1668,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.4;
@@ -1689,7 +1699,7 @@
 				INFOPLIST_FILE = PortfolioWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PortfolioWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1720,7 +1730,7 @@
 				INFOPLIST_FILE = PortfolioWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PortfolioWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1754,6 +1764,7 @@
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1792,6 +1803,7 @@
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1891,6 +1903,7 @@
 				DEVELOPMENT_TEAM = 4AZCM9652H;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_KEY_CFBundleDisplayName = TestLoggingWatch;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.robert.welz.TestLoggingWatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1909,6 +1922,7 @@
 				DEVELOPMENT_TEAM = 4AZCM9652H;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_KEY_CFBundleDisplayName = TestLoggingWatch;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.robert.welz.TestLoggingWatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1928,7 +1942,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4AZCM9652H;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.robert.welz.UltimatePortfolioTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1948,7 +1962,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4AZCM9652H;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.robert.welz.UltimatePortfolioTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2174,7 +2188,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
@@ -2220,7 +2234,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
@@ -2246,7 +2260,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4AZCM9652H;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.robert.welz.UltimatePortfolioUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2265,7 +2279,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4AZCM9652H;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = de.robert.welz.UltimatePortfolioUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

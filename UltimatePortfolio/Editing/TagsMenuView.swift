@@ -49,7 +49,14 @@ struct TagsMenuView: View {
     }
 }
 
-#Preview {
-    TagsMenuView(issue: .example)
-        .environmentObject(DataController(inMemory: true))
+// #Preview {
+//    TagsMenuView(issue: .example)
+//        .environmentObject(DataController(inMemory: true))
+// }
+
+struct TagsMenuView_Previews: PreviewProvider {
+   static var previews: some View {
+       TagsMenuView(issue: .example)
+           .environmentObject(DataController(inMemory: true))
+   }
 }

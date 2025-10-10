@@ -13,7 +13,6 @@ struct StoreView: View {
         case loading, loaded, error
     }
     @Environment(\.purchase) var purchaseAction
-
     @EnvironmentObject var dataController: DataController
     @Environment(\.dismiss) var dismiss
 
@@ -99,10 +98,6 @@ struct StoreView: View {
                 .padding(.top, 20)
             }
         }
-        .onChange(of: dataController.fullVersionUnlocked, checkForPurchase)
-        .task {
-            await load()
-        }
         .alert("In-app purchases are disabled", isPresented: $showingPurchaseError) {
         } message: {
             Text("""
@@ -110,6 +105,10 @@ struct StoreView: View {
 
             Please ask whomever manages your device for assistance.
             """)
+        }
+        .onChange(of: dataController.fullVersionUnlocked, checkForPurchase)
+        .task {
+            await load()
         }
     }
     func checkForPurchase() {
