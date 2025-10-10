@@ -7,6 +7,7 @@
 import StoreKit
 #if canImport(WidgetKit)
 import WidgetKit
+import CoreData
 #endif
 
 enum SortType: String {
