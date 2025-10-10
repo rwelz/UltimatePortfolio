@@ -10,6 +10,8 @@ import Foundation
 extension ContentView {
     @dynamicMemberLookup
     class ViewModel: ObservableObject {
+        // Explicit publisher to satisfy ObservableObject and allow manual change emission
+
         // fixed the App Store review message being shown time and time again
         // once our initial check for eligibility passes.
         // This only happens in development mode,
@@ -48,6 +50,7 @@ extension ContentView {
             get { dataController[keyPath: keyPath] }
             // set { dataController[keyPath: keyPath] = newValue }
             set {
+                    self.objectWillChange.send()
                     // 🔐 Sicherer Setzen mit Delay (nur bei @Published empfohlen!)
                     DispatchQueue.main.async {
                         self.dataController[keyPath: keyPath] = newValue

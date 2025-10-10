@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+
 #if os(iOS)
 class SceneDelegate: NSObject, UIWindowSceneDelegate {
 
