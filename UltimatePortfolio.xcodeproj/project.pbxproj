@@ -294,6 +294,7 @@
 		D78464492E951BC800D655D0 /* Optional-helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional-helpers.swift"; sourceTree = "<group>"; };
 		D78464972E96629600D655D0 /* TestLoggingWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestLoggingWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D784649C2E96629600D655D0 /* TestLoggingWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TestLoggingWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D791029D2E9A84EE0050CD88 /* Notizen.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Notizen.txt; sourceTree = SOURCE_ROOT; };
 		D792285A2DFAD9F500BCD623 /* UltimatePortfolioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UltimatePortfolioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D79563FC2DFD8248005FE487 /* DevelopmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopmentTests.swift; sourceTree = "<group>"; };
 		D7959D382E43581C001F944B /* PortfolioWidgetMacExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PortfolioWidgetMacExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -661,6 +662,7 @@
 				D7E1A3B22DF98B95001EEA27 /* Colors.xcassets */,
 				D7E1A3C52DF98B95001EEA27 /* Assets.xcassets */,
 				D73A5C182DF99D0E007BE703 /* README.md */,
+				D791029D2E9A84EE0050CD88 /* Notizen.txt */,
 			);
 			path = UltimatePortfolio;
 			sourceTree = "<group>";
