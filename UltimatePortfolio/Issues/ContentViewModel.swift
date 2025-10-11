@@ -26,14 +26,14 @@ extension ContentView {
         var shouldRequestReview: Bool {
             if dataController.count(for: Tag.fetchRequest()) >= 5 {
                 let reviewRequestCount = UserDefaults.standard.integer(forKey: "reviewRequestCount")
-                UserDefaults.standard.set(reviewRequestCount + 1, forKey: "reviewRequestCount")
-
-                if reviewRequestCount.isMultiple(of: 10) {
-                    return true
-                }
+                return reviewRequestCount.isMultiple(of: 10)
             }
-
             return false
+        }
+
+        func recordDidRequestReview() {
+            let reviewRequestCount = UserDefaults.standard.integer(forKey: "reviewRequestCount")
+            UserDefaults.standard.set(reviewRequestCount + 1, forKey: "reviewRequestCount")
         }
 
         var dataController: DataController
@@ -46,16 +46,33 @@ extension ContentView {
             dataController[keyPath: keyPath]
         }
 
+//        subscript<Value>(dynamicMember keyPath: ReferenceWritableKeyPath<DataController, Value>) -> Value {
+//            get { dataController[keyPath: keyPath] }
+//            // set { dataController[keyPath: keyPath] = newValue }
+//            set {
+//                    self.objectWillChange.send()
+//                    // 🔐 Sicherer Setzen mit Delay (nur bei @Published empfohlen!)
+//                    DispatchQueue.main.async {
+//                        self.dataController[keyPath: keyPath] = newValue
+//                    }
+//                }
+//        }
+
+        @MainActor
         subscript<Value>(dynamicMember keyPath: ReferenceWritableKeyPath<DataController, Value>) -> Value {
             get { dataController[keyPath: keyPath] }
-            // set { dataController[keyPath: keyPath] = newValue }
             set {
-                    self.objectWillChange.send()
-                    // 🔐 Sicherer Setzen mit Delay (nur bei @Published empfohlen!)
-                    DispatchQueue.main.async {
-                        self.dataController[keyPath: keyPath] = newValue
-                    }
+                // Avoid publishing during view updates by deferring mutation.
+                let oldValue = dataController[keyPath: keyPath]
+                // Skip if no change to reduce unnecessary publishes.
+                if let lhs = oldValue as? AnyHashable, let rhs = newValue as? AnyHashable, lhs == rhs {
+                    return
                 }
+                MainActor.assumeIsolated { }
+                Task { @MainActor in
+                    dataController[keyPath: keyPath] = newValue
+                }
+            }
         }
 
         func delete(_ offsets: IndexSet) {
