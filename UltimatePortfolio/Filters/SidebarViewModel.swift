@@ -32,8 +32,14 @@ extension SidebarView {
             self.dataController = dataController
 
             let request = Tag.fetchRequest()
-            request.sortDescriptors = [NSSortDescriptor(keyPath: \Tag.name, ascending: true)]
-
+            // request.sortDescriptors = [NSSortDescriptor(keyPath: \Tag.name, ascending: true)]
+            request.sortDescriptors = [
+                NSSortDescriptor(
+                    key: "name",
+                    ascending: true,
+                    selector: #selector(NSString.localizedStandardCompare(_:))
+                )
+            ]
             tagsController = NSFetchedResultsController(
                 fetchRequest: request,
                 managedObjectContext: dataController.container.viewContext,

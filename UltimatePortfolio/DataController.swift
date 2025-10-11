@@ -248,7 +248,11 @@ class DataController: ObservableObject {
         let allTagsSet = Set(allTags)
         let difference = allTagsSet.symmetricDifference(issue.issueTags)
 
-        return difference.sorted()
+        return difference.sorted { lhs, rhs in
+            let left = lhs.name ?? ""
+            let right = rhs.name ?? ""
+            return left.localizedStandardCompare(right) == .orderedAscending
+        }
     }
 
     func queueSave() {
