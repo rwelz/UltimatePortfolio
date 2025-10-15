@@ -13,11 +13,12 @@ import SwiftUI
 @main
 struct UltimatePortfolioApp: App {
     @StateObject var dataController = DataController() // @Published und @StateObject gehören zusammen
-
     @Environment(\.scenePhase) var scenePhase
-#if os(iOS)
+
+    #if os(iOS)
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     #endif
+
     @ObservedObject var manager = Manager.shared
     @State private var preferredColumn = NavigationSplitViewColumn.sidebar
 
@@ -45,44 +46,37 @@ struct UltimatePortfolioApp: App {
             // one special case for visionOS, where we have one path for
             // purchasing StoreKit products on visionOS, and another for the other platforms
             // in DataController-StoreKit.swift
-
-//            .onChange(of: scenePhase, initial: true) { _, newPhase in
-//                if newPhase != .active {
-//                    dataController.save()
-//                }
-//            }
-
             .onChange(of: scenePhase) {
                 if scenePhase != .active {
                     dataController.save()
                 }
             }
 
-#if canImport(CoreSpotlight)
+            #if canImport(CoreSpotlight)
             .onContinueUserActivity(CSSearchableItemActionType, perform: loadSpotlightItem)
-#endif
-            .onReceive(manager.$showView) { newValue in
-                print("manager.showView View geändert: \(newValue)")
-                if newValue {
-                    preferredColumn = .content
-                    resetShowView()
-                }
-            }
+            #endif
+             // .onReceive(manager.$showView) { newValue in
+             //   print("manager.showView View geändert: \(newValue)")
+             //   if newValue {
+             //       preferredColumn = .content
+             //       resetShowView()
+             //   }
+             // } // xxx
         }
     }
 
-#if canImport(CoreSpotlight)
+    #if canImport(CoreSpotlight)
     func loadSpotlightItem(_ userActivity: NSUserActivity) {
         if let uniqueIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
             dataController.selectedIssue = dataController.issue(with: uniqueIdentifier)
             dataController.selectedFilter = .all
         }
     }
-#endif
+    #endif
 
-    func resetShowView() {
-        if Manager.shared.showView == true {
-            Manager.shared.showView = false
-        }
-    }
+    // func resetShowView() {
+    //    if Manager.shared.showView == true {
+    //        Manager.shared.showView = false
+    //    }
+    // }
 }

@@ -25,7 +25,7 @@ struct SidebarView: View {
 //                    NavigationLink(value: filter) {
 //                        Label(LocalizedStringKey(filter.name), systemImage: filter.icon)
 //                    }
-//                }
+//                } // xxx
             }
             Section("Tags") {
                 ForEach(viewModel.tagFilters) { filter in
@@ -35,9 +35,7 @@ struct SidebarView: View {
             }
         }
         .macFrame(minWidth: 220)
-        .toolbar {
-            SidebarViewToolbar()
-        }
+        .toolbar(content: SidebarViewToolbar.init)
         .alert("Rename tag", isPresented: $viewModel.renamingTag) {
             Button("OK", action: viewModel.completeRename)
             Button("Cancel", role: .cancel) { }
@@ -47,6 +45,12 @@ struct SidebarView: View {
     }
 }
 
-#Preview {
-    SidebarView(dataController: .preview)
+struct SidebarView_Previews: PreviewProvider {
+    static var previews: some View {
+        SidebarView(dataController: .preview)
+    }
 }
+
+//  #Preview {
+//    SidebarView(dataController: .preview)
+// }

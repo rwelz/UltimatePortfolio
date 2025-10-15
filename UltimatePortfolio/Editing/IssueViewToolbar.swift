@@ -11,43 +11,31 @@ import CoreHaptics
 import SwiftUI
 
 struct IssueViewToolbar: View {
-    @ObservedObject var issue: Issue
     @EnvironmentObject var dataController: DataController
-
-#if canImport(CoreHaptics)
+    @ObservedObject var issue: Issue
+    #if canImport(CoreHaptics)
     @State private var engine = try? CHHapticEngine()
-#endif
+    #endif
+
     var openCloseButtonText: LocalizedStringKey {
         issue.completed ? "Re-open Issue" : "Close Issue"
     }
 
     var body: some View {
-#if !os(watchOS)
+        #if !os(watchOS)
         Menu {
-            // Button {
-            //    UIPasteboard.general.string = issue.title
-            // } label: {
-            //    Label("Copy Issue Title", systemImage: "doc.on.doc")
-            // }
-            // diffrent button initializer
             Button("Copy Issue Title", systemImage: "doc.on.doc", action: copyToClipboard)
 
-            // einfache variante, nachdem .sensoryFeedback nicht läuft
-//            Button {
-//                issue.completed.toggle()
-//                dataController.save()
-//
-//                if issue.completed {
-//                    UINotificationFeedbackGenerator().notificationOccurred(.success)
-//                }
-//            } label: {
-//                Label(openCloseButtonText, systemImage: "bubble.left.and.exclamationmark.bubble.right")
-//            }
-
-            // fortgeschrittene ( advanced ) method
             Button(action: toggleCompleted) {
                 Label(openCloseButtonText, systemImage: "bubble.left.and.exclamationmark.bubble.right")
             }
+//            .sensoryFeedback(trigger: issue.completed) { oldValue, newValue in
+//                if newValue {
+//                    .success
+//                } else {
+//                    nil
+//                }
+//            }
 
             // habe .sensoryFeedback nicht zum laufen gebracht, vielleicht ein Bug in SwiftUI?
             // .sensoryFeedback(trigger: issue.completed) { oldValue, newValue in
@@ -71,7 +59,8 @@ struct IssueViewToolbar: View {
             Divider()
 
             Section("Tags") {
-                TagsMenuView(issue: issue) // Can be added to menu, handled automatically by SwiftUI - its a trick
+               // Can be added to menu, handled automatically by SwiftUI - its a trick
+                TagsMenuView(issue: issue)
             }
         } label: {
             Label("Actions", systemImage: "ellipsis.circle")
@@ -79,29 +68,12 @@ struct IssueViewToolbar: View {
         #endif
     }
 
-//    func toggleCompleted() {
-//        issue.completed.toggle()
-//        dataController.save()
-//
-//        if issue.completed {
-//            UINotificationFeedbackGenerator().notificationOccurred(.success)
-//        }
-//    }
-
-    func copyToClipboard() {
-        #if os(iOS)
-        UIPasteboard.general.string = issue.title
-        #elseif os(macOS)
-        NSPasteboard.general.prepareForNewContents()
-        NSPasteboard.general.setString(issue.issueTitle, forType: .string)
-        #endif
-    }
-
-    // advanced haptics: import CoreHaptics
     func toggleCompleted() {
         issue.completed.toggle()
         dataController.save()
-#if canImport(CoreHaptics)
+
+	// advanced haptics: import CoreHaptics
+        #if canImport(CoreHaptics)
         if issue.completed {
             do {
                 try engine?.start()
@@ -138,11 +110,27 @@ struct IssueViewToolbar: View {
                 // playing haptics didn't work, but that's okay
             }
         }
-#endif
+        #endif
+    }
+
+    func copyToClipboard() {
+        #if os(iOS)
+        UIPasteboard.general.string = issue.title
+        #elseif os(macOS)
+        NSPasteboard.general.prepareForNewContents()
+        NSPasteboard.general.setString(issue.issueTitle, forType: .string)
+        #endif
     }
 }
 
-#Preview {
-    IssueViewToolbar(issue: Issue.example)
-        .environmentObject(DataController(inMemory: true))
+struct IssueViewToolbar_Previews: PreviewProvider {
+    static var previews: some View {
+        IssueViewToolbar(issue: Issue.example)
+            .environmentObject(DataController(inMemory: true))
     }
+}
+
+// #Preview {
+//    IssueViewToolbar(issue: Issue.example)
+//        .environmentObject(DataController(inMemory: true))
+//    }

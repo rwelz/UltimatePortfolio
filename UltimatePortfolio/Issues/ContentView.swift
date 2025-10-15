@@ -8,29 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
-
-    @StateObject var viewModel: ViewModel
-
-    @EnvironmentObject var dataController: DataController
-
-#if !os(watchOS)
+    #if !os(watchOS)
     @Environment(\.requestReview) var requestReview
-#endif
+    #endif
+    @StateObject var viewModel: ViewModel
+    // @EnvironmentObject var dataController: DataController
 
     private let newIssueActivity = "de.robert.welz.UltimatePortfolio.newIssue"
 
     var body: some View {
-        let issues = viewModel.dataController.issuesForSelectedFilter()
-
+        // let issues = viewModel.dataController.issuesForSelectedFilter()
         List(selection: $viewModel.selectedIssue) {
-            ForEach(issues) { issue in
-                issueRow(for: issue)
+            // ForEach(issues) { issue in
+            //    issueRow(for: issue)
+            // } // xxx
+            ForEach(viewModel.dataController.issuesForSelectedFilter()) { issue in
+                #if os(watchOS)
+                IssueRowWatch(issue: issue)
+                #else
+                IssueRow(issue: issue)
+                #endif
             }
             .onDelete(perform: viewModel.delete)
         }
         .macFrame(minWidth: 220)
         .navigationTitle("Issues")
-    #if !os(watchOS)
+        #if !os(watchOS)
         .searchable(
             text: $viewModel.filterText,
             tokens: $viewModel.filterTokens,
@@ -39,32 +42,37 @@ struct ContentView: View {
         ) { tag in
             Text(tag.tagName)
         }
-    #endif
+        #endif
         .toolbar(content: ContentViewToolbar.init)
-        .onAppear {
-            askForReview()
-        }
+        .onAppear(perform: askForReview)
         .onOpenURL(perform: viewModel.openURL)
+        .userActivity(newIssueActivity) { activity in
+            #if !os(macOS)
+            activity.isEligibleForPrediction = true
+            #endif
+            activity.title = "New Issue"
+        }
+        .onContinueUserActivity(newIssueActivity, perform: resumeActivity)
     }
 
-    // MARK: - Zeilenansicht als eigene Funktion
-    @ViewBuilder
-    private func issueRow(for issue: Issue) -> some View {
-    #if os(watchOS)
-        IssueRowWatch(issue: issue)
-    #else
-        IssueRow(issue: issue)
-            .contextMenu {
-                Button("Delete") {
-                    if let index = viewModel.dataController
-                        .issuesForSelectedFilter()
-                        .firstIndex(where: { $0.id == issue.id }) {
-                            viewModel.delete(IndexSet(integer: index))
-                        }
-                }
-            }
-    #endif
-    }
+    // MARK: - Zeilenansicht als eigene Funktion // xxx
+    // @ViewBuilder
+    // private func issueRow(for issue: Issue) -> some View {
+    // #if os(watchOS)
+    //    IssueRowWatch(issue: issue)
+    // #else
+    //    IssueRow(issue: issue)
+    //        .contextMenu {
+    //            Button("Delete") {
+    //                if let index = viewModel.dataController
+    //                    .issuesForSelectedFilter()
+    //                    .firstIndex(where: { $0.id == issue.id }) {
+    //                        viewModel.delete(IndexSet(integer: index))
+    //                    }
+    //            }
+    //        }
+    // #endif
+    // } // xxx
 
     init(dataController: DataController) {
         let viewModel = ViewModel(dataController: dataController)
@@ -84,18 +92,27 @@ struct ContentView: View {
             }
         }
     }
-#endif
+#endif // xxx
 
     func askForReview() {
-#if !os(watchOS)
+        #if !os(watchOS)
         if viewModel.shouldRequestReview {
             requestReview()
         }
-#endif
+        #endif
+    }
+    func resumeActivity(_ userActivity: NSUserActivity) {
+        viewModel.dataController.newIssue()
     }
 }
 
-#Preview {
-    ContentView(dataController: .preview)
-        .environmentObject(DataController(inMemory: true))
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView(dataController: .preview)
+    }
 }
+
+// #Preview {
+//    ContentView(dataController: .preview)
+//        .environmentObject(DataController(inMemory: true))
+// }

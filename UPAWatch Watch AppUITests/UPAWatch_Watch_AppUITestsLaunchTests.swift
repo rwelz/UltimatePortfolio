@@ -17,7 +17,7 @@ final class UPAWatch_Watch_AppUITestsLaunchTests: XCTestCase {
         continueAfterFailure = false
     }
 
-    @MainActor
+    @MainActor // xxx
     func testLaunch() throws {
         let app = XCUIApplication()
         app.launch()

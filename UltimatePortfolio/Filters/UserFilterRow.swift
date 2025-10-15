@@ -32,11 +32,18 @@ struct UserFilterRow: View {
                 }
                 .accessibilityElement()
                 .accessibilityLabel(filter.name)
-                .accessibilityHint("\(filter.activeIssuesCount) issues") // internationalized in stringdict file
+		// internationalized in stringdict file
+                .accessibilityHint("\(filter.activeIssuesCount) issues")
         }
     }
 }
 
-#Preview {
-    UserFilterRow(filter: .all, rename: { _ in }, delete: { _ in })
+struct UserFilterRow_Previews: PreviewProvider {
+    static var previews: some View {
+        UserFilterRow(filter: .all, rename: { _ in }, delete: { _ in })
+    }
 }
+
+// #Preview {
+//    UserFilterRow(filter: .all, rename: { _ in }, delete: { _ in })
+// }

@@ -4,6 +4,7 @@
 //
 //  Created by Robert Welz on 05.06.25.
 //
+
 import SwiftUI
 
 struct SidebarViewToolbar: ToolbarContent {
@@ -16,8 +17,8 @@ struct SidebarViewToolbar: ToolbarContent {
             Button(action: tryNewTag) {
                 Label("Add tag", systemImage: "plus")
             }
-            .help("Add tag")
             .sheet(isPresented: $showingStore, content: StoreView.init)
+            .help("Add tag")
         }
 
         ToolbarItem(placement: .automaticOrLeading) {
@@ -26,8 +27,8 @@ struct SidebarViewToolbar: ToolbarContent {
             } label: {
                 Label("Show awards", systemImage: "rosette")
             }
-            .help("Show awards")
             .sheet(isPresented: $showingAwards, content: AwardsView.init)
+            .help("Show awards")
         }
 
         #if DEBUG

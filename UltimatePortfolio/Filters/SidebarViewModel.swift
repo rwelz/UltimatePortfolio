@@ -12,9 +12,6 @@ extension SidebarView {
     class ViewModel: NSObject, ObservableObject, NSFetchedResultsControllerDelegate {
         var dataController: DataController
 
-        // @FetchRequest funktioniert nur innerhalb von Views, deswegen wird es ersetzt:
-        // @FetchRequest(sortDescriptors: [SortDescriptor(\.name)]) var tags: FetchedResults<Tag>
-
         private let tagsController: NSFetchedResultsController<Tag>
         @Published var tags = [Tag]()
 
@@ -60,10 +57,10 @@ extension SidebarView {
             }
         }
 
-        func controllerDidChangeContent(_ controller: NSFetchedResultsController<any NSFetchRequestResult>) {
+        func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
             if let newTags = controller.fetchedObjects as? [Tag] {
-                    tags = newTags
-                }
+                tags = newTags
+            }
         }
 
         func delete(_ offsets: IndexSet) {

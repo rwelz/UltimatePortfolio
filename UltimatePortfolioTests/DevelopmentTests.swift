@@ -5,8 +5,8 @@
 //  Created by Robert Welz on 14.06.25.
 //
 
-import XCTest
 import CoreData
+import XCTest
 @testable import UltimatePortfolio
 
 final class DevelopmentTests: BaseTestCase {
@@ -22,8 +22,8 @@ final class DevelopmentTests: BaseTestCase {
         dataController.createSampleData()
         dataController.deleteAll()
 
-        XCTAssertEqual(dataController.count(for: Tag.fetchRequest()), 0, "deleteAll() should leave 0 tags.")
-        XCTAssertEqual(dataController.count(for: Issue.fetchRequest()), 0, "deleteAll() should leave 0 issues.")
+        XCTAssertEqual(dataController.count(for: Tag.fetchRequest()), 0, "deleteAll() should leave 0 sample tags.")
+        XCTAssertEqual(dataController.count(for: Issue.fetchRequest()), 0, "deleteAll() should leave 0 sample issues.")
     }
 
     func testExampleTagHasNoIssues() {

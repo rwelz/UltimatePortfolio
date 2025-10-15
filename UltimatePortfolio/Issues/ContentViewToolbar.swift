@@ -12,9 +12,9 @@ struct ContentViewToolbar: View {
 
     var body: some View {
 
-#if os(watchOS)
+        #if os(watchOS)
         NewIssueButton()
-#else
+        #else
         Menu {
             Button(dataController.filterEnabled ? "Turn Filter Off" : "Turn Filter On") {
                 dataController.filterEnabled.toggle()
@@ -58,13 +58,20 @@ struct ContentViewToolbar: View {
             Label("Filter", systemImage: "line.3.horizontal.decrease.circle")
                 .symbolVariant(dataController.filterEnabled ? .fill : .none)
         }
-
+        .help("Filter") // xxx
         NewIssueButton()
-#endif
+        #endif
     }
 }
 
-#Preview {
-    ContentViewToolbar()
-        .environmentObject(DataController(inMemory: true))
+struct ContentViewToolbar_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentViewToolbar()
+            .environmentObject(DataController(inMemory: true))
+    }
 }
+
+// #Preview {
+//    ContentViewToolbar()
+//        .environmentObject(DataController(inMemory: true))
+// }

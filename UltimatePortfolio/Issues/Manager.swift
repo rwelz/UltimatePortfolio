@@ -6,7 +6,7 @@
 //
 import Foundation
 import SwiftUI
-
+// xxx
 @MainActor
 class Manager: ObservableObject {
     static let shared = Manager()

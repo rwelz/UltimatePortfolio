@@ -1,6 +1,6 @@
 //
 //  PortfolioWidgetBundle.swift
-//  PortfolioWidgetBundle
+//  PortfolioWidget
 //
 //  Created by Robert Welz on 24.07.25.
 //

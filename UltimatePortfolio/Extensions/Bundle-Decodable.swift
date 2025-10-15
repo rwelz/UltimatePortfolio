@@ -37,7 +37,7 @@ extension Bundle {
             // swiftlint:disable:next line_length
             fatalError("Failed to decode \(file) from bundle due to missing \(type) value – \(context.debugDescription)")
         } catch DecodingError.dataCorrupted(_) {
-            fatalError("Failed to decode \(file) from bundle because it appears to be invalid JSON")
+            fatalError("Failed to decode \(file) from bundle because it appears to be invalid JSON.")
         } catch {
             fatalError("Failed to decode \(file) from bundle: \(error.localizedDescription)")
         }
