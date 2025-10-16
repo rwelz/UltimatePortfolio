@@ -18,7 +18,8 @@ struct SidebarView: View {
     }
 
     var body: some View {
-        List(selection: $viewModel.dataController.selectedFilter) {
+        // List(selection: $viewModel.dataController.selectedFilter) {
+        List(selection: $viewModel.selectedFilter) { // thats what subsript in SidebarViewModel is for
             Section("Smart Filters") {
                 ForEach(smartFilters, content: SmartFilterRow.init)
 //                ForEach(smartFilters) { filter in

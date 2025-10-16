@@ -17,11 +17,8 @@ struct ContentView: View {
     private let newIssueActivity = "de.robert.welz.UltimatePortfolio.newIssue"
 
     var body: some View {
-        // let issues = viewModel.dataController.issuesForSelectedFilter()
-        List(selection: $viewModel.selectedIssue) {
-            // ForEach(issues) { issue in
-            //    issueRow(for: issue)
-            // } // xxx
+        // List(selection: $viewModel.dataController.selectedIssue) {
+        List(selection: $viewModel.selectedIssue) { // thats what subsript in ContentViewModel is for
             ForEach(viewModel.dataController.issuesForSelectedFilter()) { issue in
                 #if os(watchOS)
                 IssueRowWatch(issue: issue)
