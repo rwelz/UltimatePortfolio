@@ -61,26 +61,26 @@ extension SidebarView {
         @MainActor
         subscript<Value>(dynamicMember keyPath: ReferenceWritableKeyPath<DataController, Value>) -> Value {
             get {
-#if DEBUG
-                if let name = keyPath._kvcKeyPathString {
-                    print("GET dynamicMember:", name)
-                }
-#endif
+//                #if DEBUG
+//                if let name = keyPath._kvcKeyPathString {
+//                    print("GET dynamicMember:", name)
+//                }
+//                #endif
                 return dataController[keyPath: keyPath]
             }
 
             set {
-#if DEBUG
-                // Property-Namen ermitteln
-                let name = keyPath._kvcKeyPathString ?? String(describing: keyPath)
-                print("SET dynamicMember:", name, "→", newValue)
-                // Stacktrace vereinfachen
-                let trace = Thread.callStackSymbols
-                    .filter { $0.contains("UltimatePortfolio") || $0.contains("SwiftUI") }
-                // .prefix(8)
-                    .joined(separator: "\n→ ")
-                print("⚙️ Callstack (kurz):\n→ \(trace)\n")
-#endif
+//                #if DEBUG
+//                // Property-Namen ermitteln
+//                let name = keyPath._kvcKeyPathString ?? String(describing: keyPath)
+//                print("SET dynamicMember:", name, "→", newValue)
+//                // Stacktrace vereinfachen
+//                let trace = Thread.callStackSymbols
+//                    .filter { $0.contains("UltimatePortfolio") || $0.contains("SwiftUI") }
+//                // .prefix(8)
+//                    .joined(separator: "\n→ ")
+//                print("⚙️ Callstack (kurz):\n→ \(trace)\n")
+//                #endif
                 // dataController[keyPath: keyPath] = newValue
                 // Avoid publishing during view updates by deferring mutation.
                 let oldValue = dataController[keyPath: keyPath]
