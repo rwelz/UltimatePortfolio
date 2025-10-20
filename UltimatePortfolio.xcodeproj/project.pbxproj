@@ -115,10 +115,6 @@
 		D79992112E251FF5004B4675 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79992102E251FF5004B4675 /* SceneDelegate.swift */; platformFilter = ios; };
 		D79992122E251FF5004B4675 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79992102E251FF5004B4675 /* SceneDelegate.swift */; };
 		D7BCAF7F2E0431F80054D6B3 /* SidebarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BCAF7E2E0431F80054D6B3 /* SidebarViewModel.swift */; };
-		D7C64EBC2E9E33C400607A59 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = D7C64EBB2E9E33C400607A59 /* Configuration.storekit */; };
-		D7C64EBD2E9E33C400607A59 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = D7C64EBB2E9E33C400607A59 /* Configuration.storekit */; };
-		D7C64EBE2E9E33C400607A59 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = D7C64EBB2E9E33C400607A59 /* Configuration.storekit */; };
-		D7C64EBF2E9E33C400607A59 /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = D7C64EBB2E9E33C400607A59 /* Configuration.storekit */; };
 		D7C860EE2E3792CD0063FFA6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7E1A3CD2DF98B95001EEA27 /* Localizable.strings */; };
 		D7CF42C52E9913E800810ED8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E1A3B22DF98B95001EEA27 /* Colors.xcassets */; };
 		D7CF42C62E9913EF00810ED8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E1A3C52DF98B95001EEA27 /* Assets.xcassets */; };
@@ -365,11 +361,18 @@
 			);
 			target = D7959D372E43581C001F944B /* PortfolioWidgetMacExtension */;
 		};
+		D7ED9FC42EA265CE0003DC49 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"UPAWatch-Watch-App-Info.plist",
+			);
+			target = D77147A62E99124D006F7FB9 /* UPAWatch Watch App */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		D7686C4C2E3233A7006EF993 /* PortfolioWidget */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D7686C5C2E3233A7006EF993 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, D7959D522E4358EC001F944B /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = PortfolioWidget; sourceTree = "<group>"; };
-		D77147A82E99124D006F7FB9 /* UPAWatch Watch App */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "UPAWatch Watch App"; sourceTree = "<group>"; };
+		D77147A82E99124D006F7FB9 /* UPAWatch Watch App */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D7ED9FC42EA265CE0003DC49 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "UPAWatch Watch App"; sourceTree = "<group>"; };
 		D78464A02E96629600D655D0 /* TestLoggingWatch Watch App */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "TestLoggingWatch Watch App"; sourceTree = "<group>"; };
 		D7959D3B2E43581C001F944B /* PortfolioWidgetMac */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (D7959D472E43581D001F944B /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = PortfolioWidgetMac; sourceTree = "<group>"; };
 		D7CCD2262E02CDD7004B081E /* UltimatePortfolioUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = UltimatePortfolioUITests; sourceTree = "<group>"; };
@@ -1026,7 +1029,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7C64EBC2E9E33C400607A59 /* Configuration.storekit in Resources */,
 				D7C860EE2E3792CD0063FFA6 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1036,7 +1038,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D77147D12E991302006F7FB9 /* Localizable.strings in Resources */,
-				D7C64EBE2E9E33C400607A59 /* Configuration.storekit in Resources */,
 				D7CF42C52E9913E800810ED8 /* Colors.xcassets in Resources */,
 				D77147D22E991302006F7FB9 /* Localizable.stringsdict in Resources */,
 				D77147CD2E9912DD006F7FB9 /* Awards.json in Resources */,
@@ -1080,7 +1081,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7C64EBD2E9E33C400607A59 /* Configuration.storekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1089,7 +1089,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D73A5C192DF99D0E007BE703 /* README.md in Resources */,
-				D7C64EBF2E9E33C400607A59 /* Configuration.storekit in Resources */,
 				D7E1A3D72DF98B95001EEA27 /* Awards.json in Resources */,
 				D7959D592E43724A001F944B /* Credits.rtf in Resources */,
 				D7E1A3D82DF98B95001EEA27 /* Colors.xcassets in Resources */,
@@ -1851,7 +1850,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = PortfolioWidget/PortfolioWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = 4AZCM9652H;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1882,7 +1881,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = PortfolioWidget/PortfolioWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = 4AZCM9652H;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1920,6 +1919,7 @@
 				DEVELOPMENT_TEAM = 4AZCM9652H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "UPAWatch-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = UPAWatch;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = de.robert.welz.UltimatePortfolio;
@@ -1961,6 +1961,7 @@
 				DEVELOPMENT_TEAM = 4AZCM9652H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "UPAWatch-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = UPAWatch;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = de.robert.welz.UltimatePortfolio;
@@ -2225,7 +2226,7 @@
 				CODE_SIGN_ENTITLEMENTS = PortfolioWidgetMac/PortfolioWidgetMac.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = 4AZCM9652H;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -2258,7 +2259,7 @@
 				CODE_SIGN_ENTITLEMENTS = PortfolioWidgetMac/PortfolioWidgetMac.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 13;
 				DEVELOPMENT_TEAM = 4AZCM9652H;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -2412,7 +2413,7 @@
 				CODE_SIGN_ENTITLEMENTS = UltimatePortfolio/Configuration/UltimatePortfolio.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 13;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 4AZCM9652H;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -2458,7 +2459,7 @@
 				CODE_SIGN_ENTITLEMENTS = UltimatePortfolio/Configuration/UltimatePortfolio.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 13;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 4AZCM9652H;
 				ENABLE_HARDENED_RUNTIME = YES;

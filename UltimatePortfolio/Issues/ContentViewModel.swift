@@ -73,7 +73,7 @@ extension ContentView {
 //                    .joined(separator: "\n→ ")
 //                print("⚙️ Callstack (kurz):\n→ \(trace)\n")
 //                #endif
-                // dataController[keyPath: keyPath] = newValue
+                // dataController[keyPath: keyPath] = newValue // offending instruction
                 // Avoid publishing during view updates by deferring mutation.
                 let oldValue = dataController[keyPath: keyPath]
                 // Skip if no change to reduce unnecessary publishes.
