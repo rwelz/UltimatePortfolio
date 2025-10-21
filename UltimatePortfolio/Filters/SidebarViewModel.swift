@@ -11,14 +11,22 @@ import Foundation
 extension SidebarView {
     @dynamicMemberLookup
     class ViewModel: NSObject, ObservableObject, NSFetchedResultsControllerDelegate {
-        var dataController: DataController
+        let dataController: DataController
 
         private let tagsController: NSFetchedResultsController<Tag>
         @Published var tags = [Tag]()
 
+        // Auswahl
+        @Published var selectedFilter: Filter?
+
+        // Rename
         @Published var tagToRename: Tag?
         @Published var renamingTag = false
         @Published var tagName = ""
+
+        // Sheets/Modals
+        @Published var showingAwards = false
+        @Published var showingStore = false
 
         var tagFilters: [Filter] {
             tags.map { tag in
@@ -54,33 +62,33 @@ extension SidebarView {
                 try tagsController.performFetch()
                 tags = tagsController.fetchedObjects ?? []
             } catch {
-                print("Failed to fetch tags")
+                print("Failed to fetch tags: \(error.localizedDescription)")
             }
         }
 
         @MainActor
         subscript<Value>(dynamicMember keyPath: ReferenceWritableKeyPath<DataController, Value>) -> Value {
             get {
-//                #if DEBUG
-//                if let name = keyPath._kvcKeyPathString {
-//                    print("GET dynamicMember:", name)
-//                }
-//                #endif
+                //                #if DEBUG
+                //                if let name = keyPath._kvcKeyPathString {
+                //                    print("GET dynamicMember:", name)
+                //                }
+                //                #endif
                 return dataController[keyPath: keyPath]
             }
 
             set {
-//                #if DEBUG
-//                // Property-Namen ermitteln
-//                let name = keyPath._kvcKeyPathString ?? String(describing: keyPath)
-//                print("SET dynamicMember:", name, "→", newValue)
-//                // Stacktrace vereinfachen
-//                let trace = Thread.callStackSymbols
-//                    .filter { $0.contains("UltimatePortfolio") || $0.contains("SwiftUI") }
-//                // .prefix(8)
-//                    .joined(separator: "\n→ ")
-//                print("⚙️ Callstack (kurz):\n→ \(trace)\n")
-//                #endif
+                //                #if DEBUG
+                //                // Property-Namen ermitteln
+                //                let name = keyPath._kvcKeyPathString ?? String(describing: keyPath)
+                //                print("SET dynamicMember:", name, "→", newValue)
+                //                // Stacktrace vereinfachen
+                //                let trace = Thread.callStackSymbols
+                //                    .filter { $0.contains("UltimatePortfolio") || $0.contains("SwiftUI") }
+                //                // .prefix(8)
+                //                    .joined(separator: "\n→ ")
+                //                print("⚙️ Callstack (kurz):\n→ \(trace)\n")
+                //                #endif
                 // dataController[keyPath: keyPath] = newValue // offending instruction
                 // Avoid publishing during view updates by deferring mutation.
                 let oldValue = dataController[keyPath: keyPath]
@@ -106,6 +114,7 @@ extension SidebarView {
                 let item = tags[offset]
                 dataController.delete(item)
             }
+            dataController.save()
         }
 
         func delete(_ filter: Filter) {

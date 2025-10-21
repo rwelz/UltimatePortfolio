@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    #if !os(watchOS)
+#if !os(watchOS)
     @Environment(\.requestReview) var requestReview
-    #endif
+#endif
     @StateObject var viewModel: ViewModel
-    // @EnvironmentObject var dataController: DataController
 
     private let newIssueActivity = "de.robert.welz.UltimatePortfolio.newIssue"
 
@@ -20,17 +19,17 @@ struct ContentView: View {
         // List(selection: $viewModel.dataController.selectedIssue) {
         List(selection: $viewModel.selectedIssue) { // thats what subsript in ContentViewModel is for
             ForEach(viewModel.dataController.issuesForSelectedFilter()) { issue in
-                #if os(watchOS)
+#if os(watchOS)
                 IssueRowWatch(issue: issue)
-                #else
+#else
                 IssueRow(issue: issue)
-                #endif
+#endif
             }
             .onDelete(perform: viewModel.delete)
         }
         .macFrame(minWidth: 220)
         .navigationTitle("Issues")
-        #if !os(watchOS)
+#if !os(watchOS)
         .searchable(
             text: $viewModel.filterText,
             tokens: $viewModel.filterTokens,
@@ -39,14 +38,14 @@ struct ContentView: View {
         ) { tag in
             Text(tag.tagName)
         }
-        #endif
+#endif
         .toolbar(content: ContentViewToolbar.init)
         .onAppear(perform: askForReview)
         .onOpenURL(perform: viewModel.openURL)
         .userActivity(newIssueActivity) { activity in
-            #if !os(macOS)
+#if !os(macOS)
             activity.isEligibleForPrediction = true
-            #endif
+#endif
             activity.title = "New Issue"
         }
         .onContinueUserActivity(newIssueActivity, perform: resumeActivity)
@@ -92,11 +91,11 @@ struct ContentView: View {
 #endif // xxx
 
     func askForReview() {
-        #if !os(watchOS)
+#if !os(watchOS)
         if viewModel.shouldRequestReview {
             requestReview()
         }
-        #endif
+#endif
     }
     func resumeActivity(_ userActivity: NSUserActivity) {
         viewModel.dataController.newIssue()

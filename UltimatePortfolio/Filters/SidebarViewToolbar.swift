@@ -31,16 +31,26 @@ struct SidebarViewToolbar: ToolbarContent {
             .help("Show awards")
         }
 
-        #if DEBUG
+#if DEBUG
+#if !os(watchOS)
+        ToolbarItem(placement: .automatic) {
+            Button {
+                dataController.deleteAll()
+            } label: {
+                Label("DELETE ALL", systemImage: "")
+            }
+        }
+
         ToolbarItem(placement: .automatic) {
             Button {
                 dataController.deleteAll()
                 dataController.createSampleData()
             } label: {
-                Label("ADD SAMPLES", systemImage: "flame")
+                Label("ADD SAMPLES", systemImage: "")
             }
         }
-        #endif
+#endif
+#endif
     }
 
     func tryNewTag() {
