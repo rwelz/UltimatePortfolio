@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SidebarView: View {
     @StateObject private var viewModel: ViewModel
-
+    @Environment(\.dismiss) private var dismiss
     let smartFilters: [Filter] = [.all, .recent]
 
     init(dataController: DataController) {
@@ -22,6 +22,7 @@ struct SidebarView: View {
         List(selection: $viewModel.selectedFilter) { // thats what subsript in SidebarViewModel is for
             Section("Smart Filters") {
                 ForEach(smartFilters, content: SmartFilterRow.init)
+// TODO:
 //                ForEach(smartFilters) { filter in
 //                    NavigationLink(value: filter) {
 //                        Label(LocalizedStringKey(filter.name), systemImage: filter.icon)
@@ -37,12 +38,37 @@ struct SidebarView: View {
         }
         .macFrame(minWidth: 220)
         .toolbar(content: SidebarViewToolbar.init)
-        .alert("Rename tag", isPresented: $viewModel.renamingTag) {
-            Button("OK", action: viewModel.completeRename)
-            Button("Cancel", role: .cancel) { }
-            TextField("New name", text: $viewModel.tagName)
-        }
         .navigationTitle("Filters")
+        // Plattform-spezifische Darstellung
+                #if os(watchOS)
+                .sheet(isPresented: $viewModel.renamingTag) {
+                    VStack(spacing: 12) {
+                        Text("Rename tag")
+                            .font(.headline)
+
+                        TextField("New name", text: $viewModel.tagName)
+
+                        HStack {
+                            Button("Cancel", role: .cancel) {
+                                viewModel.renamingTag = false
+                                dismiss()
+                            }
+                            Button("OK") {
+                                viewModel.completeRename()
+                                viewModel.renamingTag = false
+                                dismiss()
+                            }
+                        }
+                    }
+                    .padding()
+                }
+                #else
+                .alert("Rename tag", isPresented: $viewModel.renamingTag) {
+                    TextField("New name", text: $viewModel.tagName)
+                    Button("OK", action: viewModel.completeRename)
+                    Button("Cancel", role: .cancel) { }
+                }
+                #endif
     }
 }
 
