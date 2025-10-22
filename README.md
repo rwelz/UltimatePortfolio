@@ -58,6 +58,35 @@ Es handelt sich um ein umfangreiches SwiftUI-Tutorial, das moderne iOS-Techniken
 
 Dieses Projekt enthält Inhalte aus einem kostenpflichtigen Kurs. Bitte verwende den Code nicht kommerziell und unterstütze den Urheber, indem du das Originalmaterial über [Hacking with Swift](https://www.hackingwithswift.com/) beziehst.
 
+------
+
+##  📸 Screenshots
+
+### iOS
+<p align="center">
+  <img src="https://github.com/rwelz/UltimatePortfolio/blob/main/Screenshots/iOS/1.png?raw=true" width="200">
+  <img src="https://github.com/rwelz/UltimatePortfolio/blob/main/Screenshots/iOS/2.png?raw=true" width="200">
+  <img src="https://github.com/rwelz/UltimatePortfolio/blob/main/Screenshots/iOS/3.png?raw=true" width="200">
+</p>
+
+### macOS
+<p align="center">
+  <img src="https://github.com/rwelz/UltimatePortfolio/blob/main/Screenshots/Mac/1.jpeg?raw=true" width="300">
+  <img src="https://github.com/rwelz/UltimatePortfolio/blob/main/Screenshots/Mac/2.jpeg?raw=true" width="300">
+  <img src="https://github.com/rwelz/UltimatePortfolio/blob/main/Screenshots/Mac/3.jpeg?raw=true" width="300">
+  <img src="https://github.com/rwelz/UltimatePortfolio/blob/main/Screenshots/Mac/4.jpeg?raw=true" width="300">
+</p>
+
+### watchOS
+<p align="center">
+  <img src="https://github.com/rwelz/UltimatePortfolio/blob/main/Screenshots/watchOS/1.PNG?raw=true" width="150">
+  <img src="https://github.com/rwelz/UltimatePortfolio/blob/main/Screenshots/watchOS/2.PNG?raw=true" width="150">
+  <img src="https://github.com/rwelz/UltimatePortfolio/blob/main/Screenshots/watchOS/3.PNG?raw=true" width="150">
+  <img src="https://github.com/rwelz/UltimatePortfolio/blob/main/Screenshots/watchOS/4.PNG?raw=true" width="150">
+  <img src="https://github.com/rwelz/UltimatePortfolio/blob/main/Screenshots/watchOS/5.PNG?raw=true" width="150">
+  <img src="https://github.com/rwelz/UltimatePortfolio/blob/main/Screenshots/watchOS/6.PNG?raw=true" width="150">
+</p>
+
 ---
 
 Danke fürs Vorbeischauen! 💙  
