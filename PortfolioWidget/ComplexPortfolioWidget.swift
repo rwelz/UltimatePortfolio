@@ -43,7 +43,9 @@ struct ComplexProvider: TimelineProvider {
     //}
     func loadIssues() -> [Issue] {
         let dataController = DataController()
-        let request = dataController.fetchRequestForTopIssues(count: 7) // This new widget needs to show multiple issues, we need to change its loadIssues() method so that it returns more than just one issue, like this:
+        // This new widget needs to show multiple issues.
+        // We need to change its loadIssues() method so that it returns more than just one issue.
+        let request = dataController.fetchRequestForTopIssues(count: 7)
         let allIssues = dataController.results(for: request)
         //for issue in allIssues {
         //    print("Issue completed: \(String(describing: issue.completed))")
@@ -136,3 +138,4 @@ struct ComplexPortfolioWidget: Widget {
     ComplexEntry(date: .now, issues: [.example])
     ComplexEntry(date: .now, issues: [.example])
 }
+

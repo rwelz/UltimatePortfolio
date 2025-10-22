@@ -31,17 +31,17 @@ extension Issue {
         return result.sorted()
     }
 
-    static var example: Issue {
-        let controller = DataController(inMemory: true)
-        let viewContext = controller.container.viewContext
-
-        let issue = Issue(context: viewContext)
-        issue.title = "Example Issue"
-        issue.content = "This is an example issue."
-        issue.priority = 2
-        issue.creationDate = .now
-        issue.completed = false
-        return issue
+    var issueTagsList: String {
+        let noTags = NSLocalizedString("No tags", comment: "The user has not created any tags yet.")
+        guard let tags else { return noTags }
+        // TODO:
+        // swiftlint:disable empty_count
+        if tags.count == 0 {
+            // swiftlint:enable empty_count
+            return noTags
+        } else {
+            return issueTags.map(\.tagName).formatted()
+        }
     }
 
     var issueStatus: String {
@@ -51,24 +51,23 @@ extension Issue {
             return NSLocalizedString("Open", comment: "This issue is currently unresolved.")
         }
     }
-
-    var issueTagsList: String {
-        let noTags = NSLocalizedString("No tags", comment: "The user has not created any tags yet")
-
-        guard let tags else { return noTags }
-// TODO:
-// swiftlint:disable empty_count
-        if tags.count == 0 {
-// swiftlint:enable empty_count
-            return noTags
-        } else {
-            return issueTags.map(\.tagName).formatted()
+    var issueReminderTime: Date {
+        get { reminderTime ?? .now }
+        set { reminderTime = newValue
         }
     }
 
-    var issueReminderTime: Date {
-        get { reminderTime ?? .now }
-        set { reminderTime = newValue }
+    static var example: Issue {
+        let controller = DataController(inMemory: true)
+        let viewContext = controller.container.viewContext
+
+        let issue = Issue(context: viewContext)
+        issue.title = "Example Issue"
+        issue.content = "This is an example issue."
+        issue.priority = 2
+        issue.creationDate = .now
+        // issue.completed = false // xxx
+        return issue
     }
 }
 

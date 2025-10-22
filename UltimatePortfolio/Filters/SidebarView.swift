@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SidebarView: View {
     @StateObject private var viewModel: ViewModel
-
+    @Environment(\.dismiss) private var dismiss
     let smartFilters: [Filter] = [.all, .recent]
 
     init(dataController: DataController) {
@@ -18,14 +18,16 @@ struct SidebarView: View {
     }
 
     var body: some View {
-        List(selection: $viewModel.dataController.selectedFilter) {
+        // List(selection: $viewModel.dataController.selectedFilter) {
+        List(selection: $viewModel.selectedFilter) { // thats what subsript in SidebarViewModel is for
             Section("Smart Filters") {
                 ForEach(smartFilters, content: SmartFilterRow.init)
-//                ForEach(smartFilters) { filter in
-//                    NavigationLink(value: filter) {
-//                        Label(LocalizedStringKey(filter.name), systemImage: filter.icon)
-//                    }
-//                }
+                // TODO:
+                //                ForEach(smartFilters) { filter in
+                //                    NavigationLink(value: filter) {
+                //                        Label(LocalizedStringKey(filter.name), systemImage: filter.icon)
+                //                    }
+                //                } // xxx
             }
             Section("Tags") {
                 ForEach(viewModel.tagFilters) { filter in
@@ -33,20 +35,75 @@ struct SidebarView: View {
                 }
                 .onDelete(perform: viewModel.delete)
             }
+#if os(watchOS)
+            // Aktionen direkt in der Liste
+#if DEBUG
+            Section("Debug") {
+                Button(role: .destructive) {
+                    viewModel.dataController.deleteAll()
+                } label: {
+                    Label("DELETE ALL", systemImage: "minus")
+                }
+
+                Button {
+                    viewModel.dataController.deleteAll()
+                    viewModel.dataController.createSampleData()
+                } label: {
+                    Label("ADD SAMPLES", systemImage: "flame")
+                }
+            }
+#endif
+#endif
         }
         .macFrame(minWidth: 220)
-        .toolbar {
-            SidebarViewToolbar()
+        .navigationTitle("Filters")
+        .toolbar(content: SidebarViewToolbar.init)
+        // Plattform-spezifische Darstellung
+#if os(watchOS)
+        .sheet(isPresented: $viewModel.renamingTag) {
+            VStack(spacing: 12) {
+                Text("Rename tag")
+                    .font(.headline)
+
+                TextField("New name", text: $viewModel.tagName)
+
+                HStack {
+                    Button("Cancel", role: .cancel) {
+                        viewModel.renamingTag = false
+                        dismiss()
+                    }
+                    Button("OK") {
+                        viewModel.completeRename()
+                        viewModel.renamingTag = false
+                        dismiss()
+                    }
+                }
+            }
+            .padding()
         }
+        // Extra Sheets für Awards/Store
+        .sheet(isPresented: $viewModel.showingAwards, content: AwardsView.init)
+        .sheet(isPresented: $viewModel.showingStore, content: StoreView.init)
+
+#else
+        // iOS/macOS: Alert
         .alert("Rename tag", isPresented: $viewModel.renamingTag) {
+            TextField("New name", text: $viewModel.tagName)
             Button("OK", action: viewModel.completeRename)
             Button("Cancel", role: .cancel) { }
-            TextField("New name", text: $viewModel.tagName)
         }
-        .navigationTitle("Filters")
+        .sheet(isPresented: $viewModel.showingAwards, content: AwardsView.init)
+        .sheet(isPresented: $viewModel.showingStore, content: StoreView.init)
+#endif
     }
 }
 
-#Preview {
-    SidebarView(dataController: .preview)
+struct SidebarView_Previews: PreviewProvider {
+    static var previews: some View {
+        SidebarView(dataController: .preview)
+    }
 }
+
+//  #Preview {
+//    SidebarView(dataController: .preview)
+// }

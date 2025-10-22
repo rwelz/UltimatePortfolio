@@ -17,6 +17,12 @@ struct SmartFilterRow: View {
     }
 }
 
-#Preview {
-    SmartFilterRow(filter: .all)
+struct SmartFilterRow_Previews: PreviewProvider {
+    static var previews: some View {
+        SmartFilterRow(filter: .all)
+    }
 }
+
+// #Preview {
+//    SmartFilterRow(filter: .all)
+// }

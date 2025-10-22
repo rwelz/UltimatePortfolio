@@ -5,8 +5,8 @@
 //  Created by Robert Welz on 13.06.25.
 //
 
-import XCTest
 import CoreData
+import XCTest
 @testable import UltimatePortfolio
 
 final class AwardsTest: BaseTestCase {
@@ -20,28 +20,7 @@ final class AwardsTest: BaseTestCase {
 
     func testNewUserHasUnlockedNoAwards() {
         for award in awards {
-            XCTAssertFalse(dataController.hasEarned(award: award), "New users should have no earned awards")
-        }
-    }
-
-    func testCreatingIssuesUnlocksAwards() {
-        let values = [1, 10, 20, 50, 100, 250, 500, 1000]
-
-        for (count, value) in values.enumerated() {
-            var issues = [Issue]()
-
-            for _ in 0..<value {
-                let issue = Issue(context: managedObjectContext)
-                issues.append(issue)
-            }
-
-            let matches = awards.filter { award in
-                award.criterion == "issues" && dataController.hasEarned(award: award)
-            }
-
-            XCTAssertEqual(matches.count, count + 1, "Adding \(value) issues should unlock \(count + 1) awards.")
-
-            dataController.deleteAll()
+            XCTAssertFalse(dataController.hasEarned(award: award), "New users should have no earned awards.")
         }
     }
 
@@ -61,11 +40,32 @@ final class AwardsTest: BaseTestCase {
                 award.criterion == "closed" && dataController.hasEarned(award: award)
             }
 
-            XCTAssertEqual(matches.count, count + 1, "Completing \(value) issues should unlock \(count + 1) awards.")
+            XCTAssertEqual(matches.count, count + 1, "Completing \(value) issues should unlock \(count + 1) awards")
+            dataController.deleteAll()
 
-            for issue in issues {
-                dataController.delete(issue)
+            // for issue in issues {
+            //    dataController.delete(issue)
+            // }
+        }
+    }
+
+    func testCreatingIssuesUnlocksAwards() {
+        let values = [1, 10, 20, 50, 100, 250, 500, 1000]
+
+        for (count, value) in values.enumerated() {
+            var issues = [Issue]()
+
+            for _ in 0..<value {
+                let issue = Issue(context: managedObjectContext)
+                issues.append(issue)
             }
+
+            let matches = awards.filter { award in
+                award.criterion == "issues" && dataController.hasEarned(award: award)
+            }
+
+            XCTAssertEqual(matches.count, count + 1, "Adding \(value) issues should unlock \(count + 1) awards")
+            dataController.deleteAll()
         }
     }
 }

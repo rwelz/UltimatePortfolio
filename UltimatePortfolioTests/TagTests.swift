@@ -5,8 +5,8 @@
 //  Created by Robert Welz on 13.06.25.
 //
 
-import XCTest
 import CoreData
+import XCTest
 @testable import UltimatePortfolio
 
 final class TagTests: BaseTestCase {

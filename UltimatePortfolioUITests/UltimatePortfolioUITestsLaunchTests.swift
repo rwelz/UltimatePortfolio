@@ -17,7 +17,7 @@ final class UltimatePortfolioUITestsLaunchTests: XCTestCase {
         continueAfterFailure = false
     }
 
-    @MainActor
+    // @MainActor // xxx
     func testLaunch() throws {
         let app = XCUIApplication()
         app.launch()

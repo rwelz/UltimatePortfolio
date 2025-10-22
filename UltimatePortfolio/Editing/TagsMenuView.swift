@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct TagsMenuView: View {
-    @ObservedObject var issue: Issue
     @EnvironmentObject var dataController: DataController
+    @ObservedObject var issue: Issue
 
     var body: some View {
-#if os(watchOS)
+        #if os(watchOS)
         LabeledContent("Tags", value: issue.issueTagsList)
-#else
+        #else
         Menu {
             // show selected tags first
             ForEach(issue.issueTags) { tag in
@@ -45,11 +45,18 @@ struct TagsMenuView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .animation(nil, value: issue.issueTagsList)
         }
-#endif
+        #endif
     }
 }
 
-#Preview {
-    TagsMenuView(issue: .example)
-        .environmentObject(DataController(inMemory: true))
+struct TagsMenuView_Previews: PreviewProvider {
+    static var previews: some View {
+        TagsMenuView(issue: .example)
+            .environmentObject(DataController(inMemory: true))
+    }
 }
+
+// #Preview {
+//    TagsMenuView(issue: .example)
+//        .environmentObject(DataController(inMemory: true))
+// }

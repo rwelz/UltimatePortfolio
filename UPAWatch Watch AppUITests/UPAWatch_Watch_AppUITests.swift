@@ -31,7 +31,7 @@ final class UPAWatch_Watch_AppUITests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
-    @MainActor
+    // @MainActor// xxx
     func testLaunchPerformance() throws {
         // This measures how long it takes to launch your application.
         measure(metrics: [XCTApplicationLaunchMetric()]) {

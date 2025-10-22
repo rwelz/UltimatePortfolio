@@ -19,12 +19,18 @@ struct DetailView: View {
             }
         }
         .navigationTitle("Details")
-#if os(iOS)
+        #if os(iOS)
         .inlineNavigationBar()
-#endif
+        #endif
     }
 }
 
-#Preview {
-    DetailView()
+struct DetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        DetailView()
+    }
 }
+
+// #Preview {
+//    DetailView()
+// }
