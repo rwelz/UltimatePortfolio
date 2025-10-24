@@ -84,10 +84,3 @@ struct AwardsView_Previews: PreviewProvider {
  //   AwardsView()
  //       .environmentObject(DataController(inMemory: true))
  // } // xxx
-
- struct AwardsView_Previews: PreviewProvider {
-    static var previews: some View {
-        AwardsView()
-            .environmentObject(DataController(inMemory: true))
-    }
- }
