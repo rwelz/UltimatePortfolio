@@ -3,17 +3,13 @@
 //  UltimatePortfolio
 //
 //  Created by Robert Welz on 26.04.25.
-//
-
-// Die Daten eines Users löscht man im Dashboard mittels "Reset Environment"
-// You delete a user’s data in the dashboard by using ‘Reset Environment’.”
-
+//  xxx ganz umschreiben, habv viele Änderungen zurückgenommen!
 import CoreData
 import StoreKit
+
 #if canImport(WidgetKit)
 import WidgetKit
 #endif
-import Combine
 
 enum SortType: String {
     case dateCreated = "creationDate"
@@ -25,38 +21,69 @@ enum Status {
 }
 
 /// An environment singleton responsible for managing our Core Data stack, including handling saving,
-/// counting fetch requests, tracking awards, and dealing with sample data.
+/// counting fetch requests, tracking orders, and dealing with sample data.
 class DataController: ObservableObject {
-    /// The StoreKit products we've loaded for the store.
-    @Published var products = [Product]()
+    /// The lone CloudKit container used to store all our data.
+    let container: NSPersistentCloudKitContainer
+
+    #if !os(watchOS)
+    var spotlightDelegate: NSCoreDataCoreSpotlightDelegate?
+    #endif
+
+    @Published var selectedFilter: Filter? = Filter.all
+    @Published var selectedIssue: Issue?
+
+    @Published var filterText = ""
+    @Published var filterTokens = [Tag]()
+
+    @Published var filterEnabled = false
+    @Published var filterPriority = -1
+    @Published var filterStatus = Status.all
+    @Published var sortType = SortType.dateCreated
+    @Published var sortNewestFirst = true
 
     private var storeTask: Task<Void, Never>?
+    private var saveTask: Task<Void, Error>?
 
     /// The UserDefaults suite where we're saving user data.
     let defaults: UserDefaults
 
-    /// The lone CloudKit container used to store all our data.
-    let container: NSPersistentCloudKitContainer
-#if !os(watchOS)
-    var spotlightDelegate: NSCoreDataCoreSpotlightDelegate?
-    #endif
-    @Published var selectedFilter: Filter? = Filter.all
-    @Published var selectedIssue: Issue?
+    /// The StoreKit products we've loaded for the store.
+    @Published var products = [Product]()
 
-    private var saveTask: Task<Void, Error>?
+    static var preview: DataController = {
+        let dataController = DataController(inMemory: true)
+        dataController.createSampleData()
+        return dataController
+    }()
+
+    var suggestedFilterTokens: [Tag] {
+        guard filterText.starts(with: "#") else {
+            return []
+        }
+
+        let trimmedFilterText = String(filterText.dropFirst()).trimmingCharacters(in: .whitespaces)
+        let request = Tag.fetchRequest()
+
+        if trimmedFilterText.isEmpty == false {
+            request.predicate = NSPredicate(format: "name CONTAINS[c] %@", trimmedFilterText)
+        }
+
+        return (try? container.viewContext.fetch(request).sorted()) ?? []
+    }
 
     // singleton
     static let model: NSManagedObjectModel = {
-            guard let url = Bundle.main.url(forResource: "Model", withExtension: "momd") else {
-                fatalError("Failed to locate model file.")
-            }
+        guard let url = Bundle.main.url(forResource: "Model", withExtension: "momd") else {
+            fatalError("Failed to locate model file.")
+        }
 
-            guard let managedObjectModel = NSManagedObjectModel(contentsOf: url) else {
-                fatalError("Failed to load model file.")
-            }
+        guard let managedObjectModel = NSManagedObjectModel(contentsOf: url) else {
+            fatalError("Failed to load model file.")
+        }
 
-            return managedObjectModel
-        }()
+        return managedObjectModel
+    }()
 
     // swiftlint:disable function_body_length
     /// Initializes a data controller, either in memory (for temporary use such as testing and previewing),
@@ -98,7 +125,16 @@ class DataController: ObservableObject {
             // remote change happens.
             container.persistentStoreDescriptions.first?.setOption(
                 true as NSNumber,
-                forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
+                forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey
+            )
+
+            if let description = container.persistentStoreDescriptions.first {
+                description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+                description.setOption(
+                    true as NSNumber,
+                    forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey
+                ) // xxx
+            }
 
             // Im visionOS Simulator gibt es diese Notification nicht:
             // CloudKit mldet keine Änderung und somit wird diese benachrichtigung nicht gesendet
@@ -119,48 +155,70 @@ class DataController: ObservableObject {
                 forName: .NSPersistentStoreRemoteChange,
                 object: container.persistentStoreCoordinator,
                 queue: .main,
-                using: remoteStoreChanged)
+                using: remoteStoreChanged
+            )
 
-            if let description = container.persistentStoreDescriptions.first {
-                description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
-                description.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
-            }
-        }
-
-        container.loadPersistentStores { [weak self] _, error in
-            if let error {
-                fatalError("Fatal error loading store: \(error.localizedDescription)")
-            }
-
-            if let description = self?.container.persistentStoreDescriptions.first {
-                description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
-#if !os(watchOS)
-                if let coordinator = self?.container.persistentStoreCoordinator {
-                    self?.spotlightDelegate = NSCoreDataCoreSpotlightDelegate(
-                        forStoreWith: description,
-                        coordinator: coordinator
-                    )
-
-                    self?.spotlightDelegate?.startSpotlightIndexing()
+            container.loadPersistentStores { [weak self] _, error in
+                if let error {
+                    fatalError("Fatal error loading store: \(error.localizedDescription)")
                 }
-                #endif
+
+                if let description = self?.container.persistentStoreDescriptions.first {
+                    description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+
+#if !os(watchOS)
+                    if let coordinator = self?.container.persistentStoreCoordinator {
+                        self?.spotlightDelegate = NSCoreDataCoreSpotlightDelegate(
+                            forStoreWith: description,
+                            coordinator: coordinator
+                        )
+
+                        self?.spotlightDelegate?.startSpotlightIndexing()
+                    }
+#endif
+                }
+
+#if DEBUG
+                if CommandLine.arguments.contains("enable-testing") {
+                    self?.deleteAll()
+#if os(iOS)
+                    UIView.setAnimationsEnabled(false)
+#endif
+                }
+#endif
             }
-            self?.checkForTestEnvironment()
         }
     }
     // swiftlint:enable function_body_length
 
+    func remoteStoreChanged(_ notification: Notification) {
+        // do {
+            // let name = UIDevice.current.name
+            // print("📱 Device name is: \(name)")
+
+        //    try container.viewContext.setQueryGenerationFrom(.current)
+        //    container.viewContext.refreshAllObjects()
+
+        //    print("🔥 Remote Change Notification erhalten!")
+
+        // } catch {
+        //    print("❌ Fehler beim Refresh des Core Data Context: \(error.localizedDescription)")
+        // } // xxx
+
+        objectWillChange.send()
+    }
+
     func createSampleData() {
         let viewContext = container.viewContext
 
-        for tagCount in 1...5 {
+        for tagCounter in 1...5 {
             let tag = Tag(context: viewContext)
             tag.id = UUID()
-            tag.name = "Tag \(tagCount)"
+            tag.name = "Tag \(tagCounter)"
 
-            for issueCount in 1...10 {
+            for issueCounter in 1...10 {
                 let issue = Issue(context: viewContext)
-                issue.title = "Issue \(tagCount)-\(issueCount)"
+                issue.title = "Issue \(tagCounter)-\(issueCounter)"
                 issue.content = "Description goes here"
                 issue.creationDate = .now
                 issue.completed = Bool.random()
@@ -168,14 +226,9 @@ class DataController: ObservableObject {
                 tag.addToIssues(issue)
             }
         }
+
         try? viewContext.save()
     }
-
-    static var preview: DataController = {
-        let dataController = DataController(inMemory: true)
-        dataController.createSampleData()
-        return dataController
-    }()
 
     /// Saves our Core Data context iff there are changes. This silently ignores
     /// any errors caused by saving, but this should be fine because all our attributes are optional.
@@ -186,9 +239,10 @@ class DataController: ObservableObject {
 
         if container.viewContext.hasChanges {
             try? container.viewContext.save()
+
             #if canImport(WidgetKit)
             WidgetCenter.shared.reloadAllTimelines()
-        #endif
+            #endif
         }
     }
 
@@ -221,23 +275,6 @@ class DataController: ObservableObject {
         save()
     }
 
-    func remoteStoreChanged(_ notification: Notification) {
-        do {
-            // let name = UIDevice.current.name
-            // print("📱 Device name is: \(name)")
-
-            try container.viewContext.setQueryGenerationFrom(.current)
-            container.viewContext.refreshAllObjects()
-
-            print("🔥 Remote Change Notification erhalten!")
-
-        } catch {
-            print("❌ Fehler beim Refresh des Core Data Context: \(error.localizedDescription)")
-        }
-
-        objectWillChange.send()
-    }
-
     func missingTags(from issue: Issue) -> [Tag] {
         let request = Tag.fetchRequest()
         let allTags = (try? container.viewContext.fetch(request)) ?? []
@@ -245,20 +282,24 @@ class DataController: ObservableObject {
         let allTagsSet = Set(allTags)
         let difference = allTagsSet.symmetricDifference(issue.issueTags)
 
-        return difference.sorted()
-    }
-
-    func queueSave() {
-        saveTask?.cancel()
-
-        saveTask = Task { @MainActor in
-            try await Task.sleep(for: .seconds(3))
-            save()
+        return difference.sorted { lhs, rhs in
+            let left = lhs.name ?? ""
+            let right = rhs.name ?? ""
+            return left.localizedStandardCompare(right) == .orderedAscending
         }
     }
 
-    /// Runs a fetch request with various predicates that filter the user's issues based
-    /// on tag, title and content text, search tokens, priority, and completion status.
+    // func queueSave() {
+    //    saveTask?.cancel()
+
+    //    saveTask = Task { @MainActor in
+    //        try await Task.sleep(for: .seconds(3))
+    //        save()
+    //    }
+    // } // xxx
+
+    /// Runs a fetch request with various predicates that filter the user's issues based on
+    /// tag, title and content text, search tokens, priority, and completion status.
     /// - Returns: An array of all matching issues.
     func issuesForSelectedFilter() -> [Issue] {
         let filter = selectedFilter ?? .all
@@ -277,9 +318,11 @@ class DataController: ObservableObject {
         if trimmedFilterText.isEmpty == false {
             let titlePredicate = NSPredicate(format: "title CONTAINS[c] %@", trimmedFilterText)
             let contentPredicate = NSPredicate(format: "content CONTAINS[c] %@", trimmedFilterText)
+
             let combinedPredicate = NSCompoundPredicate(
                 orPredicateWithSubpredicates: [titlePredicate, contentPredicate]
             )
+
             predicates.append(combinedPredicate)
         }
 
@@ -321,51 +364,7 @@ class DataController: ObservableObject {
         return allIssues
     }
 
-    @Published var filterText = ""
-
-    var suggestedFilterTokens: [Tag] {
-        guard filterText.starts(with: "#") else {
-            return []
-        }
-
-        let trimmedFilterText = String(filterText.dropFirst()).trimmingCharacters(in: .whitespaces)
-        let request = Tag.fetchRequest()
-
-        if trimmedFilterText.isEmpty == false {
-            request.predicate = NSPredicate(format: "name CONTAINS[c] %@", trimmedFilterText)
-        }
-
-        return (try? container.viewContext.fetch(request).sorted()) ?? []
-    }
-
-    @Published var filterTokens = [Tag]()
-
-    @Published var filterEnabled = false
-    @Published var filterPriority = -1
-    @Published var filterStatus = Status.all
-    @Published var sortType = SortType.dateCreated
-    @Published var sortNewestFirst = true
-
-    func newIssue() {
-        let issue = Issue(context: container.viewContext)
-        issue.title = NSLocalizedString("New issue", comment: "Create a new issue")
-        issue.creationDate = .now
-        issue.priority = 1
-
-        issue.completed = false
-
-        // If we're currently browsing a user-created tag, immediately
-        // add this new issue to the tag otherwise it won't appear in
-        // the list of issues they see.
-        if let tag = selectedFilter?.tag {
-            issue.addToTags(tag)
-        }
-        save()
-        selectedIssue = issue
-        "New Issue Created".debugLog()
-    }
-
-    func newTag() -> Bool {
+func newTag() -> Bool {
         var shouldCreate = fullVersionUnlocked
 
         if shouldCreate == false {
@@ -381,8 +380,26 @@ class DataController: ObservableObject {
         tag.id = UUID()
         tag.name = NSLocalizedString("New tag", comment: "Create a new tag")
         save()
-
         return true
+    }
+
+    func newIssue() {
+        let issue = Issue(context: container.viewContext)
+        issue.title = NSLocalizedString("New issue", comment: "Create a new issue")
+        issue.creationDate = .now
+        issue.priority = 1
+
+        issue.completed = false // xxx
+
+        // If we are currently browsing a user-created tag, immediately
+        // add this new issue to the tag otherwise it won't appear in
+        // the list of issues they see.
+        if let tag = selectedFilter?.tag {
+            issue.addToTags(tag)
+        }
+        save()
+        selectedIssue = issue
+        "New Issue Created".debugLog()
     }
 
     func count<T>(for fetchRequest: NSFetchRequest<T>) -> Int {
@@ -403,7 +420,6 @@ class DataController: ObservableObject {
 
     func fetchRequestForTopIssues(count: Int) -> NSFetchRequest<Issue> {
         let request = Issue.fetchRequest()
-
         request.predicate = NSPredicate(format: "completed = false")
 
         request.sortDescriptors = [
@@ -417,5 +433,4 @@ class DataController: ObservableObject {
     func results<T: NSManagedObject>(for fetchRequest: NSFetchRequest<T>) -> [T] {
         return (try? container.viewContext.fetch(fetchRequest)) ?? []
     }
-
 }

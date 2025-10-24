@@ -54,6 +54,12 @@ struct IssueRow: View {
     }
 }
 
-#Preview {
-    IssueRow(issue: .example)
+struct IssueRow_Previews: PreviewProvider {
+    static var previews: some View {
+        IssueRow(issue: .example)
+    }
 }
+
+// #Preview {
+//    IssueRow(issue: .example)
+// }

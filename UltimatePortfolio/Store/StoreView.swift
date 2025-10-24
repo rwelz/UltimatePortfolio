@@ -1,19 +1,20 @@
 //
-//  SwiftUIView.swift
+//  StoreView.swift
 //  UltimatePortfolio
 //
 //  Created by Robert Welz on 01.07.25.
 //
 
-import SwiftUI
 import StoreKit
+import SwiftUI
 
 struct StoreView: View {
     enum LoadState {
         case loading, loaded, error
     }
-    @Environment(\.purchase) var purchaseAction
+
     @EnvironmentObject var dataController: DataController
+    @Environment(\.purchase) var purchaseAction
     @Environment(\.dismiss) var dismiss
 
     @State private var loadState = LoadState.loading
@@ -39,6 +40,7 @@ struct StoreView: View {
                 .frame(maxWidth: .infinity)
                 .padding(20)
                 .background(.blue.gradient)
+
                 ScrollView {
                     VStack {
                         switch loadState {
@@ -46,6 +48,7 @@ struct StoreView: View {
                             Text("Fetching offers…")
                                 .font(.title2.bold())
                                 .padding(.top, 50)
+
                             ProgressView()
                                 .controlSize(.large)
 
@@ -58,6 +61,7 @@ struct StoreView: View {
                                         VStack(alignment: .leading) {
                                             Text(product.displayName)
                                                 .font(.title2.bold())
+
                                             Text(product.description)
                                         }
 
@@ -90,6 +94,7 @@ struct StoreView: View {
                     }
                     .padding(20)
                 }
+
                 Button("Restore Purchases", action: restore)
 
                 Button("Cancel") {
@@ -111,6 +116,7 @@ struct StoreView: View {
             await load()
         }
     }
+
     func checkForPurchase() {
         if dataController.fullVersionUnlocked {
             dismiss()
@@ -157,5 +163,5 @@ struct StoreView: View {
 
 #Preview {
     StoreView()
-        .environmentObject(DataController(inMemory: true))
+        // .environmentObject(DataController(inMemory: true)) // xxx
 }

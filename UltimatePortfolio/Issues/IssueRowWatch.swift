@@ -25,3 +25,7 @@ struct IssueRowWatch: View {
         }
     }
 }
+
+#Preview {
+    IssueRowWatch(issue: .example)
+}

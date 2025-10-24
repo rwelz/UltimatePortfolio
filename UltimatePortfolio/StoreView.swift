@@ -8,6 +8,6 @@
 import Foundation
 import SwiftUI
 
-@EnvironmentObject var dataController: DataController
+@EnvironmentObject var dataController: DataController // xxx
 @Environment(\.dismiss) var dismiss
 @State private var products = [Product]()

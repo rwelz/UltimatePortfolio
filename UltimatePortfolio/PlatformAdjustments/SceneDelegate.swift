@@ -3,9 +3,10 @@
 //  UltimatePortfolio
 //
 //  Created by Robert Welz on 14.07.25.
-//
+// xxx
 
 import SwiftUI
+
 #if os(iOS)
 class SceneDelegate: NSObject, UIWindowSceneDelegate {
 

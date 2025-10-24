@@ -13,8 +13,8 @@ import SwiftUI
 // TODO: https://developer.apple.com/account/resources/identifiers/list
 // TODO: and from Xcode project under "Signing & Capabilities -> App Groups"
 struct IssueView: View {
-    @ObservedObject var issue: Issue
     @EnvironmentObject var dataController: DataController
+    @ObservedObject var issue: Issue
 
     @State private var showingNotificationsError = false
     @Environment(\.openURL) var openURL
@@ -32,7 +32,6 @@ struct IssueView: View {
 
                     Text("**Status:** \(issue.issueStatus)")
                         .foregroundStyle(.secondary)
-
                 }
 
                 Picker("Priority", selection: $issue.priority) {
@@ -43,6 +42,7 @@ struct IssueView: View {
 
                 TagsMenuView(issue: issue)
             }
+
             Section {
                 VStack(alignment: .leading) {
                     Text("Basic Information")
@@ -53,39 +53,41 @@ struct IssueView: View {
                         "Description",
                         text: $issue.issueContent,
                         prompt: Text("Enter the issue description here"),
-                        axis: .vertical)
+                        axis: .vertical
+                    )
                     .labelsHidden()
                 }
             }
+
             Section("Reminders") {
                 Toggle("Show reminders", isOn: $issue.reminderEnabled.animation())
 
                 if issue.reminderEnabled {
-                   DatePicker(
-                       "Reminder time",
-                       selection: $issue.issueReminderTime,
-                       displayedComponents: .hourAndMinute
-                   )
+                    DatePicker(
+                        "Reminder time",
+                        selection: $issue.issueReminderTime,
+                        displayedComponents: .hourAndMinute
+                    )
                 }
             }
         }
         .formStyle(.grouped)
         .disabled(issue.isDeleted)
         .onReceive(issue.objectWillChange) { _ in
-            dataController.queueSave()
+            dataController.save()
         }
         .onSubmit(dataController.save)
         .toolbar {
             IssueViewToolbar(issue: issue)
         }
         .alert("Oops!", isPresented: $showingNotificationsError) {
-        #if os(macOS)
+            #if os(macOS)
             SettingsLink {
-                    Text("Check Settings")
-                }
-        #elseif os(iOS)
+                Text("Check Settings")
+            }
+            #elseif os(iOS)
             Button("Check Settings", action: showAppSettings)
-        #endif
+            #endif
             Button("Cancel", role: .cancel) { }
         } message: {
             Text("There was a problem setting your notification. Please check you have notifications enabled.")
@@ -94,7 +96,7 @@ struct IssueView: View {
         .onChange(of: issue.reminderTime, updateReminder)
     }
 
-#if os(iOS)
+    #if os(iOS)
     func showAppSettings() {
         guard let settingsURL = URL(string: UIApplication.openNotificationSettingsURLString) else {
             return
@@ -102,7 +104,7 @@ struct IssueView: View {
 
         openURL(settingsURL)
     }
-#endif
+    #endif
 
     func updateReminder() {
         dataController.removeReminders(for: issue)
@@ -120,7 +122,13 @@ struct IssueView: View {
     }
 }
 
-#Preview {
-    IssueView(issue: .example)
-        .environmentObject(DataController(inMemory: true))
+struct IssueView_Previews: PreviewProvider {
+    static var previews: some View {
+        IssueView(issue: .example)
+    }
 }
+
+// #Preview {
+//    IssueView(issue: .example)
+//        .environmentObject(DataController(inMemory: true))
+// }

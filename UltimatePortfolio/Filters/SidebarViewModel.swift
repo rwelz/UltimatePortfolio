@@ -7,32 +7,48 @@
 
 import CoreData
 import Foundation
+import SwiftUI
 
 extension SidebarView {
-    class ViewModel: NSObject, ObservableObject, NSFetchedResultsControllerDelegate {
-        var dataController: DataController
-
-        // @FetchRequest funktioniert nur innerhalb von Views, deswegen wird es ersetzt:
-        // @FetchRequest(sortDescriptors: [SortDescriptor(\.name)]) var tags: FetchedResults<Tag>
-
+    @dynamicMemberLookup
+    final class ViewModel: NSObject, ObservableObject, NSFetchedResultsControllerDelegate {
+        // MARK: - Core Data + Controller
+        let dataController: DataController
         private let tagsController: NSFetchedResultsController<Tag>
-        @Published var tags = [Tag]()
 
+        // MARK: - Published Properties
+        @Published var tags = [Tag]()
         @Published var tagToRename: Tag?
         @Published var renamingTag = false
         @Published var tagName = ""
+        @Published var showingAwards = false
+        @Published var showingStore = false
+        // @Published var selectedFilter: Filter?
 
+        // MARK: - Computed Filters
         var tagFilters: [Filter] {
             tags.map { tag in
-                Filter(id: tag.tagID, name: tag.tagName, icon: "tag", tag: tag)
+                Filter(
+                    id: tag.tagID,
+                    name: tag.tagName,
+                    icon: "tag",
+                    tag: tag
+                )
             }
         }
 
+        // MARK: - Init
         init(dataController: DataController) {
             self.dataController = dataController
 
             let request = Tag.fetchRequest()
-            request.sortDescriptors = [NSSortDescriptor(keyPath: \Tag.name, ascending: true)]
+            request.sortDescriptors = [
+                NSSortDescriptor(
+                    key: "name",
+                    ascending: true,
+                    selector: #selector(NSString.localizedStandardCompare(_:))
+                )
+            ]
 
             tagsController = NSFetchedResultsController(
                 fetchRequest: request,
@@ -42,29 +58,87 @@ extension SidebarView {
             )
 
             super.init()
-
             tagsController.delegate = self
 
-            // now we finish the new initializer by executing the fetch request and assigning it to the tags property:
             do {
                 try tagsController.performFetch()
                 tags = tagsController.fetchedObjects ?? []
             } catch {
-                print("Failed to fetch tags")
+                print("⚠️ Failed to fetch tags: \(error.localizedDescription)")
             }
         }
 
-        func controllerDidChangeContent(_ controller: NSFetchedResultsController<any NSFetchRequestResult>) {
-            if let newTags = controller.fetchedObjects as? [Tag] {
-                    tags = newTags
+        // MARK: - Dynamic Member Lookup (Value access)
+        @MainActor
+        subscript<Value>(
+            dynamicMember keyPath: ReferenceWritableKeyPath<DataController, Value>
+        ) -> Value {
+            get {
+                //                #if DEBUG
+                //                if let name = keyPath._kvcKeyPathString {
+                //                    print("GET dynamicMember:", name)
+                //                }
+                //                #endif
+                return dataController[keyPath: keyPath]
+            }
+            set {
+                //                #if DEBUG
+                //                // Property-Namen ermitteln
+                //                let name = keyPath._kvcKeyPathString ?? String(describing: keyPath)
+                //                print("SET dynamicMember:", name, "→", newValue)
+                //                // Stacktrace vereinfachen
+                //                let trace = Thread.callStackSymbols
+                //                    .filter { $0.contains("UltimatePortfolio") || $0.contains("SwiftUI") }
+                //                // .prefix(8)
+                //                    .joined(separator: "\n→ ")
+                //                print("⚙️ Callstack (kurz):\n→ \(trace)\n")
+                //                #endif
+                // dataController[keyPath: keyPath] = newValue // offending instruction
+                // Avoid publishing during view updates by deferring mutation.
+                // Skip if no change to reduce unnecessary publishes.
+                let oldValue = dataController[keyPath: keyPath]
+                if let lhs = oldValue as? AnyHashable,
+                   let rhs = newValue as? AnyHashable,
+                   lhs == rhs { return }
+
+                Task { @MainActor in
+                    dataController[keyPath: keyPath] = newValue
                 }
+            }
         }
 
+        // MARK: - Dynamic Member Lookup (Binding access)
+        subscript<Value>(
+            dynamicMember keyPath: ReferenceWritableKeyPath<DataController, Value>
+        ) -> Binding<Value> {
+            Binding(
+                get: { self.dataController[keyPath: keyPath] },
+                set: { newValue in
+                    let oldValue = self.dataController[keyPath: keyPath]
+                    if let lhs = oldValue as? AnyHashable,
+                       let rhs = newValue as? AnyHashable,
+                       lhs == rhs { return }
+                    self.dataController[keyPath: keyPath] = newValue
+                }
+            )
+        }
+
+        // MARK: - NSFetchedResultsControllerDelegate
+        func controllerDidChangeContent(
+            _ controller: NSFetchedResultsController<NSFetchRequestResult>
+        ) {
+            if let newTags = controller.fetchedObjects as? [Tag] {
+                self.tags = newTags
+            }
+        }
+
+        // MARK: - Tag Handling
         func delete(_ offsets: IndexSet) {
             for offset in offsets {
-                let item = tags[offset]
-                dataController.delete(item)
+                let tag = tags[offset]
+                dataController.delete(tag)
             }
+            dataController.save()
         }
 
         func delete(_ filter: Filter) {

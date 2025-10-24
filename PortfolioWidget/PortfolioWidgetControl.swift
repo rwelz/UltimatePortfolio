@@ -9,6 +9,8 @@ import AppIntents
 import SwiftUI
 import WidgetKit
 
+#if canImport(WidgetKit)
+@available(iOS 18.0, *)
 struct PortfolioWidgetControl: ControlWidget {
     var body: some ControlWidgetConfiguration {
         StaticControlConfiguration(
@@ -28,6 +30,7 @@ struct PortfolioWidgetControl: ControlWidget {
     }
 }
 
+@available(iOS 18.0, *)
 extension PortfolioWidgetControl {
     struct Provider: ControlValueProvider {
         var previewValue: Bool {
@@ -41,6 +44,7 @@ extension PortfolioWidgetControl {
     }
 }
 
+@available(iOS 18.0, *)
 struct StartTimerIntent: SetValueIntent {
     static let title: LocalizedStringResource = "Start a timer"
 
@@ -52,3 +56,10 @@ struct StartTimerIntent: SetValueIntent {
         return .result()
     }
 }
+
+#else
+
+// Fallback for iOS versions earlier than 18 to satisfy the compiler.
+struct PortfolioWidgetControl {}
+
+#endif

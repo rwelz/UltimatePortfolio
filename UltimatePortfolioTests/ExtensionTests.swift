@@ -6,11 +6,10 @@
 //
 
 import CoreData
-@testable import UltimatePortfolio
 import XCTest
+@testable import UltimatePortfolio
 
 final class ExtensionTests: BaseTestCase {
-
     func testIssueTitleUnwrap() {
         let issue = Issue(context: managedObjectContext)
 
@@ -31,8 +30,7 @@ final class ExtensionTests: BaseTestCase {
         XCTAssertEqual(issue.content, "Updated issue", "Changing issueContent should also change content.")
     }
 
-    //func testIssueCreationDateUnwrap() {
-    func test_issueCreationDate_matchesCreationDate() {
+    func testIssueCreationDateUnwrap() {
         // Given
         let issue = Issue(context: managedObjectContext)
         let testDate = Date.now
@@ -49,8 +47,8 @@ final class ExtensionTests: BaseTestCase {
         let issue = Issue(context: managedObjectContext)
 
         XCTAssertEqual(issue.issueTags.count, 0, "A new issue should have no tags.")
-        issue.addToTags(tag)
 
+        issue.addToTags(tag)
         XCTAssertEqual(issue.issueTags.count, 1, "Adding 1 tag to an issue should result in issueTags having count 1.")
     }
 
@@ -126,7 +124,7 @@ final class ExtensionTests: BaseTestCase {
         let allTags = [tag1, tag2, tag3]
         let sortedTags = allTags.sorted()
 
-        XCTAssertEqual([tag3, tag1, tag2], sortedTags, "Sorting tag arrays should use name then UUID string.")
+        XCTAssertEqual([tag3, tag1, tag2], sortedTags, "Sorting tag array should use name then UUID string.")
     }
 
     func testBundleDecodingAwards() {
@@ -137,13 +135,13 @@ final class ExtensionTests: BaseTestCase {
     func testDecodingString() {
         let bundle = Bundle(for: ExtensionTests.self)
         let data = bundle.decode("DecodableString.json", as: String.self)
-        XCTAssertEqual(data, "Never ask a starfish for directions.", "The string must match DecodableString.json.")
+        XCTAssertEqual(data, "Never ask a starfish for directions.", "The string must match DecodableString.json")
     }
 
     func testDecodingDictionary() {
         let bundle = Bundle(for: ExtensionTests.self)
         let data = bundle.decode("DecodableDictionary.json", as: [String: Int].self)
-        XCTAssertEqual(data.count, 3, "There should be three items decoded from DecodableDictionary.json.")
+        XCTAssertEqual(data.count, 3, "There should be three items decoded from DecodableDictionary.json")
         XCTAssertEqual(data["One"], 1, "The dictionary should contain the value 1 for the key One.")
     }
 }

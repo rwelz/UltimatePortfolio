@@ -41,13 +41,13 @@ struct AwardsView: View {
                 }
             }
             .navigationTitle("Awards")
-#if !os(watchOS)
+            #if !os(watchOS)
             .toolbar {
                 Button("Close") {
                     dismiss()
                 }
             }
-#endif
+            #endif
         }
         .macFrame(minWidth: 600, maxHeight: 500)
         .alert(awardTitle, isPresented: $showingAwardDetails) {
@@ -73,10 +73,17 @@ struct AwardsView: View {
     }
 }
 
-// #Preview {
-//    AwardsView()
-//        .environmentObject(DataController(inMemory: true))
-// }
+struct AwardsView_Previews: PreviewProvider {
+    static var previews: some View {
+        AwardsView()
+            .environmentObject(DataController(inMemory: true))
+    }
+}
+
+ // #Preview {
+ //   AwardsView()
+ //       .environmentObject(DataController(inMemory: true))
+ // } // xxx
 
  struct AwardsView_Previews: PreviewProvider {
     static var previews: some View {

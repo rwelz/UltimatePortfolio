@@ -10,6 +10,10 @@ import Foundation
 extension ContentView {
     @dynamicMemberLookup
     class ViewModel: ObservableObject {
+        var dataController: DataController
+
+        // Explicit publisher to satisfy ObservableObject and allow manual change emission
+
         // fixed the App Store review message being shown time and time again
         // once our initial check for eligibility passes.
         // This only happens in development mode,
@@ -34,7 +38,10 @@ extension ContentView {
             return false
         }
 
-        var dataController: DataController
+        // func recordDidRequestReview() {
+        //    let reviewRequestCount = UserDefaults.standard.integer(forKey: "reviewRequestCount")
+        //    UserDefaults.standard.set(reviewRequestCount + 1, forKey: "reviewRequestCount")
+        // } // xxx
 
         init(dataController: DataController) {
             self.dataController = dataController
@@ -44,15 +51,40 @@ extension ContentView {
             dataController[keyPath: keyPath]
         }
 
+        @MainActor
         subscript<Value>(dynamicMember keyPath: ReferenceWritableKeyPath<DataController, Value>) -> Value {
-            get { dataController[keyPath: keyPath] }
-            // set { dataController[keyPath: keyPath] = newValue }
+            get {
+//                #if DEBUG
+//                if let name = keyPath._kvcKeyPathString {
+//                    print("GET dynamicMember:", name)
+//                }
+//                #endif
+                return dataController[keyPath: keyPath]
+            }
             set {
-                    // 🔐 Sicherer Setzen mit Delay (nur bei @Published empfohlen!)
-                    DispatchQueue.main.async {
-                        self.dataController[keyPath: keyPath] = newValue
-                    }
+//                #if DEBUG
+//                // Property-Namen ermitteln
+//                let name = keyPath._kvcKeyPathString ?? String(describing: keyPath)
+//                print("SET dynamicMember:", name, "→", newValue)
+//                // Stacktrace vereinfachen
+//                let trace = Thread.callStackSymbols
+//                    .filter { $0.contains("UltimatePortfolio") || $0.contains("SwiftUI") }
+//                // .prefix(8)
+//                    .joined(separator: "\n→ ")
+//                print("⚙️ Callstack (kurz):\n→ \(trace)\n")
+//                #endif
+                // dataController[keyPath: keyPath] = newValue // offending instruction
+                // Avoid publishing during view updates by deferring mutation.
+                let oldValue = dataController[keyPath: keyPath]
+                // Skip if no change to reduce unnecessary publishes.
+                if let lhs = oldValue as? AnyHashable, let rhs = newValue as? AnyHashable, lhs == rhs {
+                    return
                 }
+                
+                Task { @MainActor in
+                    dataController[keyPath: keyPath] = newValue
+                }
+            }
         }
 
         func delete(_ offsets: IndexSet) {

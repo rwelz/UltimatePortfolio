@@ -10,7 +10,7 @@ import XCTest
 extension XCUIElement {
     func clear() {
         guard let stringValue = self.value as? String else {
-            XCTFail("Failed to clear text in XCUIElement.")
+            XCTFail("Failed to clear text in XCUIElement")
             return
         }
 
@@ -48,20 +48,22 @@ final class UltimatePortfolioUITests: XCTestCase {
 
     //So, we can verify that our “Filters” (the back button), “Filter”, and “New Issue” buttons all exist using this test:
     func testAppHasBasicButtonsOnLaunch() throws {
-        XCTAssertTrue(app.navigationBars.buttons["Filters"].exists, "There should be a Filters button launch.")
-        XCTAssertTrue(app.navigationBars.buttons["Filter"].exists, "There should be a Filter button launch.")
-        XCTAssertTrue(app.navigationBars.buttons["New Issue"].exists, "There should be a New Issue button launch.")
+        XCTAssertTrue(app.navigationBars.buttons["Filters"].exists, "There should be a Filters button on launch.")
+        XCTAssertTrue(app.navigationBars.buttons["Filter"].exists, "There should be a Filters button on launch.")
+        XCTAssertTrue(app.navigationBars.buttons["New Issue"].exists, "There should be a New Issue button on launch.")
     }
 
     func testNoIssuesAtStart() {
-        XCTAssertEqual(app.cells.count, 0, "There should be no list rows initially.")
+        XCTAssertEqual(app.cells.count, 0, "There should be 0 list rows initially.")
     }
 
     // a test that creates five issues and verifies each one is created correctly.
     func testCreatingAndDeletingIssues() {
         for tapCount in 1...5 {
-            app.buttons["New Issue"].tap() // adds a new issue by goingt into the editing screen
-            app.buttons["Issues"].tap() // leave Edit Screen
+            // adds a new issue by goingt into the editing screen
+            app.buttons["New Issue"].tap()
+            // leave Edit Screen
+            app.buttons["Issues"].tap()
 
             XCTAssertEqual(app.cells.count, tapCount, "There should be \(tapCount) rows in the list.")
         }
@@ -91,7 +93,6 @@ final class UltimatePortfolioUITests: XCTestCase {
         app.buttons["New Issue"].tap()
         app.buttons["Priority, Medium"].tap()
         app.buttons["High"].tap()
-
         app.buttons["Issues"].tap()
 
         let identifier = "New issue High Priority"
@@ -116,7 +117,7 @@ final class UltimatePortfolioUITests: XCTestCase {
             }
 
             award.tap()
-            XCTAssertTrue(app.alerts["Locked"].exists, "There should be a Locked alert showing for awards.")
+            XCTAssertTrue(app.alerts["Locked"].exists, "There should be a Locked alert showing this award.")
             app.buttons["OK"].tap()
         }
     }
@@ -127,5 +128,5 @@ final class UltimatePortfolioUITests: XCTestCase {
 //        measure(metrics: [XCTApplicationLaunchMetric()]) {
 //            XCUIApplication().launch()
 //        }
-//    }
+//    } // xxx
 }
