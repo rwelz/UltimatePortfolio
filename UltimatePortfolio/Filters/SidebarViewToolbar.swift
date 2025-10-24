@@ -37,7 +37,7 @@ struct SidebarViewToolbar: ToolbarContent {
             Button {
                 dataController.deleteAll()
             } label: {
-                Label("DELETE ALL", systemImage: "")
+                Label("DELETE ALL", systemImage: "minus")
             }
         }
 
@@ -46,7 +46,7 @@ struct SidebarViewToolbar: ToolbarContent {
                 dataController.deleteAll()
                 dataController.createSampleData()
             } label: {
-                Label("ADD SAMPLES", systemImage: "")
+                Label("ADD SAMPLES", systemImage: "flame")
             }
         }
 #endif
