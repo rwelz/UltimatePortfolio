@@ -7,38 +7,41 @@
 
 import CoreData
 import Foundation
+import SwiftUI
 
 extension SidebarView {
     @dynamicMemberLookup
-    class ViewModel: NSObject, ObservableObject, NSFetchedResultsControllerDelegate {
+    final class ViewModel: NSObject, ObservableObject, NSFetchedResultsControllerDelegate {
+        // MARK: - Core Data + Controller
         let dataController: DataController
-
         private let tagsController: NSFetchedResultsController<Tag>
+
+        // MARK: - Published Properties
         @Published var tags = [Tag]()
-
-        // Auswahl
-        @Published var selectedFilter: Filter?
-
-        // Rename
         @Published var tagToRename: Tag?
         @Published var renamingTag = false
         @Published var tagName = ""
-
-        // Sheets/Modals
         @Published var showingAwards = false
         @Published var showingStore = false
+        // @Published var selectedFilter: Filter?
 
+        // MARK: - Computed Filters
         var tagFilters: [Filter] {
             tags.map { tag in
-                Filter(id: tag.tagID, name: tag.tagName, icon: "tag", tag: tag)
+                Filter(
+                    id: tag.tagID,
+                    name: tag.tagName,
+                    icon: "tag",
+                    tag: tag
+                )
             }
         }
 
+        // MARK: - Init
         init(dataController: DataController) {
             self.dataController = dataController
 
             let request = Tag.fetchRequest()
-            // request.sortDescriptors = [NSSortDescriptor(keyPath: \Tag.name, ascending: true)]
             request.sortDescriptors = [
                 NSSortDescriptor(
                     key: "name",
@@ -46,6 +49,7 @@ extension SidebarView {
                     selector: #selector(NSString.localizedStandardCompare(_:))
                 )
             ]
+
             tagsController = NSFetchedResultsController(
                 fetchRequest: request,
                 managedObjectContext: dataController.container.viewContext,
@@ -54,20 +58,21 @@ extension SidebarView {
             )
 
             super.init()
-
             tagsController.delegate = self
 
-            // now we finish the new initializer by executing the fetch request and assigning it to the tags property:
             do {
                 try tagsController.performFetch()
                 tags = tagsController.fetchedObjects ?? []
             } catch {
-                print("Failed to fetch tags: \(error.localizedDescription)")
+                print("⚠️ Failed to fetch tags: \(error.localizedDescription)")
             }
         }
 
+        // MARK: - Dynamic Member Lookup (Value access)
         @MainActor
-        subscript<Value>(dynamicMember keyPath: ReferenceWritableKeyPath<DataController, Value>) -> Value {
+        subscript<Value>(
+            dynamicMember keyPath: ReferenceWritableKeyPath<DataController, Value>
+        ) -> Value {
             get {
                 //                #if DEBUG
                 //                if let name = keyPath._kvcKeyPathString {
@@ -76,7 +81,6 @@ extension SidebarView {
                 //                #endif
                 return dataController[keyPath: keyPath]
             }
-
             set {
                 //                #if DEBUG
                 //                // Property-Namen ermitteln
@@ -91,28 +95,48 @@ extension SidebarView {
                 //                #endif
                 // dataController[keyPath: keyPath] = newValue // offending instruction
                 // Avoid publishing during view updates by deferring mutation.
-                let oldValue = dataController[keyPath: keyPath]
                 // Skip if no change to reduce unnecessary publishes.
-                if let lhs = oldValue as? AnyHashable, let rhs = newValue as? AnyHashable, lhs == rhs {
-                    return
-                }
-                MainActor.assumeIsolated { }
+                let oldValue = dataController[keyPath: keyPath]
+                if let lhs = oldValue as? AnyHashable,
+                   let rhs = newValue as? AnyHashable,
+                   lhs == rhs { return }
+
                 Task { @MainActor in
                     dataController[keyPath: keyPath] = newValue
                 }
             }
         }
 
-        func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        // MARK: - Dynamic Member Lookup (Binding access)
+        subscript<Value>(
+            dynamicMember keyPath: ReferenceWritableKeyPath<DataController, Value>
+        ) -> Binding<Value> {
+            Binding(
+                get: { self.dataController[keyPath: keyPath] },
+                set: { newValue in
+                    let oldValue = self.dataController[keyPath: keyPath]
+                    if let lhs = oldValue as? AnyHashable,
+                       let rhs = newValue as? AnyHashable,
+                       lhs == rhs { return }
+                    self.dataController[keyPath: keyPath] = newValue
+                }
+            )
+        }
+
+        // MARK: - NSFetchedResultsControllerDelegate
+        func controllerDidChangeContent(
+            _ controller: NSFetchedResultsController<NSFetchRequestResult>
+        ) {
             if let newTags = controller.fetchedObjects as? [Tag] {
-                tags = newTags
+                self.tags = newTags
             }
         }
 
+        // MARK: - Tag Handling
         func delete(_ offsets: IndexSet) {
             for offset in offsets {
-                let item = tags[offset]
-                dataController.delete(item)
+                let tag = tags[offset]
+                dataController.delete(tag)
             }
             dataController.save()
         }

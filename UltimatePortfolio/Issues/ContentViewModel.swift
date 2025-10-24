@@ -80,7 +80,7 @@ extension ContentView {
                 if let lhs = oldValue as? AnyHashable, let rhs = newValue as? AnyHashable, lhs == rhs {
                     return
                 }
-                MainActor.assumeIsolated { }
+                
                 Task { @MainActor in
                     dataController[keyPath: keyPath] = newValue
                 }
