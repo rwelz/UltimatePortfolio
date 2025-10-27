@@ -25,7 +25,7 @@ struct ContentView: View {
                 IssueRow(issue: issue)
 #endif
             }
-            .onDelete(perform: viewModel.delete)
+            .onDelete(perform: viewModel.deleteItem)
         }
         .macFrame(minWidth: 220)
         .navigationTitle("Issues")

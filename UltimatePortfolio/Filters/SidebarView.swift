@@ -31,9 +31,9 @@ struct SidebarView: View {
             }
             Section("Tags") {
                 ForEach(viewModel.tagFilters) { filter in
-                    UserFilterRow(filter: filter, rename: viewModel.rename, delete: viewModel.delete)
+                    UserFilterRow(filter: filter, rename: viewModel.rename, delete: viewModel.deleteTagAtFilter)
                 }
-                .onDelete(perform: viewModel.delete)
+                .onDelete(perform: viewModel.deleteTagAtOffset)
             }
 #if os(watchOS)
             // Aktionen direkt in der Liste

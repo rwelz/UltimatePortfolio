@@ -133,7 +133,7 @@ extension SidebarView {
         }
 
         // MARK: - Tag Handling
-        func delete(_ offsets: IndexSet) {
+        func deleteTagAtOffset(_ offsets: IndexSet) {
             for offset in offsets {
                 let tag = tags[offset]
                 dataController.delete(tag)
@@ -141,7 +141,7 @@ extension SidebarView {
             dataController.save()
         }
 
-        func delete(_ filter: Filter) {
+        func deleteTagAtFilter(_ filter: Filter) {
             guard let tag = filter.tag else { return }
             dataController.delete(tag)
             dataController.save()
