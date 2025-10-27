@@ -59,7 +59,8 @@ Final tweaks:
 44b. Added logging class for all platforms.
 45. Code cleanup and previews work now. Adheres to chap. 45 now.
 1.00 added Apple Watch Target again since they were deleted accidentially.
-1.01 made Filter work on all platforms and fixed runtime error on macos
+    & made Filter work on all platforms and fixed runtime error on macos
+
 —————————
 
 
