@@ -23,6 +23,9 @@
 		D72C5D012E55D9DE00360BE5 /* MyUnifiedLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72C5CFF2E55D9DE00360BE5 /* MyUnifiedLogger.swift */; };
 		D72C5D032E55D9DE00360BE5 /* MyUnifiedLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72C5CFF2E55D9DE00360BE5 /* MyUnifiedLogger.swift */; };
 		D731DC592E323C0B0059D776 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E1A3B42DF98B95001EEA27 /* Bundle-Decodable.swift */; };
+		D731E3682EAF7E00006B3D73 /* DataController-Deletions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D731E3662EAF7E00006B3D73 /* DataController-Deletions.swift */; };
+		D731E3692EAF7E00006B3D73 /* DataController-Deletions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D731E3662EAF7E00006B3D73 /* DataController-Deletions.swift */; };
+		D731E36A2EAF7E00006B3D73 /* DataController-Deletions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D731E3662EAF7E00006B3D73 /* DataController-Deletions.swift */; };
 		D73A5C192DF99D0E007BE703 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D73A5C182DF99D0E007BE703 /* README.md */; };
 		D73E62862E054AD200AF4383 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E62852E054AD200AF4383 /* ContentViewModel.swift */; };
 		D73E62882E054F7E00AF4383 /* IssueRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73E62872E054F7E00AF4383 /* IssueRowViewModel.swift */; };
@@ -114,6 +117,10 @@
 		D799920E2E251FC0004B4675 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D799920D2E251FC0004B4675 /* AppDelegate.swift */; };
 		D79992112E251FF5004B4675 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79992102E251FF5004B4675 /* SceneDelegate.swift */; platformFilter = ios; };
 		D79992122E251FF5004B4675 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79992102E251FF5004B4675 /* SceneDelegate.swift */; };
+		D7A6FBF62EB0F5B100927E07 /* DataController-Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A6FBF52EB0F5B100927E07 /* DataController-Migration.swift */; };
+		D7A6FBF72EB0F5B100927E07 /* DataController-Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A6FBF52EB0F5B100927E07 /* DataController-Migration.swift */; };
+		D7A6FBF82EB0F5B100927E07 /* DataController-Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A6FBF52EB0F5B100927E07 /* DataController-Migration.swift */; };
+		D7A6FBF92EB0F5B100927E07 /* DataController-Migration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A6FBF52EB0F5B100927E07 /* DataController-Migration.swift */; };
 		D7BCAF7F2E0431F80054D6B3 /* SidebarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BCAF7E2E0431F80054D6B3 /* SidebarViewModel.swift */; };
 		D7C860EE2E3792CD0063FFA6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7E1A3CD2DF98B95001EEA27 /* Localizable.strings */; };
 		D7CF42C52E9913E800810ED8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E1A3B22DF98B95001EEA27 /* Colors.xcassets */; };
@@ -267,6 +274,7 @@
 		D71FD49A2E2E53A8000E43A5 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		D71FD49D2E2FA5F0000E43A5 /* CustomStringConvertible-debugLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomStringConvertible-debugLog.swift"; sourceTree = "<group>"; };
 		D72C5CFF2E55D9DE00360BE5 /* MyUnifiedLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUnifiedLogger.swift; sourceTree = "<group>"; };
+		D731E3662EAF7E00006B3D73 /* DataController-Deletions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataController-Deletions.swift"; sourceTree = "<group>"; };
 		D73A5C182DF99D0E007BE703 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		D73E62852E054AD200AF4383 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		D73E62872E054F7E00AF4383 /* IssueRowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueRowViewModel.swift; sourceTree = "<group>"; };
@@ -301,6 +309,8 @@
 		D799920D2E251FC0004B4675 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D79992102E251FF5004B4675 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D7A3A3172DBBB02400B3ACC3 /* UltimatePortfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UltimatePortfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7A6FBF42EB0EBF200927E07 /* Model 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model 2.xcdatamodel"; sourceTree = "<group>"; };
+		D7A6FBF52EB0F5B100927E07 /* DataController-Migration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataController-Migration.swift"; sourceTree = "<group>"; };
 		D7BCAF7E2E0431F80054D6B3 /* SidebarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewModel.swift; sourceTree = "<group>"; };
 		D7C64EBB2E9E33C400607A59 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		D7CCD2252E02CDD7004B081E /* UltimatePortfolioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UltimatePortfolioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -335,7 +345,6 @@
 		D7E1A3D32DF98B95001EEA27 /* UltimatePortfolio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = UltimatePortfolio.entitlements; sourceTree = "<group>"; };
 		D7E1A3D42DF98B95001EEA27 /* UltimatePortfolioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UltimatePortfolioApp.swift; sourceTree = "<group>"; };
 		D7E1A3D62DF98B95001EEA27 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		D7F5DFD82E97AA220040E1E3 /* Notizen.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Notizen.txt; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -656,7 +665,8 @@
 				D72C5CFE2E55D8A100360BE5 /* Debugging */,
 				D7E1A3D42DF98B95001EEA27 /* UltimatePortfolioApp.swift */,
 				D7E1A3C72DF98B95001EEA27 /* DataController.swift */,
-				D75D22FB2E97CEC2005A1169 /* DataController-Testing.swift */,
+				D7A6FBF52EB0F5B100927E07 /* DataController-Migration.swift */,
+				D731E3662EAF7E00006B3D73 /* DataController-Deletions.swift */,
 				D7686C652E3237F6006EF993 /* DataController-Awards.swift */,
 				D77DEFA52E1429A600007EFE /* DataController-Notifications.swift */,
 				D77DEFA72E142A0100007EFE /* DataController-StoreKit.swift */,
@@ -1429,18 +1439,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D75D22FD2E97D04A005A1169 /* DataController-Testing.swift in Sources */,
 				D72C5D002E55D9DE00360BE5 /* MyUnifiedLogger.swift in Sources */,
 				D7686C612E323656006EF993 /* DataController.swift in Sources */,
 				D731DC592E323C0B0059D776 /* Bundle-Decodable.swift in Sources */,
 				D7686C682E323AC4006EF993 /* Award.swift in Sources */,
 				D7686C672E3237F6006EF993 /* DataController-Awards.swift in Sources */,
+				D7A6FBF92EB0F5B100927E07 /* DataController-Migration.swift in Sources */,
 				D7686C632E323710006EF993 /* DataController-StoreKit.swift in Sources */,
 				D7686C5F2E32362A006EF993 /* Issue-CoreDataHelpers.swift in Sources */,
 				D7686C642E323772006EF993 /* CustomStringConvertible-debugLog.swift in Sources */,
 				D7686C622E3236BC006EF993 /* Filter.swift in Sources */,
 				D7686C602E32362A006EF993 /* Tag-CoreDataHelpers.swift in Sources */,
 				D7686C5E2E3235F6006EF993 /* Model.xcdatamodeld in Sources */,
+				D731E3682EAF7E00006B3D73 /* DataController-Deletions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1482,6 +1493,7 @@
 				D7CF42D12E99163F00810ED8 /* MacFrame.swift in Sources */,
 				D7CF42D22E99163F00810ED8 /* NumberBadge.swift in Sources */,
 				D77147C42E9912A2006F7FB9 /* Manager.swift in Sources */,
+				D7A6FBF62EB0F5B100927E07 /* DataController-Migration.swift in Sources */,
 				D77147C52E9912A2006F7FB9 /* ContentViewModel.swift in Sources */,
 				D77147B92E991298006F7FB9 /* SidebarViewToolbar.swift in Sources */,
 				D77147D32E991327006F7FB9 /* Optional-helpers.swift in Sources */,
@@ -1489,6 +1501,7 @@
 				D77147BB2E991298006F7FB9 /* SidebarViewModel.swift in Sources */,
 				D7CF42CE2E99163600810ED8 /* SceneDelegate.swift in Sources */,
 				D77147BC2E991298006F7FB9 /* SmartFilterRow.swift in Sources */,
+				D731E3692EAF7E00006B3D73 /* DataController-Deletions.swift in Sources */,
 				D77147B52E99128B006F7FB9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1535,10 +1548,10 @@
 			files = (
 				D7959D502E4358DE001F944B /* DataController-StoreKit.swift in Sources */,
 				D7959D4F2E4358D2001F944B /* DataController.swift in Sources */,
+				D7A6FBF82EB0F5B100927E07 /* DataController-Migration.swift in Sources */,
 				D7959D4C2E435899001F944B /* Issue-CoreDataHelpers.swift in Sources */,
 				D7959D552E4359C2001F944B /* CustomStringConvertible-debugLog.swift in Sources */,
 				D72C5D012E55D9DE00360BE5 /* MyUnifiedLogger.swift in Sources */,
-				D75D22FE2E97D04A005A1169 /* DataController-Testing.swift in Sources */,
 				D7959D4D2E435899001F944B /* Tag-CoreDataHelpers.swift in Sources */,
 				D7959D4B2E435884001F944B /* Filter.swift in Sources */,
 				D7959D4E2E4358B9001F944B /* Model.xcdatamodeld in Sources */,
@@ -1563,6 +1576,7 @@
 				D7E1A3E22DF98B95001EEA27 /* ContentView.swift in Sources */,
 				D7552E9C2E4627C500A30875 /* NewIssueButton.swift in Sources */,
 				D7E1A3E32DF98B95001EEA27 /* ContentViewToolbar.swift in Sources */,
+				D7A6FBF72EB0F5B100927E07 /* DataController-Migration.swift in Sources */,
 				D7E1A3E42DF98B95001EEA27 /* DetailView.swift in Sources */,
 				D7659B472E40CB0D00B47CAE /* InlineNavigationBar.swift in Sources */,
 				D7E1A3E52DF98B95001EEA27 /* IssueView.swift in Sources */,
@@ -1580,8 +1594,8 @@
 				D7E1A3EC2DF98B95001EEA27 /* UserFilterRow.swift in Sources */,
 				D7E1A3ED2DF98B95001EEA27 /* Award.swift in Sources */,
 				D7E1A3EE2DF98B95001EEA27 /* DataController.swift in Sources */,
-				D75D22FC2E97CECD005A1169 /* DataController-Testing.swift in Sources */,
 				D77DEFA62E1429A600007EFE /* DataController-Notifications.swift in Sources */,
+				D731E36A2EAF7E00006B3D73 /* DataController-Deletions.swift in Sources */,
 				D7959D572E436AB7001F944B /* MacFrame.swift in Sources */,
 				D71FD4992E2E3ED5000E43A5 /* NewIssueIntent.swift in Sources */,
 				D7E1A3EF2DF98B95001EEA27 /* Filter.swift in Sources */,
@@ -2652,9 +2666,10 @@
 		D7E1A3D12DF98B95001EEA27 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D7A6FBF42EB0EBF200927E07 /* Model 2.xcdatamodel */,
 				D7E1A3D62DF98B95001EEA27 /* Model.xcdatamodel */,
 			);
-			currentVersion = D7E1A3D62DF98B95001EEA27 /* Model.xcdatamodel */;
+			currentVersion = D7A6FBF42EB0EBF200927E07 /* Model 2.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

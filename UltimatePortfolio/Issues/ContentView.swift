@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+#if os(macOS)
+    @EnvironmentObject var dataController: DataController
+    @Environment(\.undoManager) private var undoManager
+#endif
 #if !os(watchOS)
     @Environment(\.requestReview) var requestReview
 #endif
     @StateObject var viewModel: ViewModel
-
+    
     private let newIssueActivity = "de.robert.welz.UltimatePortfolio.newIssue"
-
+    
     var body: some View {
         // List(selection: $viewModel.dataController.selectedIssue) {
         List(selection: $viewModel.selectedIssue) { // thats what subsript in ContentViewModel is for
@@ -23,6 +27,14 @@ struct ContentView: View {
                 IssueRowWatch(issue: issue)
 #else
                 IssueRow(issue: issue)
+                    .contextMenu {
+                        Button("Copy Issue Title") {
+                            copyTitle(issue.issueTitle)
+                        }
+                        Button("Delete Issue") {
+                            delete(issue)
+                        }
+                    }
 #endif
             }
             .onDelete(perform: viewModel.deleteItem)
@@ -50,7 +62,7 @@ struct ContentView: View {
         }
         .onContinueUserActivity(newIssueActivity, perform: resumeActivity)
     }
-
+    
     // MARK: - Zeilenansicht als eigene Funktion // xxx
     // @ViewBuilder
     // private func issueRow(for issue: Issue) -> some View {
@@ -69,12 +81,28 @@ struct ContentView: View {
     //        }
     // #endif
     // } // xxx
-
+    
     init(dataController: DataController) {
         let viewModel = ViewModel(dataController: dataController)
         _viewModel = StateObject(wrappedValue: viewModel)
     }
-
+    
+    private func delete(_ issue: Issue) {
+        dataController.delete([issue], using: undoManager)
+        if viewModel.selectedIssue == issue {
+            viewModel.selectedIssue = nil
+        }
+    }
+    
+    private func copyTitle(_ title: String) {
+#if os(macOS)
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.setString(title, forType: .string)
+#else
+        UIPasteboard.general.string = title
+#endif
+    }
+    
     // TODO: gibt es einen Ersatz für diese Funktion in macOS, oder kann ich die auf macOS ersatzlos streichen?
 #if os(iOS)
     func scene(
@@ -89,7 +117,7 @@ struct ContentView: View {
         }
     }
 #endif // xxx
-
+    
     func askForReview() {
 #if !os(watchOS)
         if viewModel.shouldRequestReview {
