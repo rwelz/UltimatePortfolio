@@ -9,11 +9,10 @@ import Foundation
 import CoreData
 
 extension DataController {
-    
     func delete(_ issues: [Issue], using undoManager: UndoManager?) {
         let context = container.viewContext
         guard issues.isEmpty == false else { return }
-        
+
         // Snapshot der Issues anlegen
         struct IssueSnapshot {
             let title: String?
@@ -24,7 +23,7 @@ extension DataController {
             let priority: Int16
             let tags: [Tag]
         }
-        
+
         let snapshots: [IssueSnapshot] = issues.map { issue in
             IssueSnapshot(
                 title: issue.title,
@@ -36,15 +35,15 @@ extension DataController {
                 tags: issue.issueTags
             )
         }
-        
+
         // Löschen
         for issue in issues {
             context.delete(issue)
         }
-        
+
         do {
             try context.save()
-            
+
             // Undo registrieren
             undoManager?.registerUndo(withTarget: self) { _ in
                 for snap in snapshots {
@@ -59,7 +58,7 @@ extension DataController {
                         restored.addToTags(tag)
                     }
                 }
-                
+
                 // Speichern deferred, um Undo-Verschachtelung zu vermeiden
                 DispatchQueue.main.async {
                     do {
@@ -69,7 +68,7 @@ extension DataController {
                     }
                 }
             }
-            
+
             undoManager?.setActionName(
                 issues.count == 1 ? "Delete Issue" : "Delete \(issues.count) Issues"
             )

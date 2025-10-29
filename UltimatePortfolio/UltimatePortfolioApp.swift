@@ -10,17 +10,47 @@ import CoreSpotlight
 #endif
 import SwiftUI
 
+#if os(macOS)
+import AppKit
+
+func removeDeleteMenuItem() {
+    if let mainMenu = NSApplication.shared.mainMenu,
+       let editMenu = mainMenu.item(withTitle: "Edit")?.submenu {
+        if let deleteItem = editMenu.item(withTitle: "Delete") {
+            editMenu.removeItem(deleteItem)
+            print("🗑 'Delete' aus Menü entfernt")
+        }
+    }
+}
+#endif
+
 @main
 struct UltimatePortfolioApp: App {
     @StateObject var dataController = DataController() // @Published und @StateObject gehören zusammen
     @Environment(\.scenePhase) var scenePhase
 
-    #if os(iOS)
+#if os(iOS)
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    #endif
+#endif
 
     @ObservedObject var manager = Manager.shared
     @State private var preferredColumn = NavigationSplitViewColumn.sidebar
+
+    init() {
+#if os(macOS)
+        // Beobachte Menüänderungen und entferne "Delete" jedes Mal neu
+        NotificationCenter.default.addObserver(
+            forName: NSMenu.didAddItemNotification,
+            object: nil,
+            queue: .main
+        ) { _ in
+            // WICHTIG: erst im nächsten RunLoop löschen
+            DispatchQueue.main.async {
+                removeDeleteMenuItem()
+            }
+        }
+#endif
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -51,28 +81,34 @@ struct UltimatePortfolioApp: App {
                     dataController.save()
                 }
             }
-
-            #if canImport(CoreSpotlight)
+            .onAppear {
+#if os(macOS)
+                DispatchQueue.main.async {
+                    removeDeleteMenuItem()
+                }
+#endif
+            }
+#if canImport(CoreSpotlight)
             .onContinueUserActivity(CSSearchableItemActionType, perform: loadSpotlightItem)
-            #endif
-             // .onReceive(manager.$showView) { newValue in
-             //   print("manager.showView View geändert: \(newValue)")
-             //   if newValue {
-             //       preferredColumn = .content
-             //       resetShowView()
-             //   }
-             // } // xxx
+#endif
+            // .onReceive(manager.$showView) { newValue in
+            //   print("manager.showView View geändert: \(newValue)")
+            //   if newValue {
+            //       preferredColumn = .content
+            //       resetShowView()
+            //   }
+            // } // xxx
         }
     }
 
-    #if canImport(CoreSpotlight)
+#if canImport(CoreSpotlight)
     func loadSpotlightItem(_ userActivity: NSUserActivity) {
         if let uniqueIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
             dataController.selectedIssue = dataController.issue(with: uniqueIdentifier)
             dataController.selectedFilter = .all
         }
     }
-    #endif
+#endif
 
     // func resetShowView() {
     //    if Manager.shared.showView == true {

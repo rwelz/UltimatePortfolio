@@ -14,11 +14,11 @@ extension DataController {
         let context = container.viewContext
         let request = NSFetchRequest<Issue>(entityName: "Issue")
         request.predicate = NSPredicate(format: "modificationDate == nil")
-        
+
         do {
             let results = try context.fetch(request)
             print("🔎 Migration: \(results.count) Issues ohne modificationDate gefunden")
-            
+
             for issue in results {
                 // Fallback: wenn es ein creationDate gibt → übernehmen
                 if let created = issue.creationDate {
@@ -28,7 +28,7 @@ extension DataController {
                     issue.modificationDate = Date()
                 }
             }
-            
+
             if context.hasChanges {
                 try context.save()
                 print("✅ Migration abgeschlossen: modificationDate ergänzt")
