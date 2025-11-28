@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 extension ContentView {
     @dynamicMemberLookup

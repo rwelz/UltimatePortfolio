@@ -8,6 +8,7 @@
 import CoreData
 import Foundation
 import SwiftUI
+import Combine
 
 extension SidebarView {
     @dynamicMemberLookup

@@ -9,20 +9,21 @@ import Foundation
 import CoreData
 
 extension DataController {
+
+    // Snapshot der Issues anlegen
+    private struct IssueSnapshot {
+        let title: String?
+        let content: String?
+        let creationDate: Date?
+        let modificationDate: Date?
+        let completed: Bool
+        let priority: Int16
+        let tags: [Tag]
+    }
+
     func delete(_ issues: [Issue], using undoManager: UndoManager?) {
         let context = container.viewContext
         guard issues.isEmpty == false else { return }
-
-        // Snapshot der Issues anlegen
-        struct IssueSnapshot {
-            let title: String?
-            let content: String?
-            let creationDate: Date?
-            let modificationDate: Date?
-            let completed: Bool
-            let priority: Int16
-            let tags: [Tag]
-        }
 
         let snapshots: [IssueSnapshot] = issues.map { issue in
             IssueSnapshot(

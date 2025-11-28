@@ -1,0 +1,26 @@
+//
+//  Randnotizen.txt
+//  UltimatePortfolio
+//
+//  Created by Robert Welz on 30.10.25.
+//
+
+Für smarte Breakpoints
+
+#if os(macOS)
+true
+#else
+false
+#endif
+
+#if os(iOS)
+true
+#else
+false
+#endif
+
+#if os(watchOS)
+true
+#else
+false
+#endif

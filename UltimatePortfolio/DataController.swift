@@ -6,6 +6,7 @@
 //  xxx ganz umschreiben, habv viele Änderungen zurückgenommen!
 import CoreData
 import StoreKit
+import Combine
 
 #if canImport(WidgetKit)
 import WidgetKit
@@ -152,7 +153,19 @@ class DataController: ObservableObject {
             //                       um eine NSPersistentStoreRemoteChange auszulösen.
             //                  •    Unter visionOS-Simulator gibt es diesen Menüpunkt nicht →
             //                       keine automatischen Updates aus der Cloud.
-
+            //
+            // In macOS recognizing new data in swiftData in the cloud (cloudKit) can take between 2 and 15 minutes.
+            // I have measued this myself. Uploading data from a macOS app into the cloud is resonably fast, though.
+            // But recognizing and synciong is awfully slow. This is by design and decision of Apple.
+            // On the contrary syncing on iOS an loading new data is rsonably quick.
+            //
+            // There is no way to:
+            // - force a sync manually/by API
+            // - use own implementaion of a database in iCloud.
+            //
+            // recomendation: use a service like https://www.powersync.com/pricing
+            //
+            
             NotificationCenter.default.addObserver(
                 forName: .NSPersistentStoreRemoteChange,
                 object: container.persistentStoreCoordinator,
@@ -202,6 +215,7 @@ class DataController: ObservableObject {
             }
         }
     }
+
     // swiftlint:enable function_body_length
 
     func remoteStoreChanged(_ notification: Notification) {
