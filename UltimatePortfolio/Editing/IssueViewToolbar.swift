@@ -70,7 +70,7 @@ struct IssueViewToolbar: View {
 
     func toggleCompleted() {
         issue.completed.toggle()
-        dataController.save()
+        // dataController.save()
 
 	// advanced haptics: import CoreHaptics
         #if canImport(CoreHaptics)

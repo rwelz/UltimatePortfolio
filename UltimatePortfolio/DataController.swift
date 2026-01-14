@@ -6,6 +6,7 @@
 //  xxx ganz umschreiben, habv viele Änderungen zurückgenommen!
 import CoreData
 import StoreKit
+import Combine
 
 #if canImport(WidgetKit)
 import WidgetKit
@@ -26,9 +27,9 @@ class DataController: ObservableObject {
     /// The lone CloudKit container used to store all our data.
     let container: NSPersistentCloudKitContainer
 
-    #if !os(watchOS)
+#if !os(watchOS)
     var spotlightDelegate: NSCoreDataCoreSpotlightDelegate?
-    #endif
+#endif
 
     @Published var selectedFilter: Filter? = Filter.all
     @Published var selectedIssue: Issue?
@@ -129,6 +130,8 @@ class DataController: ObservableObject {
             )
 
             if let description = container.persistentStoreDescriptions.first {
+                description.shouldMigrateStoreAutomatically = true
+                description.shouldInferMappingModelAutomatically = true
                 description.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
                 description.setOption(
                     true as NSNumber,
@@ -150,7 +153,19 @@ class DataController: ObservableObject {
             //                       um eine NSPersistentStoreRemoteChange auszulösen.
             //                  •    Unter visionOS-Simulator gibt es diesen Menüpunkt nicht →
             //                       keine automatischen Updates aus der Cloud.
-
+            //
+            // In macOS recognizing new data in swiftData in the cloud (cloudKit) can take between 2 and 15 minutes.
+            // I have measued this myself. Uploading data from a macOS app into the cloud is resonably fast, though.
+            // But recognizing and synciong is awfully slow. This is by design and decision of Apple.
+            // On the contrary syncing on iOS an loading new data is rsonably quick.
+            //
+            // There is no way to:
+            // - force a sync manually/by API
+            // - use own implementaion of a database in iCloud.
+            //
+            // recomendation: use a service like https://www.powersync.com/pricing
+            //
+            
             NotificationCenter.default.addObserver(
                 forName: .NSPersistentStoreRemoteChange,
                 object: container.persistentStoreCoordinator,
@@ -158,9 +173,20 @@ class DataController: ObservableObject {
                 using: remoteStoreChanged
             )
 
-            container.loadPersistentStores { [weak self] _, error in
+            container.loadPersistentStores { [weak self] description, error in
                 if let error {
                     fatalError("Fatal error loading store: \(error.localizedDescription)")
+                } else {
+#if DEBUG
+                    print("✅ Persistent Store geladen:", description.url?.absoluteString ?? "unbekannt")
+
+                    // Debug: alle Issues zählen
+                    let request = NSFetchRequest<Issue>(entityName: "Issue")
+                    let count = (try? self?.container.viewContext.count(for: request)) ?? -1
+                    print("🔎 Anzahl Issues im Store:", count)
+#endif
+                    // Migration: fehlende modificationDates nachpflegen
+                    self?.migrateMissingModificationDates()
                 }
 
                 if let description = self?.container.persistentStoreDescriptions.first {
@@ -189,12 +215,13 @@ class DataController: ObservableObject {
             }
         }
     }
+
     // swiftlint:enable function_body_length
 
     func remoteStoreChanged(_ notification: Notification) {
         // do {
-            // let name = UIDevice.current.name
-            // print("📱 Device name is: \(name)")
+        // let name = UIDevice.current.name
+        // print("📱 Device name is: \(name)")
 
         //    try container.viewContext.setQueryGenerationFrom(.current)
         //    container.viewContext.refreshAllObjects()
@@ -230,6 +257,18 @@ class DataController: ObservableObject {
         try? viewContext.save()
     }
 
+    func updateModificationDates() {
+        let context = container.viewContext
+        let updatedObjects = context.updatedObjects.union(context.insertedObjects)
+
+        for case let issue as Issue in updatedObjects {
+            if issue.creationDate == nil {
+                issue.creationDate = Date()
+            }
+            issue.modificationDate = Date()
+        }
+    }
+
     /// Saves our Core Data context iff there are changes. This silently ignores
     /// any errors caused by saving, but this should be fine because all our attributes are optional.
     /// the “iff” part (yes, with a double F) means “if and only if”.
@@ -237,12 +276,14 @@ class DataController: ObservableObject {
     func save() {
         saveTask?.cancel()
 
+        updateModificationDates()
+
         if container.viewContext.hasChanges {
             try? container.viewContext.save()
 
-            #if canImport(WidgetKit)
+#if canImport(WidgetKit)
             WidgetCenter.shared.reloadAllTimelines()
-            #endif
+#endif
         }
     }
 
@@ -326,10 +367,10 @@ class DataController: ObservableObject {
             predicates.append(combinedPredicate)
         }
 
-//        if filterTokens.isEmpty == false {
-//            let tokenPredicate = NSPredicate(format: "ANY tags IN %@", filterTokens)
-//            predicates.append(tokenPredicate)
-//        }
+        //        if filterTokens.isEmpty == false {
+        //            let tokenPredicate = NSPredicate(format: "ANY tags IN %@", filterTokens)
+        //            predicates.append(tokenPredicate)
+        //        }
 
         if filterTokens.isEmpty == false {
             for filterToken in filterTokens {
@@ -364,7 +405,7 @@ class DataController: ObservableObject {
         return allIssues
     }
 
-func newTag() -> Bool {
+    func newTag() -> Bool {
         var shouldCreate = fullVersionUnlocked
 
         if shouldCreate == false {

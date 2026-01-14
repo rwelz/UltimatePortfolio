@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 extension ContentView {
     @dynamicMemberLookup
@@ -87,7 +88,7 @@ extension ContentView {
             }
         }
 
-        func delete(_ offsets: IndexSet) {
+        func deleteItem(_ offsets: IndexSet) {
             let issues = dataController.issuesForSelectedFilter()
 
             for offset in offsets {

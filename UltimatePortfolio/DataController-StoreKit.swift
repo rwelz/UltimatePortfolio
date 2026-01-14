@@ -7,6 +7,7 @@
 
 import Foundation
 import StoreKit
+import Combine
 
 extension DataController {
     /// The product ID for our premium unlock.

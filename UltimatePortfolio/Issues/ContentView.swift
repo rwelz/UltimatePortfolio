@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+// #if os(macOS)
+    @EnvironmentObject var dataController: DataController
+    @Environment(\.undoManager) private var undoManager
+// #endif
 #if !os(watchOS)
     @Environment(\.requestReview) var requestReview
 #endif
@@ -23,9 +27,17 @@ struct ContentView: View {
                 IssueRowWatch(issue: issue)
 #else
                 IssueRow(issue: issue)
+                    .contextMenu {
+                        Button("Copy Issue Title") {
+                            copyTitle(issue.issueTitle)
+                        }
+                        Button("Delete Issue") {
+                            delete(issue)
+                        }
+                    }
 #endif
             }
-            .onDelete(perform: viewModel.delete)
+            .onDelete(perform: viewModel.deleteItem)
         }
         .macFrame(minWidth: 220)
         .navigationTitle("Issues")
@@ -73,6 +85,23 @@ struct ContentView: View {
     init(dataController: DataController) {
         let viewModel = ViewModel(dataController: dataController)
         _viewModel = StateObject(wrappedValue: viewModel)
+    }
+
+    private func delete(_ issue: Issue) {
+        dataController.delete([issue], using: undoManager)
+        if viewModel.selectedIssue == issue {
+            viewModel.selectedIssue = nil
+        }
+    }
+
+    private func copyTitle(_ title: String) {
+#if os(iOS)
+        UIPasteboard.general.string = title
+#elseif os(macOS)
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.prepareForNewContents()
+        NSPasteboard.general.setString(title, forType: .string)
+#endif
     }
 
     // TODO: gibt es einen Ersatz für diese Funktion in macOS, oder kann ich die auf macOS ersatzlos streichen?

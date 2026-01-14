@@ -67,6 +67,7 @@
 "Copy Issue Title" = "Probléma címének másolása";
 "Close Issue" = "Probléma lezárása";
 "Re-open Issue" = "Probléma újranyitása";
+"Delete Issue" = "Probléma törlése";
 
 /* REMINDERS */
 "Reminders" = "Emlékeztetők";
