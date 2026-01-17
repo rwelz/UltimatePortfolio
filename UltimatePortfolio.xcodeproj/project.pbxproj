@@ -19,6 +19,8 @@
 		D71FD49B2E2E53AB000E43A5 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FD49A2E2E53A8000E43A5 /* Manager.swift */; };
 		D71FD49E2E2FA5F6000E43A5 /* CustomStringConvertible-debugLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71FD49D2E2FA5F0000E43A5 /* CustomStringConvertible-debugLog.swift */; };
 		D7223A652E967BEA0041863A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D799920D2E251FC0004B4675 /* AppDelegate.swift */; platformFilter = ios; };
+		D72862FA2F17EF67009EF72C /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = D7C64EBB2E9E33C400607A59 /* Configuration.storekit */; };
+		D72862FC2F17F2D8009EF72C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72862FB2F17F2D8009EF72C /* StoreKit.framework */; };
 		D72C5D002E55D9DE00360BE5 /* MyUnifiedLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72C5CFF2E55D9DE00360BE5 /* MyUnifiedLogger.swift */; };
 		D72C5D012E55D9DE00360BE5 /* MyUnifiedLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72C5CFF2E55D9DE00360BE5 /* MyUnifiedLogger.swift */; };
 		D72C5D032E55D9DE00360BE5 /* MyUnifiedLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72C5CFF2E55D9DE00360BE5 /* MyUnifiedLogger.swift */; };
@@ -273,6 +275,7 @@
 		D71FD4982E2E3ED5000E43A5 /* NewIssueIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewIssueIntent.swift; sourceTree = "<group>"; };
 		D71FD49A2E2E53A8000E43A5 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		D71FD49D2E2FA5F0000E43A5 /* CustomStringConvertible-debugLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomStringConvertible-debugLog.swift"; sourceTree = "<group>"; };
+		D72862FB2F17F2D8009EF72C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS26.2.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
 		D72C5CFF2E55D9DE00360BE5 /* MyUnifiedLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUnifiedLogger.swift; sourceTree = "<group>"; };
 		D731E3662EAF7E00006B3D73 /* DataController-Deletions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataController-Deletions.swift"; sourceTree = "<group>"; };
 		D73A5C182DF99D0E007BE703 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
@@ -315,6 +318,7 @@
 		D7BCAF7E2E0431F80054D6B3 /* SidebarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewModel.swift; sourceTree = "<group>"; };
 		D7C64EBB2E9E33C400607A59 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		D7CCD2252E02CDD7004B081E /* UltimatePortfolioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UltimatePortfolioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7DA2D632F1B82140076729F /* Nebenrechnungen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nebenrechnungen.swift; sourceTree = "<group>"; };
 		D7E1A3AF2DF98B95001EEA27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = en; path = en.lproj/Awards.json; sourceTree = "<group>"; };
 		D7E1A3B02DF98B95001EEA27 /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = hu; path = hu.lproj/Awards.json; sourceTree = "<group>"; };
 		D7E1A3B22DF98B95001EEA27 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -401,6 +405,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D72862FC2F17F2D8009EF72C /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,6 +577,7 @@
 		D7686C472E3233A7006EF993 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D72862FB2F17F2D8009EF72C /* StoreKit.framework */,
 				D7686C482E3233A7006EF993 /* WidgetKit.framework */,
 				D7686C4A2E3233A7006EF993 /* SwiftUI.framework */,
 			);
@@ -582,6 +588,7 @@
 			isa = PBXGroup;
 			children = (
 				D77DEFA12E1401FD00007EFE /* StoreView.swift */,
+				D7DA2D632F1B82140076729F /* Nebenrechnungen.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -1037,6 +1044,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D74FC34D2EB6280F002AA85D /* Localizable.strings in Resources */,
+				D72862FA2F17EF67009EF72C /* Configuration.storekit in Resources */,
 				D74FC34E2EB6280F002AA85D /* Localizable.stringsdict in Resources */,
 				D74FC34C2EB62802002AA85D /* Awards.json in Resources */,
 				D74FC34A2EB6224D002AA85D /* Assets.xcassets in Resources */,
@@ -1870,6 +1878,7 @@
 				DEVELOPMENT_TEAM = 4AZCM9652H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "UPAWatch-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = UPAWatch;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = de.robert.welz.UltimatePortfolio;
@@ -1906,6 +1915,7 @@
 				DEVELOPMENT_TEAM = 4AZCM9652H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "UPAWatch-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = UPAWatch;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = de.robert.welz.UltimatePortfolio;

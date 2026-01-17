@@ -20,6 +20,98 @@ struct StoreView: View {
     @State private var loadState = LoadState.loading
     @State private var showingPurchaseError = false
 
+#if os(watchOS)
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                VStack {
+                    Image(decorative: "unlock")
+                        .resizable(resizingMode: Image.ResizingMode.stretch)
+                        .scaledToFit()
+
+                    Text("Upgrade Today!")
+                        .font(.body.bold())
+                        .fontDesign(.rounded)
+                        .foregroundStyle(.white)
+
+                    Text("Get the most out of the app")
+                        .font(.callout)
+                        .foregroundStyle(.white)
+
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.bottom, 40)
+
+                VStack {
+                    switch loadState {
+                    case .loading:
+                        Text("Fetching offers…")
+                            .font(.title2.bold())
+                            .padding(.top, 50)
+
+                        ProgressView()
+                            .controlSize(.large)
+
+                    case .loaded:
+                        ForEach(dataController.products) { product in
+                            Button {
+                                purchase(product)
+                            } label: {
+                                HStack {
+                                    VStack(alignment: .leading) {
+                                        Text(product.displayName)
+                                            .font(.callout.bold())
+
+                                        Text(product.description)
+                                            .font(.callout)
+                                    }
+
+                                    Spacer()
+
+                                    Text(product.displayPrice)
+                                        .font(.body.bold())
+                                        .fontDesign(.rounded)
+                                }
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 10)
+                                .frame(maxWidth: .infinity)
+                                .background(.gray.opacity(0.2), in: .rect(cornerRadius: 20))
+                                .contentShape(.rect)
+                            }
+                            .buttonStyle(.plain)
+                        }
+
+                    case .error:
+                        Text("Sorry, there was an error loading our store.")
+                            .padding(.top, 50)
+
+                        Button("Try Again") {
+                            Task {
+                                await load()
+                            }
+                        }
+                        .buttonStyle(.borderedProminent)
+                    }
+                }
+
+                .frame(maxWidth: .infinity)
+            }
+            .background(.blue.gradient)
+        }
+        .alert("In-app purchases are disabled", isPresented: $showingPurchaseError) {
+        } message: {
+            Text("""
+            You can't purchase the premium unlock because in-app purchases are disabled on this device.
+            
+            Please ask whomever manages your device for assistance.
+            """)
+        }
+        .onChange(of: dataController.fullVersionUnlocked, checkForPurchase)
+        .task {
+            await load()
+        }
+    }
+#else
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
@@ -107,7 +199,7 @@ struct StoreView: View {
         } message: {
             Text("""
             You can't purchase the premium unlock because in-app purchases are disabled on this device.
-
+            
             Please ask whomever manages your device for assistance.
             """)
         }
@@ -116,6 +208,7 @@ struct StoreView: View {
             await load()
         }
     }
+#endif
 
     func checkForPurchase() {
         if dataController.fullVersionUnlocked {
@@ -163,5 +256,6 @@ struct StoreView: View {
 
 #Preview {
     StoreView()
-        // .environmentObject(DataController(inMemory: true)) // xxx
+        .environmentObject(DataController(inMemory: true)) // xxx
 }
+
