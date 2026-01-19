@@ -318,7 +318,6 @@
 		D7BCAF7E2E0431F80054D6B3 /* SidebarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewModel.swift; sourceTree = "<group>"; };
 		D7C64EBB2E9E33C400607A59 /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		D7CCD2252E02CDD7004B081E /* UltimatePortfolioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UltimatePortfolioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D7DA2D632F1B82140076729F /* Nebenrechnungen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nebenrechnungen.swift; sourceTree = "<group>"; };
 		D7E1A3AF2DF98B95001EEA27 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = en; path = en.lproj/Awards.json; sourceTree = "<group>"; };
 		D7E1A3B02DF98B95001EEA27 /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = hu; path = hu.lproj/Awards.json; sourceTree = "<group>"; };
 		D7E1A3B22DF98B95001EEA27 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -588,7 +587,6 @@
 			isa = PBXGroup;
 			children = (
 				D77DEFA12E1401FD00007EFE /* StoreView.swift */,
-				D7DA2D632F1B82140076729F /* Nebenrechnungen.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
